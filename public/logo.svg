@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" fill="none">
+  <defs>
+    <linearGradient id="logoGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#CCFF00;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B8E600;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Map pin icon -->
+  <g transform="translate(5, 5)">
+    <path d="M20 0C31 0 40 9 40 20C40 32 28 42 20 50C12 42 0 32 0 20C0 9 9 0 20 0Z" fill="url(#logoGlow)"/>
+    <circle cx="20" cy="18" r="8" fill="#0A0A0A"/>
+  </g>
+  <!-- BrukMap text -->
+  <text x="55" y="35" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="800" fill="#FFFFFF">Bruk<tspan fill="#CCFF00">Map</tspan></text>
+</svg>

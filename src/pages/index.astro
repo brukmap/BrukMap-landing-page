@@ -1,16 +1,570 @@
 ---
+import '../styles/global.css';
 
+const features = [
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>`,
+    title: 'Mapa de Spots',
+    description: 'Explora lugares alternativos cerca de ti con filtros por categoria y busqueda avanzada.'
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>`,
+    title: 'Contribuciones',
+    description: 'Anade tus propios descubrimientos y ayuda a la comunidad a encontrar lugares unicos.'
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>`,
+    title: 'Sanctuary',
+    description: 'Guarda spots privados solo para ti y compartelos con amigos en burbujas exclusivas.'
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>`,
+    title: 'Modo Offline',
+    description: 'Descarga datos de ciudades y explora sin conexion a internet.'
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" /></svg>`,
+    title: 'Eventos',
+    description: 'Descubre eventos alternativos cerca de ti con calendario y filtros.'
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" /></svg>`,
+    title: 'Burbujas',
+    description: 'Crea grupos privados con amigos para compartir spots secretos.'
+  }
+];
+
+const categories = [
+  { name: 'Cafeteria', emoji: '☕' },
+  { name: 'Arte', emoji: '🎨' },
+  { name: 'Vintage', emoji: '👗' },
+  { name: 'Rooftop', emoji: '🏙️' },
+  { name: 'Vinilos', emoji: '🎵' },
+  { name: 'Graffiti', emoji: '🎭' },
+  { name: 'Yoga', emoji: '🧘' },
+  { name: 'Skatepark', emoji: '🛹' },
+  { name: 'Vegano', emoji: '🥬' },
+  { name: '420', emoji: '🌿' },
+  { name: 'Libros', emoji: '📚' },
+  { name: 'Coworking', emoji: '💻' }
+];
+
+const stats = [
+  { value: '10K+', label: 'Lugares' },
+  { value: '50K+', label: 'Usuarios' },
+  { value: '100+', label: 'Ciudades' }
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Descubre lugares alternativos, unicos y fuera de lo comun. Cafeterias escondidas, galerias underground, tiendas vintage y mas." />
+    <meta name="keywords" content="mapas alternativos, lugares unicos, spots secretos, cafeterias escondidas, guia local, lugares underground, app de viajes alternativa" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet" />
+    <title>BrukMap - Explora lo alternativo</title>
+  </head>
+  <body class="min-h-screen bg-bg-primary text-text-primary overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-bg-primary/80 backdrop-blur-lg border-b border-border">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <a href="/" class="flex items-center gap-2">
+            <img src="/logo.svg" alt="BrukMap" class="h-8" />
+          </a>
+          <div class="hidden md:flex items-center gap-8">
+            <a href="#features" class="text-text-secondary hover:text-accent transition-colors">Features</a>
+            <a href="#categories" class="text-text-secondary hover:text-accent transition-colors">Categorias</a>
+            <button data-open-modal data-platform="iOS" class="px-4 py-2 bg-accent text-bg-primary font-semibold rounded-lg hover:bg-accent-secondary transition-colors cursor-pointer">
+              Descargar
+            </button>
+          </div>
+          <button class="md:hidden text-text-primary" aria-label="Menu">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
+      <!-- Background Grid -->
+      <div class="absolute inset-0 opacity-20">
+        <div class="absolute inset-0" style="background-image: linear-gradient(rgba(204, 255, 0, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(204, 255, 0, 0.1) 1px, transparent 1px); background-size: 50px 50px;"></div>
+      </div>
+      <!-- Glow Effect -->
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[150px]"></div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="text-center lg:text-left">
+            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black mb-6 leading-tight">
+              Explora lo<br />
+              <span class="text-accent glow-text">alternativo</span>
+            </h1>
+            <p class="text-xl text-text-secondary mb-8 max-w-xl mx-auto lg:mx-0">
+              Descubre lugares unicos que solo los locales conocen. Cafeterias escondidas, galerias underground, tiendas vintage y mucho mas.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <button data-open-modal data-platform="iOS" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent text-bg-primary font-bold rounded-xl hover:bg-accent-secondary transition-all glow cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+                </svg>
+                App Store
+              </button>
+              <button data-open-modal data-platform="Android" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-bg-elevated border border-border text-text-primary font-bold rounded-xl hover:border-accent transition-all cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/>
+                </svg>
+                Play Store
+              </button>
+            </div>
+          </div>
+          <div class="relative flex justify-center">
+            <!-- Phone Mockup -->
+            <div class="relative w-[280px] h-[580px] bg-bg-elevated rounded-[3rem] border-4 border-border p-3 animate-float">
+              <div class="absolute top-6 left-1/2 -translate-x-1/2 w-24 h-6 bg-bg-primary rounded-full"></div>
+              <div class="w-full h-full bg-bg-secondary rounded-[2.5rem] overflow-hidden flex items-center justify-center">
+                <div class="text-center p-6">
+                  <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-accent/20 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  </div>
+                  <p class="text-accent font-bold text-lg">BrukMap</p>
+                  <p class="text-text-tertiary text-sm mt-1">Preview</p>
+                </div>
+              </div>
+            </div>
+            <!-- Floating Elements -->
+            <div class="absolute -top-4 -right-4 w-16 h-16 bg-accent/20 rounded-xl flex items-center justify-center animate-float" style="animation-delay: 0.5s;">
+              <span class="text-2xl">☕</span>
+            </div>
+            <div class="absolute top-1/4 -left-8 w-14 h-14 bg-accent/20 rounded-xl flex items-center justify-center animate-float" style="animation-delay: 1s;">
+              <span class="text-xl">🎨</span>
+            </div>
+            <div class="absolute bottom-1/4 -right-6 w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center animate-float" style="animation-delay: 1.5s;">
+              <span class="text-lg">🎵</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-24 bg-bg-secondary">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl sm:text-5xl font-black mb-4">
+            Todo lo que <span class="text-accent">necesitas</span>
+          </h2>
+          <p class="text-text-secondary text-lg max-w-2xl mx-auto">
+            Herramientas pensadas para exploradores que buscan experiencias autenticas.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {features.map((feature) => (
+            <div class="p-6 bg-bg-elevated rounded-2xl border border-border hover:border-accent/50 transition-all group">
+              <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center text-accent mb-4 group-hover:bg-accent group-hover:text-bg-primary transition-all" set:html={feature.icon}></div>
+              <h3 class="text-xl font-bold mb-2">{feature.title}</h3>
+              <p class="text-text-secondary">{feature.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="py-24 bg-bg-primary">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl sm:text-5xl font-black mb-4">
+            Explora por <span class="text-accent">categoria</span>
+          </h2>
+          <p class="text-text-secondary text-lg max-w-2xl mx-auto">
+            Desde cafeterias con encanto hasta spots 420 friendly. Encuentra lo que buscas.
+          </p>
+        </div>
+        <div class="flex flex-wrap justify-center gap-4">
+          {categories.map((category) => (
+            <div class="px-6 py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-2">
+              <span class="text-xl">{category.emoji}</span>
+              <span class="font-medium">{category.name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="py-24 bg-bg-secondary">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-3 gap-8">
+          {stats.map((stat) => (
+            <div class="text-center p-8 bg-bg-elevated rounded-2xl border border-border">
+              <div class="text-5xl sm:text-6xl font-black text-accent mb-2">{stat.value}</div>
+              <div class="text-text-secondary text-lg">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+        <div class="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="p-6 bg-bg-elevated rounded-2xl border border-border">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center text-xl">M</div>
+              <div>
+                <div class="font-bold">Marina G.</div>
+                <div class="text-text-tertiary text-sm">Barcelona</div>
+              </div>
+            </div>
+            <p class="text-text-secondary">"Encontre la mejor cafeteria escondida de mi barrio gracias a BrukMap. Llevaba 3 anios viviendo alli y no la conocia!"</p>
+          </div>
+          <div class="p-6 bg-bg-elevated rounded-2xl border border-border">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center text-xl">A</div>
+              <div>
+                <div class="font-bold">Alex R.</div>
+                <div class="text-text-tertiary text-sm">Madrid</div>
+              </div>
+            </div>
+            <p class="text-text-secondary">"La funcion de Sanctuary es genial. Puedo guardar mis spots secretos y compartirlos solo con mis amigos cercanos."</p>
+          </div>
+          <div class="p-6 bg-bg-elevated rounded-2xl border border-border md:col-span-2 lg:col-span-1">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center text-xl">L</div>
+              <div>
+                <div class="font-bold">Laura M.</div>
+                <div class="text-text-tertiary text-sm">Valencia</div>
+              </div>
+            </div>
+            <p class="text-text-secondary">"Uso BrukMap cada vez que viajo. Es como tener un amigo local en cada ciudad que te lleva a los mejores sitios."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- App Showcase Section -->
+    <section class="py-24 bg-bg-primary overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl sm:text-5xl font-black mb-4">
+            Disenado para <span class="text-accent">exploradores</span>
+          </h2>
+          <p class="text-text-secondary text-lg max-w-2xl mx-auto">
+            Interfaz intuitiva y minimalista que te permite descubrir sin distracciones.
+          </p>
+        </div>
+        <div class="flex justify-center gap-6 overflow-x-auto pb-8">
+          {['Mapa', 'Detalles', 'Sanctuary', 'Perfil'].map((screen, index) => (
+            <div class="flex-shrink-0 w-[200px] h-[420px] bg-bg-elevated rounded-[2rem] border-2 border-border p-2">
+              <div class="w-full h-full bg-bg-secondary rounded-[1.5rem] flex items-center justify-center">
+                <div class="text-center">
+                  <div class="text-accent font-bold">{screen}</div>
+                  <div class="text-text-tertiary text-xs mt-1">Screenshot</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="download" class="py-24 bg-bg-secondary relative overflow-hidden">
+      <!-- Background Glow -->
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-accent/10 rounded-full blur-[150px]"></div>
+
+      <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-6">
+          Empieza a <span class="text-accent glow-text">explorar</span>
+        </h2>
+        <p class="text-text-secondary text-xl mb-10 max-w-2xl mx-auto">
+          Descarga BrukMap gratis y descubre el lado alternativo de tu ciudad.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <button data-open-modal data-platform="iOS" class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-accent text-bg-primary font-bold rounded-xl hover:bg-accent-secondary transition-all glow cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+            </svg>
+            <div class="text-left">
+              <div class="text-xs opacity-80">Descargar en</div>
+              <div class="text-lg font-bold -mt-1">App Store</div>
+            </div>
+          </button>
+          <button data-open-modal data-platform="Android" class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-bg-elevated border border-border text-text-primary font-bold rounded-xl hover:border-accent transition-all cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/>
+            </svg>
+            <div class="text-left">
+              <div class="text-xs text-text-secondary">Disponible en</div>
+              <div class="text-lg font-bold -mt-1">Google Play</div>
+            </div>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-bg-primary border-t border-border">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-8">
+          <div class="md:col-span-2">
+            <img src="/logo.svg" alt="BrukMap" class="h-8 mb-4" />
+            <p class="text-text-secondary max-w-md">
+              Tu guia para explorar el lado alternativo de las ciudades. Descubre lugares unicos que solo los locales conocen.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-bold mb-4">Legal</h4>
+            <ul class="space-y-2 text-text-secondary">
+              <li><a href="#" class="hover:text-accent transition-colors">Terminos de uso</a></li>
+              <li><a href="#" class="hover:text-accent transition-colors">Privacidad</a></li>
+              <li><a href="#" class="hover:text-accent transition-colors">Cookies</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold mb-4">Contacto</h4>
+            <ul class="space-y-2 text-text-secondary">
+              <li><a href="mailto:soporte@brukmap.app" class="hover:text-accent transition-colors">soporte@brukmap.app</a></li>
+              <li><a href="#" class="hover:text-accent transition-colors">Soporte</a></li>
+            </ul>
+            <div class="flex gap-4 mt-4">
+              <a href="#" class="text-text-secondary hover:text-accent transition-colors" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+              </a>
+              <a href="#" class="text-text-secondary hover:text-accent transition-colors" aria-label="Twitter">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </a>
+              <a href="#" class="text-text-secondary hover:text-accent transition-colors" aria-label="TikTok">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="pt-8 border-t border-border text-center text-text-tertiary text-sm">
+          <p>&copy; 2025 BrukMap. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Waitlist Modal -->
+    <div id="waitlist-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
+      <!-- Backdrop -->
+      <div id="modal-backdrop" class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+
+      <!-- Modal Content -->
+      <div class="relative w-full max-w-md bg-bg-elevated border border-border rounded-2xl p-8 animate-slide-up">
+        <!-- Close Button -->
+        <button id="close-modal" class="absolute top-4 right-4 text-text-tertiary hover:text-text-primary transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        <!-- Form Container -->
+        <div id="form-container">
+          <div class="text-center mb-6">
+            <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-accent/20 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-black mb-2">Unete a la lista de espera</h3>
+            <p class="text-text-secondary">Se el primero en explorar cuando lancemos para <span id="platform-name" class="text-accent font-semibold">iOS</span></p>
+          </div>
+
+          <form id="waitlist-form" class="space-y-4">
+            <input type="hidden" name="access_key" value="d30b438e-554c-429f-a263-6039e35959d1" />
+            <input type="hidden" name="subject" value="Nueva suscripcion - BrukMap Waitlist" />
+            <input type="hidden" name="from_name" value="BrukMap Waitlist" />
+            <input type="hidden" id="platform-input" name="platform" value="iOS" />
+
+            <div>
+              <label for="name" class="block text-sm font-medium mb-2">Nombre</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                placeholder="Tu nombre"
+                class="w-full px-4 py-3 bg-bg-secondary border border-border rounded-xl focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors placeholder:text-text-tertiary"
+              />
+            </div>
+
+            <div>
+              <label for="email" class="block text-sm font-medium mb-2">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder="tu@email.com"
+                class="w-full px-4 py-3 bg-bg-secondary border border-border rounded-xl focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors placeholder:text-text-tertiary"
+              />
+            </div>
+
+            <div>
+              <label for="city" class="block text-sm font-medium mb-2">Ciudad</label>
+              <input
+                type="text"
+                id="city"
+                name="city"
+                placeholder="Tu ciudad (opcional)"
+                class="w-full px-4 py-3 bg-bg-secondary border border-border rounded-xl focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors placeholder:text-text-tertiary"
+              />
+            </div>
+
+            <button
+              type="submit"
+              id="submit-btn"
+              class="w-full py-4 bg-accent text-bg-primary font-bold rounded-xl hover:bg-accent-secondary transition-all glow flex items-center justify-center gap-2"
+            >
+              <span id="btn-text">Unirme a la waitlist</span>
+              <svg id="btn-spinner" class="hidden w-5 h-5 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+            </button>
+          </form>
+        </div>
+
+        <!-- Success Message -->
+        <div id="success-message" class="hidden text-center">
+          <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-success/20 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-black mb-2">Estas en la lista!</h3>
+          <p class="text-text-secondary mb-6">Te avisaremos cuando BrukMap este disponible. Prepararate para explorar lo alternativo.</p>
+          <button id="close-success" class="px-8 py-3 bg-bg-secondary border border-border rounded-xl hover:border-accent transition-colors font-semibold">
+            Cerrar
+          </button>
+        </div>
+
+        <!-- Error Message -->
+        <div id="error-message" class="hidden text-center">
+          <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-error/20 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-error" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-black mb-2">Algo salio mal</h3>
+          <p class="text-text-secondary mb-6">No pudimos registrarte. Por favor intenta de nuevo.</p>
+          <button id="retry-btn" class="px-8 py-3 bg-accent text-bg-primary rounded-xl hover:bg-accent-secondary transition-colors font-semibold">
+            Intentar de nuevo
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const modal = document.getElementById('waitlist-modal');
+      const backdrop = document.getElementById('modal-backdrop');
+      const closeBtn = document.getElementById('close-modal');
+      const closeSuccess = document.getElementById('close-success');
+      const retryBtn = document.getElementById('retry-btn');
+      const form = document.getElementById('waitlist-form');
+      const formContainer = document.getElementById('form-container');
+      const successMessage = document.getElementById('success-message');
+      const errorMessage = document.getElementById('error-message');
+      const platformName = document.getElementById('platform-name');
+      const platformInput = document.getElementById('platform-input');
+      const submitBtn = document.getElementById('submit-btn');
+      const btnText = document.getElementById('btn-text');
+      const btnSpinner = document.getElementById('btn-spinner');
+
+      // Open modal
+      document.querySelectorAll('[data-open-modal]').forEach(button => {
+        button.addEventListener('click', () => {
+          const platform = button.getAttribute('data-platform');
+          platformName.textContent = platform;
+          platformInput.value = platform;
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+
+      // Close modal functions
+      function closeModal() {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = '';
+        // Reset to form view
+        setTimeout(() => {
+          formContainer.classList.remove('hidden');
+          successMessage.classList.add('hidden');
+          errorMessage.classList.add('hidden');
+          form.reset();
+        }, 300);
+      }
+
+      closeBtn.addEventListener('click', closeModal);
+      backdrop.addEventListener('click', closeModal);
+      closeSuccess.addEventListener('click', closeModal);
+
+      // Close on Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+          closeModal();
+        }
+      });
+
+      // Retry button
+      retryBtn.addEventListener('click', () => {
+        errorMessage.classList.add('hidden');
+        formContainer.classList.remove('hidden');
+      });
+
+      // Form submission
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Show loading state
+        btnText.textContent = 'Enviando...';
+        btnSpinner.classList.remove('hidden');
+        submitBtn.disabled = true;
+
+        const formData = new FormData(form);
+
+        try {
+          const response = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: formData
+          });
+
+          const data = await response.json();
+
+          if (data.success) {
+            formContainer.classList.add('hidden');
+            successMessage.classList.remove('hidden');
+          } else {
+            throw new Error('Form submission failed');
+          }
+        } catch (error) {
+          formContainer.classList.add('hidden');
+          errorMessage.classList.remove('hidden');
+        } finally {
+          // Reset button state
+          btnText.textContent = 'Unirme a la waitlist';
+          btnSpinner.classList.add('hidden');
+          submitBtn.disabled = false;
+        }
+      });
+    </script>
+  </body>
 </html>

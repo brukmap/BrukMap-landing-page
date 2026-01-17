@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@theme {
+  /* Background */
+  --color-bg-primary: #0A0A0A;
+  --color-bg-secondary: #121212;
+  --color-bg-tertiary: #1A1A1A;
+  --color-bg-elevated: #1E1E1E;
+
+  /* Accent - Neon Green */
+  --color-accent: #CCFF00;
+  --color-accent-secondary: #B8E600;
+  --color-accent-muted: rgba(204, 255, 0, 0.15);
+  --color-accent-glow: rgba(204, 255, 0, 0.3);
+
+  /* Text */
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #A0A0A0;
+  --color-text-tertiary: #808080;
+
+  /* Borders */
+  --color-border: #2A2A2A;
+  --color-border-accent: #3A3A3A;
+
+  /* Semantic */
+  --color-success: #00FF88;
+  --color-warning: #FFB800;
+  --color-error: #FF4444;
+  --color-info: #00B8FF;
+
+  /* Fonts */
+  --font-heading: 'Montserrat', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+@layer utilities {
+  .glow {
+    box-shadow: 0 0 20px var(--color-accent-glow), 0 0 40px var(--color-accent-muted);
+  }
+
+  .glow-text {
+    text-shadow: 0 0 20px var(--color-accent-glow), 0 0 40px var(--color-accent-muted);
+  }
+
+  .gradient-accent {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-secondary) 100%);
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.6s ease-out forwards;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px var(--color-accent-glow); }
+  50% { box-shadow: 0 0 40px var(--color-accent-glow), 0 0 60px var(--color-accent-muted); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
