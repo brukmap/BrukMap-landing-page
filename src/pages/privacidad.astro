@@ -1,0 +1,153 @@
+---
+import '../styles/global.css';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Politica de privacidad de BrukMap" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet" />
+    <title>Privacidad - BrukMap</title>
+  </head>
+  <body class="min-h-screen bg-bg-primary text-text-primary">
+    <!-- Navigation -->
+    <nav class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-4xl">
+      <div class="bg-bg-elevated/90 backdrop-blur-lg border border-border rounded-2xl px-4 sm:px-6 py-3 shadow-lg shadow-black/20">
+        <div class="flex items-center justify-between">
+          <a href={base} class="flex items-center gap-2">
+            <img src={`${base}logo.svg`} alt="BrukMap" class="h-7" />
+          </a>
+          <a href={base} class="text-text-secondary hover:text-accent transition-colors text-sm">
+            Volver al inicio
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Content -->
+    <main class="pt-32 pb-24 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto">
+        <h1 class="text-4xl sm:text-5xl font-black mb-8">
+          Politica de <span class="text-accent">privacidad</span>
+        </h1>
+
+        <div class="prose prose-invert max-w-none space-y-8 text-text-secondary">
+          <p class="text-lg">
+            Ultima actualizacion: Enero 2025
+          </p>
+
+          <section>
+            <h2 class="text-2xl font-bold text-text-primary mb-4">1. Informacion que recopilamos</h2>
+            <p>
+              En BrukMap, recopilamos la siguiente informacion para proporcionarte nuestros servicios:
+            </p>
+            <ul class="list-disc pl-6 mt-4 space-y-2">
+              <li><strong>Informacion de cuenta:</strong> nombre, correo electronico y foto de perfil (opcional)</li>
+              <li><strong>Contenido generado:</strong> spots que compartes, resenas, fotos y comentarios</li>
+              <li><strong>Datos de ubicacion:</strong> solo cuando lo permitas explicitamente, para mostrarte spots cercanos</li>
+              <li><strong>Informacion de uso:</strong> como interactuas con la app para mejorar la experiencia</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 class="text-2xl font-bold text-text-primary mb-4">2. Como usamos tu informacion</h2>
+            <p>
+              Utilizamos la informacion recopilada para:
+            </p>
+            <ul class="list-disc pl-6 mt-4 space-y-2">
+              <li>Proporcionar y mantener el servicio de BrukMap</li>
+              <li>Personalizar tu experiencia mostrando spots relevantes</li>
+              <li>Procesar contribuciones y actualizaciones de la comunidad</li>
+              <li>Comunicarnos contigo sobre actualizaciones y novedades</li>
+              <li>Mejorar y desarrollar nuevas funcionalidades</li>
+              <li>Garantizar la seguridad de la plataforma</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 class="text-2xl font-bold text-text-primary mb-4">3. Compartir informacion</h2>
+            <p>
+              No vendemos tu informacion personal. Solo compartimos datos en los siguientes casos:
+            </p>
+            <ul class="list-disc pl-6 mt-4 space-y-2">
+              <li><strong>Contenido publico:</strong> los spots que compartes son visibles para otros usuarios</li>
+              <li><strong>Burbujas:</strong> el contenido compartido en grupos privados solo es visible para los miembros</li>
+              <li><strong>Proveedores de servicio:</strong> trabajamos con terceros para hosting y analitica</li>
+              <li><strong>Requisitos legales:</strong> cuando la ley lo requiera</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 class="text-2xl font-bold text-text-primary mb-4">4. Seguridad de datos</h2>
+            <p>
+              Implementamos medidas de seguridad para proteger tu informacion, incluyendo encriptacion de datos en transito y almacenamiento seguro. Sin embargo, ningun metodo de transmision por Internet es 100% seguro.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-2xl font-bold text-text-primary mb-4">5. Tus derechos</h2>
+            <p>
+              Tienes derecho a:
+            </p>
+            <ul class="list-disc pl-6 mt-4 space-y-2">
+              <li>Acceder a tu informacion personal</li>
+              <li>Corregir datos inexactos</li>
+              <li>Solicitar la eliminacion de tu cuenta y datos</li>
+              <li>Exportar tus datos en un formato portatil</li>
+              <li>Revocar permisos de ubicacion en cualquier momento</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 class="text-2xl font-bold text-text-primary mb-4">6. Retencion de datos</h2>
+            <p>
+              Mantenemos tu informacion mientras tu cuenta este activa. Si solicitas la eliminacion de tu cuenta, eliminaremos tus datos personales en un plazo de 30 dias, excepto cuando la ley requiera su conservacion.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-2xl font-bold text-text-primary mb-4">7. Menores de edad</h2>
+            <p>
+              BrukMap no esta dirigido a menores de 13 anos. No recopilamos intencionalmente informacion de ninos. Si descubrimos que hemos recopilado datos de un menor, los eliminaremos de inmediato.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-2xl font-bold text-text-primary mb-4">8. Cambios en esta politica</h2>
+            <p>
+              Podemos actualizar esta politica de privacidad periodicamente. Te notificaremos sobre cambios significativos a traves de la app o por correo electronico. Te recomendamos revisar esta pagina regularmente.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-2xl font-bold text-text-primary mb-4">9. Contacto</h2>
+            <p>
+              Si tienes preguntas sobre esta politica de privacidad o sobre como manejamos tus datos, contactanos en:
+            </p>
+            <p class="mt-2">
+              <a href="mailto:brukmap@gmail.com" class="text-accent hover:underline">brukmap@gmail.com</a>
+            </p>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-bg-secondary border-t border-border">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-text-tertiary text-sm">
+        <p>&copy; <span id="current-year"></span> BrukMap. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

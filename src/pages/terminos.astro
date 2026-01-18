@@ -1,0 +1,134 @@
+---
+import '../styles/global.css';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Terminos de uso de BrukMap" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet" />
+    <title>Terminos de uso - BrukMap</title>
+  </head>
+  <body class="min-h-screen bg-bg-primary text-text-primary">
+    <!-- Navigation -->
+    <nav class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-4xl">
+      <div class="bg-bg-elevated/90 backdrop-blur-lg border border-border rounded-2xl px-4 sm:px-6 py-3 shadow-lg shadow-black/20">
+        <div class="flex items-center justify-between">
+          <a href={base} class="flex items-center gap-2">
+            <img src={`${base}logo.svg`} alt="BrukMap" class="h-7" />
+          </a>
+          <a href={base} class="text-text-secondary hover:text-accent transition-colors text-sm">
+            Volver al inicio
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Content -->
+    <main class="pt-32 pb-24 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto">
+        <h1 class="text-4xl sm:text-5xl font-black mb-8">
+          Terminos de <span class="text-accent">uso</span>
+        </h1>
+
+        <div class="prose prose-invert max-w-none space-y-8 text-text-secondary">
+          <p class="text-lg">
+            Ultima actualizacion: Enero 2025
+          </p>
+
+          <section>
+            <h2 class="text-2xl font-bold text-text-primary mb-4">1. Aceptacion de los terminos</h2>
+            <p>
+              Al acceder y utilizar BrukMap, aceptas estar sujeto a estos terminos de uso. Si no estas de acuerdo con alguna parte de estos terminos, no podras acceder al servicio.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-2xl font-bold text-text-primary mb-4">2. Descripcion del servicio</h2>
+            <p>
+              BrukMap es una plataforma que permite a los usuarios descubrir y compartir lugares alternativos, unicos y fuera de lo comun. El servicio incluye funcionalidades como:
+            </p>
+            <ul class="list-disc pl-6 mt-4 space-y-2">
+              <li>Mapa interactivo de spots</li>
+              <li>Sistema de contribuciones de usuarios</li>
+              <li>Sanctuary (guardado de lugares privados)</li>
+              <li>Burbujas (grupos privados)</li>
+              <li>Modo offline</li>
+              <li>Calendario de eventos</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 class="text-2xl font-bold text-text-primary mb-4">3. Uso aceptable</h2>
+            <p>
+              Te comprometes a utilizar BrukMap de manera responsable y a no:
+            </p>
+            <ul class="list-disc pl-6 mt-4 space-y-2">
+              <li>Publicar contenido falso, enganoso o inapropiado</li>
+              <li>Violar derechos de propiedad intelectual de terceros</li>
+              <li>Utilizar el servicio para actividades ilegales</li>
+              <li>Intentar acceder a cuentas de otros usuarios</li>
+              <li>Interferir con el funcionamiento normal de la plataforma</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 class="text-2xl font-bold text-text-primary mb-4">4. Contenido del usuario</h2>
+            <p>
+              Al publicar contenido en BrukMap, nos otorgas una licencia no exclusiva, mundial y libre de regalias para usar, mostrar y distribuir dicho contenido dentro de la plataforma. Mantienes todos los derechos sobre tu contenido original.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-2xl font-bold text-text-primary mb-4">5. Propiedad intelectual</h2>
+            <p>
+              BrukMap y todo su contenido original, caracteristicas y funcionalidades son propiedad de BrukMap y estan protegidos por leyes de propiedad intelectual internacionales.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-2xl font-bold text-text-primary mb-4">6. Limitacion de responsabilidad</h2>
+            <p>
+              BrukMap se proporciona "tal cual" sin garantias de ningun tipo. No nos hacemos responsables de la exactitud de la informacion proporcionada por los usuarios ni de los danos que puedan derivarse del uso de la plataforma.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-2xl font-bold text-text-primary mb-4">7. Modificaciones</h2>
+            <p>
+              Nos reservamos el derecho de modificar estos terminos en cualquier momento. Los cambios entraran en vigor inmediatamente despues de su publicacion. El uso continuado del servicio implica la aceptacion de los nuevos terminos.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-2xl font-bold text-text-primary mb-4">8. Contacto</h2>
+            <p>
+              Si tienes preguntas sobre estos terminos, puedes contactarnos en:
+            </p>
+            <p class="mt-2">
+              <a href="mailto:brukmap@gmail.com" class="text-accent hover:underline">brukmap@gmail.com</a>
+            </p>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-bg-secondary border-t border-border">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-text-tertiary text-sm">
+        <p>&copy; <span id="current-year"></span> BrukMap. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
