@@ -75,14 +75,27 @@ const categories = [
             <img src={`${base}logo.svg`} alt="BrukMap" class="h-7" />
           </a>
           <div class="hidden md:flex items-center gap-6">
-            <a href="#features" class="text-text-secondary hover:text-accent transition-colors text-sm">Features</a>
-            <a href="#categories" class="text-text-secondary hover:text-accent transition-colors text-sm">Categorias</a>
-            <a href="#apoya" class="text-text-secondary hover:text-accent transition-colors text-sm">Apoya</a>
-            <button id="open-download-modal" class="px-4 py-2 bg-accent text-bg-primary font-semibold rounded-xl hover:bg-accent-secondary transition-colors cursor-pointer text-sm">
+            <a href="#features" class="text-text-secondary hover:text-accent transition-colors text-sm" data-i18n="nav_features">Features</a>
+            <a href="#categories" class="text-text-secondary hover:text-accent transition-colors text-sm" data-i18n="nav_categories">Categorias</a>
+            <a href="#apoya" class="text-text-secondary hover:text-accent transition-colors text-sm" data-i18n="nav_support">Apoya</a>
+            <button id="open-download-modal" class="px-4 py-2 bg-accent text-bg-primary font-semibold rounded-xl hover:bg-accent-secondary transition-colors cursor-pointer text-sm" data-i18n="nav_download">
               Descargar
             </button>
+            <a href={`${base}pronto`} class="text-text-secondary hover:text-accent transition-colors text-sm flex items-center gap-1">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+              <span data-i18n="nav_soon">Pronto</span>
+            </a>
+            <button id="lang-toggle" class="text-text-secondary hover:text-accent transition-colors text-sm font-medium px-2 py-1 rounded-lg hover:bg-accent/10">
+              ES
+            </button>
           </div>
-          <button class="md:hidden text-text-primary" aria-label="Menu">
+          <div class="flex md:hidden items-center gap-3">
+            <button id="lang-toggle-mobile" class="text-text-secondary hover:text-accent transition-colors text-sm font-medium px-2 py-1 rounded-lg hover:bg-accent/10">
+              ES
+            </button>
+            <button class="text-text-primary" aria-label="Menu">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
             </svg>
@@ -104,10 +117,10 @@ const categories = [
         <div class="grid lg:grid-cols-2 gap-12 items-center">
           <div class="text-center lg:text-left">
             <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black mb-6 leading-tight">
-              Explora lo<br />
-              <span class="text-accent glow-text">alternativo</span>
+              <span data-i18n="hero_title_1">Explora lo</span><br />
+              <span class="text-accent glow-text" data-i18n="hero_title_2">alternativo</span>
             </h1>
-            <p class="text-xl text-text-secondary mb-8 max-w-xl mx-auto lg:mx-0">
+            <p class="text-xl text-text-secondary mb-8 max-w-xl mx-auto lg:mx-0" data-i18n="hero_description">
               Descubre lugares unicos que solo los locales conocen. Cafeterias escondidas, galerias underground, tiendas vintage y mucho mas.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -162,9 +175,9 @@ const categories = [
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
           <h2 class="text-4xl sm:text-5xl font-black mb-4">
-            Descubre la <span class="text-accent">experiencia</span>
+            <span data-i18n="video_title_1">Descubre la</span> <span class="text-accent" data-i18n="video_title_2">experiencia</span>
           </h2>
-          <p class="text-text-secondary text-lg max-w-2xl mx-auto">
+          <p class="text-text-secondary text-lg max-w-2xl mx-auto" data-i18n="video_description">
             Mira como BrukMap te ayuda a explorar el lado alternativo de tu ciudad.
           </p>
         </div>
@@ -186,20 +199,55 @@ const categories = [
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
           <h2 class="text-4xl sm:text-5xl font-black mb-4">
-            Todo lo que <span class="text-accent">necesitas</span>
+            <span data-i18n="features_title_1">Todo lo que</span> <span class="text-accent" data-i18n="features_title_2">necesitas</span>
           </h2>
-          <p class="text-text-secondary text-lg max-w-2xl mx-auto">
+          <p class="text-text-secondary text-lg max-w-2xl mx-auto" data-i18n="features_description">
             Herramientas pensadas para exploradores que buscan experiencias autenticas.
           </p>
         </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature) => (
-            <div class="p-6 bg-bg-elevated rounded-2xl border border-border hover:border-accent/50 transition-all group">
-              <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center text-accent mb-4 group-hover:bg-accent group-hover:text-bg-primary transition-all" set:html={feature.icon}></div>
-              <h3 class="text-xl font-bold mb-2">{feature.title}</h3>
-              <p class="text-text-secondary">{feature.description}</p>
+          <div class="p-6 bg-bg-elevated rounded-2xl border border-border hover:border-accent/50 transition-all group">
+            <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center text-accent mb-4 group-hover:bg-accent group-hover:text-bg-primary transition-all">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>
             </div>
-          ))}
+            <h3 class="text-xl font-bold mb-2" data-i18n="feature_1_title">Mapa de Spots</h3>
+            <p class="text-text-secondary" data-i18n="feature_1_desc">Explora lugares alternativos cerca de ti con filtros por categoria y busqueda avanzada.</p>
+          </div>
+          <div class="p-6 bg-bg-elevated rounded-2xl border border-border hover:border-accent/50 transition-all group">
+            <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center text-accent mb-4 group-hover:bg-accent group-hover:text-bg-primary transition-all">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+            </div>
+            <h3 class="text-xl font-bold mb-2" data-i18n="feature_2_title">Contribuciones</h3>
+            <p class="text-text-secondary" data-i18n="feature_2_desc">Anade tus propios descubrimientos y ayuda a la comunidad a encontrar lugares unicos.</p>
+          </div>
+          <div class="p-6 bg-bg-elevated rounded-2xl border border-border hover:border-accent/50 transition-all group">
+            <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center text-accent mb-4 group-hover:bg-accent group-hover:text-bg-primary transition-all">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>
+            </div>
+            <h3 class="text-xl font-bold mb-2" data-i18n="feature_3_title">Sanctuary</h3>
+            <p class="text-text-secondary" data-i18n="feature_3_desc">Guarda spots privados solo para ti y compartelos con amigos en burbujas exclusivas.</p>
+          </div>
+          <div class="p-6 bg-bg-elevated rounded-2xl border border-border hover:border-accent/50 transition-all group">
+            <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center text-accent mb-4 group-hover:bg-accent group-hover:text-bg-primary transition-all">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
+            </div>
+            <h3 class="text-xl font-bold mb-2" data-i18n="feature_4_title">Modo Offline</h3>
+            <p class="text-text-secondary" data-i18n="feature_4_desc">Descarga datos de ciudades y explora sin conexion a internet.</p>
+          </div>
+          <div class="p-6 bg-bg-elevated rounded-2xl border border-border hover:border-accent/50 transition-all group">
+            <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center text-accent mb-4 group-hover:bg-accent group-hover:text-bg-primary transition-all">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" /></svg>
+            </div>
+            <h3 class="text-xl font-bold mb-2" data-i18n="feature_5_title">Eventos</h3>
+            <p class="text-text-secondary" data-i18n="feature_5_desc">Descubre eventos alternativos cerca de ti con calendario y filtros.</p>
+          </div>
+          <div class="p-6 bg-bg-elevated rounded-2xl border border-border hover:border-accent/50 transition-all group">
+            <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center text-accent mb-4 group-hover:bg-accent group-hover:text-bg-primary transition-all">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" /></svg>
+            </div>
+            <h3 class="text-xl font-bold mb-2" data-i18n="feature_6_title">Burbujas</h3>
+            <p class="text-text-secondary" data-i18n="feature_6_desc">Crea grupos privados con amigos para compartir spots secretos.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -209,19 +257,25 @@ const categories = [
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
           <h2 class="text-4xl sm:text-5xl font-black mb-4">
-            Explora por <span class="text-accent">categoria</span>
+            <span data-i18n="categories_title_1">Explora por</span> <span class="text-accent" data-i18n="categories_title_2">categoria</span>
           </h2>
-          <p class="text-text-secondary text-lg max-w-2xl mx-auto">
+          <p class="text-text-secondary text-lg max-w-2xl mx-auto" data-i18n="categories_description">
             Desde cafeterias con encanto hasta spots 420 friendly. Encuentra lo que buscas.
           </p>
         </div>
         <div class="flex flex-wrap justify-center gap-4">
-          {categories.map((category) => (
-            <div class="px-6 py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-2">
-              <span class="text-xl">{category.emoji}</span>
-              <span class="font-medium">{category.name}</span>
-            </div>
-          ))}
+          <div class="px-6 py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-2"><span class="text-xl">☕</span><span class="font-medium" data-i18n="cat_coffee">Cafeteria</span></div>
+          <div class="px-6 py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-2"><span class="text-xl">🎨</span><span class="font-medium" data-i18n="cat_art">Arte</span></div>
+          <div class="px-6 py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-2"><span class="text-xl">👗</span><span class="font-medium" data-i18n="cat_vintage">Vintage</span></div>
+          <div class="px-6 py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-2"><span class="text-xl">🏙️</span><span class="font-medium" data-i18n="cat_rooftop">Rooftop</span></div>
+          <div class="px-6 py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-2"><span class="text-xl">🎵</span><span class="font-medium" data-i18n="cat_vinyl">Vinilos</span></div>
+          <div class="px-6 py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-2"><span class="text-xl">🎭</span><span class="font-medium" data-i18n="cat_graffiti">Graffiti</span></div>
+          <div class="px-6 py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-2"><span class="text-xl">🧘</span><span class="font-medium" data-i18n="cat_yoga">Yoga</span></div>
+          <div class="px-6 py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-2"><span class="text-xl">🛹</span><span class="font-medium" data-i18n="cat_skatepark">Skatepark</span></div>
+          <div class="px-6 py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-2"><span class="text-xl">🥬</span><span class="font-medium" data-i18n="cat_vegan">Vegano</span></div>
+          <div class="px-6 py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-2"><span class="text-xl">🌿</span><span class="font-medium" data-i18n="cat_420">420</span></div>
+          <div class="px-6 py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-2"><span class="text-xl">📚</span><span class="font-medium" data-i18n="cat_books">Libros</span></div>
+          <div class="px-6 py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-2"><span class="text-xl">💻</span><span class="font-medium" data-i18n="cat_coworking">Coworking</span></div>
         </div>
       </div>
     </section>
@@ -235,15 +289,15 @@ const categories = [
               <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <span class="text-accent font-medium text-sm">Impacto social</span>
+              <span class="text-accent font-medium text-sm" data-i18n="impact_badge">Impacto social</span>
             </div>
             <h2 class="text-4xl sm:text-5xl font-black mb-6">
-              Visibilidad para quienes la <span class="text-accent">merecen</span>
+              <span data-i18n="impact_title_1">Visibilidad para quienes la</span> <span class="text-accent" data-i18n="impact_title_2">merecen</span>
             </h2>
-            <p class="text-text-secondary text-lg mb-6">
+            <p class="text-text-secondary text-lg mb-6" data-i18n="impact_desc_1">
               Muchos negocios locales, artistas callejeros y espacios culturales no aparecen en los mapas tradicionales. BrukMap les da el escenario que merecen.
             </p>
-            <p class="text-text-secondary text-lg">
+            <p class="text-text-secondary text-lg" data-i18n="impact_desc_2">
               Cada spot que descubres y compartes es un voto de apoyo para esos lugares que hacen unica a tu ciudad.
             </p>
           </div>
@@ -254,8 +308,8 @@ const categories = [
                   <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                 </svg>
               </div>
-              <div class="font-bold mb-1">Negocios locales</div>
-              <p class="text-text-tertiary text-sm">Tiendas de barrio y emprendimientos</p>
+              <div class="font-bold mb-1" data-i18n="impact_local">Negocios locales</div>
+              <p class="text-text-tertiary text-sm" data-i18n="impact_local_desc">Tiendas de barrio y emprendimientos</p>
             </div>
             <div class="bg-bg-elevated border border-border rounded-2xl p-6 text-center">
               <div class="w-12 h-12 mx-auto mb-4 bg-accent/20 rounded-xl flex items-center justify-center">
@@ -263,8 +317,8 @@ const categories = [
                   <path stroke-linecap="round" stroke-linejoin="round" d="M7 4V2M17 4V2M3 8h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z" />
                 </svg>
               </div>
-              <div class="font-bold mb-1">Arte urbano</div>
-              <p class="text-text-tertiary text-sm">Murales, galerias y espacios creativos</p>
+              <div class="font-bold mb-1" data-i18n="impact_art">Arte urbano</div>
+              <p class="text-text-tertiary text-sm" data-i18n="impact_art_desc">Murales, galerias y espacios creativos</p>
             </div>
             <div class="bg-bg-elevated border border-border rounded-2xl p-6 text-center">
               <div class="w-12 h-12 mx-auto mb-4 bg-accent/20 rounded-xl flex items-center justify-center">
@@ -272,8 +326,8 @@ const categories = [
                   <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
-              <div class="font-bold mb-1">Comunidades</div>
-              <p class="text-text-tertiary text-sm">Colectivos y espacios de encuentro</p>
+              <div class="font-bold mb-1" data-i18n="impact_community">Comunidades</div>
+              <p class="text-text-tertiary text-sm" data-i18n="impact_community_desc">Colectivos y espacios de encuentro</p>
             </div>
             <div class="bg-bg-elevated border border-border rounded-2xl p-6 text-center">
               <div class="w-12 h-12 mx-auto mb-4 bg-accent/20 rounded-xl flex items-center justify-center">
@@ -281,8 +335,8 @@ const categories = [
                   <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                 </svg>
               </div>
-              <div class="font-bold mb-1">Cultura alternativa</div>
-              <p class="text-text-tertiary text-sm">Lo que hace diferente a cada ciudad</p>
+              <div class="font-bold mb-1" data-i18n="impact_culture">Cultura alternativa</div>
+              <p class="text-text-tertiary text-sm" data-i18n="impact_culture_desc">Lo que hace diferente a cada ciudad</p>
             </div>
           </div>
         </div>
@@ -294,23 +348,45 @@ const categories = [
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
           <h2 class="text-4xl sm:text-5xl font-black mb-4">
-            Disenado para <span class="text-accent">exploradores</span>
+            <span data-i18n="showcase_title_1">Disenado para</span> <span class="text-accent" data-i18n="showcase_title_2">exploradores</span>
           </h2>
-          <p class="text-text-secondary text-lg max-w-2xl mx-auto">
+          <p class="text-text-secondary text-lg max-w-2xl mx-auto" data-i18n="showcase_description">
             Interfaz intuitiva y minimalista que te permite descubrir sin distracciones.
           </p>
         </div>
         <div class="flex justify-center gap-6 overflow-x-auto pb-8">
-          {['Mapa', 'Detalles', 'Sanctuary', 'Perfil'].map((screen, index) => (
-            <div class="flex-shrink-0 w-[200px] h-[420px] bg-bg-elevated rounded-[2rem] border-2 border-border p-2">
-              <div class="w-full h-full bg-bg-secondary rounded-[1.5rem] flex items-center justify-center">
-                <div class="text-center">
-                  <div class="text-accent font-bold">{screen}</div>
-                  <div class="text-text-tertiary text-xs mt-1">Screenshot</div>
-                </div>
+          <div class="flex-shrink-0 w-[200px] h-[420px] bg-bg-elevated rounded-[2rem] border-2 border-border p-2">
+            <div class="w-full h-full bg-bg-secondary rounded-[1.5rem] flex items-center justify-center">
+              <div class="text-center">
+                <div class="text-accent font-bold" data-i18n="screen_map">Mapa</div>
+                <div class="text-text-tertiary text-xs mt-1">Screenshot</div>
               </div>
             </div>
-          ))}
+          </div>
+          <div class="flex-shrink-0 w-[200px] h-[420px] bg-bg-elevated rounded-[2rem] border-2 border-border p-2">
+            <div class="w-full h-full bg-bg-secondary rounded-[1.5rem] flex items-center justify-center">
+              <div class="text-center">
+                <div class="text-accent font-bold" data-i18n="screen_details">Detalles</div>
+                <div class="text-text-tertiary text-xs mt-1">Screenshot</div>
+              </div>
+            </div>
+          </div>
+          <div class="flex-shrink-0 w-[200px] h-[420px] bg-bg-elevated rounded-[2rem] border-2 border-border p-2">
+            <div class="w-full h-full bg-bg-secondary rounded-[1.5rem] flex items-center justify-center">
+              <div class="text-center">
+                <div class="text-accent font-bold">Sanctuary</div>
+                <div class="text-text-tertiary text-xs mt-1">Screenshot</div>
+              </div>
+            </div>
+          </div>
+          <div class="flex-shrink-0 w-[200px] h-[420px] bg-bg-elevated rounded-[2rem] border-2 border-border p-2">
+            <div class="w-full h-full bg-bg-secondary rounded-[1.5rem] flex items-center justify-center">
+              <div class="text-center">
+                <div class="text-accent font-bold" data-i18n="screen_profile">Perfil</div>
+                <div class="text-text-tertiary text-xs mt-1">Screenshot</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -323,15 +399,15 @@ const categories = [
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
             </svg>
-            <span class="text-accent font-medium text-sm">Apoya el proyecto</span>
+            <span class="text-accent font-medium text-sm" data-i18n="support_badge">Apoya el proyecto</span>
           </div>
           <h2 class="text-4xl sm:text-5xl font-black mb-4">
-            Crees en <span class="text-accent">BrukMap</span>?
+            <span data-i18n="support_title_1">Crees en</span> <span class="text-accent" data-i18n="support_title_2">BrukMap</span>?
           </h2>
-          <p class="text-text-secondary text-lg max-w-2xl mx-auto mb-4">
+          <p class="text-text-secondary text-lg max-w-2xl mx-auto mb-4" data-i18n="support_description">
             Si crees en este proyecto y quieres verlo crecer, puedes apoyarnos. Cada dolar que aportes se convertira en tiempo gratis de suscripcion Premium cuando lancemos.
           </p>
-          <p class="text-accent font-medium">Tu apoyo de hoy es tu Premium de manana.</p>
+          <p class="text-accent font-medium" data-i18n="support_tagline">Tu apoyo de hoy es tu Premium de manana.</p>
         </div>
 
         <div class="flex justify-center">
@@ -339,7 +415,7 @@ const categories = [
             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
             </svg>
-            Apoyar BrukMap
+            <span data-i18n="support_button">Apoyar BrukMap</span>
           </button>
         </div>
       </div>
@@ -349,9 +425,9 @@ const categories = [
     <section id="download" class="py-24 bg-bg-secondary">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-6">
-          Empieza a <span class="text-accent glow-text">explorar</span>
+          <span data-i18n="cta_title_1">Empieza a</span> <span class="text-accent glow-text" data-i18n="cta_title_2">explorar</span>
         </h2>
-        <p class="text-text-secondary text-xl mb-10 max-w-2xl mx-auto">
+        <p class="text-text-secondary text-xl mb-10 max-w-2xl mx-auto" data-i18n="cta_description">
           Descarga BrukMap gratis y descubre el lado alternativo de tu ciudad.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -360,7 +436,7 @@ const categories = [
               <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
             </svg>
             <div class="text-left">
-              <div class="text-xs opacity-80">Descargar en</div>
+              <div class="text-xs opacity-80" data-i18n="cta_download_on">Descargar en</div>
               <div class="text-lg font-bold -mt-1">App Store</div>
             </div>
           </button>
@@ -369,7 +445,7 @@ const categories = [
               <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/>
             </svg>
             <div class="text-left">
-              <div class="text-xs text-text-secondary">Disponible en</div>
+              <div class="text-xs text-text-secondary" data-i18n="cta_available_on">Disponible en</div>
               <div class="text-lg font-bold -mt-1">Google Play</div>
             </div>
           </button>
@@ -383,22 +459,22 @@ const categories = [
         <div class="grid md:grid-cols-4 gap-8 mb-8">
           <div class="md:col-span-2">
             <img src={`${base}logo.svg`} alt="BrukMap" class="h-8 mb-4" />
-            <p class="text-text-secondary max-w-md">
+            <p class="text-text-secondary max-w-md" data-i18n="footer_description">
               Tu guia para explorar el lado alternativo de las ciudades. Descubre lugares unicos que solo los locales conocen.
             </p>
           </div>
           <div>
-            <h4 class="font-bold mb-4">Legal</h4>
+            <h4 class="font-bold mb-4" data-i18n="footer_legal">Legal</h4>
             <ul class="space-y-2 text-text-secondary">
-              <li><a href={`${base}terminos`} class="hover:text-accent transition-colors">Terminos de uso</a></li>
-              <li><a href={`${base}privacidad`} class="hover:text-accent transition-colors">Privacidad</a></li>
+              <li><a href={`${base}terminos`} class="hover:text-accent transition-colors" data-i18n="footer_terms">Terminos de uso</a></li>
+              <li><a href={`${base}privacidad`} class="hover:text-accent transition-colors" data-i18n="footer_privacy">Privacidad</a></li>
             </ul>
           </div>
           <div>
-            <h4 class="font-bold mb-4">Contacto</h4>
+            <h4 class="font-bold mb-4" data-i18n="footer_contact">Contacto</h4>
             <ul class="space-y-2 text-text-secondary">
               <li><a href="mailto:brukmap@gmail.com" class="hover:text-accent transition-colors">brukmap@gmail.com</a></li>
-              <li><button id="open-contact-modal" class="hover:text-accent transition-colors cursor-pointer">Soporte</button></li>
+              <li><button id="open-contact-modal" class="hover:text-accent transition-colors cursor-pointer" data-i18n="footer_support">Soporte</button></li>
             </ul>
             <div class="flex gap-4 mt-4">
               <a href="https://www.instagram.com/brukmap?igsh=enI1eWluM3plaGo1" target="_blank" rel="noopener noreferrer" class="text-text-secondary hover:text-accent transition-colors" aria-label="Instagram">
@@ -420,7 +496,7 @@ const categories = [
           </div>
         </div>
         <div class="pt-8 border-t border-border text-center text-text-tertiary text-sm">
-          <p>&copy; <span id="current-year"></span> BrukMap. Todos los derechos reservados.</p>
+          <p>&copy; <span id="current-year"></span> BrukMap. <span data-i18n="footer_rights">Todos los derechos reservados.</span></p>
         </div>
       </div>
     </footer>
@@ -436,8 +512,8 @@ const categories = [
         </button>
 
         <div class="text-center mb-8">
-          <h3 class="text-2xl font-black mb-2">Descarga BrukMap</h3>
-          <p class="text-text-secondary">Escanea el QR o haz click en el boton</p>
+          <h3 class="text-2xl font-black mb-2" data-i18n="modal_download_title">Descarga BrukMap</h3>
+          <p class="text-text-secondary" data-i18n="modal_download_desc">Escanea el QR o haz click en el boton</p>
         </div>
 
         <div class="grid md:grid-cols-2 gap-6">
@@ -488,8 +564,8 @@ const categories = [
               </svg>
               <span class="font-bold text-lg">App Store</span>
             </div>
-            <p class="text-text-tertiary text-sm mb-4">Para iPhone y iPad</p>
-            <button data-open-modal data-platform="iOS" class="w-full py-3 bg-accent text-bg-primary font-bold rounded-xl hover:bg-accent-secondary transition-all">
+            <p class="text-text-tertiary text-sm mb-4" data-i18n="modal_ios_desc">Para iPhone y iPad</p>
+            <button data-open-modal data-platform="iOS" class="w-full py-3 bg-accent text-bg-primary font-bold rounded-xl hover:bg-accent-secondary transition-all" data-i18n="modal_join_waitlist">
               Unirse a Waitlist
             </button>
           </div>
@@ -539,14 +615,14 @@ const categories = [
               </svg>
               <span class="font-bold text-lg">Google Play</span>
             </div>
-            <p class="text-text-tertiary text-sm mb-4">Para Android</p>
-            <button data-open-modal data-platform="Android" class="w-full py-3 bg-bg-elevated border border-accent text-accent font-bold rounded-xl hover:bg-accent hover:text-bg-primary transition-all">
+            <p class="text-text-tertiary text-sm mb-4" data-i18n="modal_android_desc">Para Android</p>
+            <button data-open-modal data-platform="Android" class="w-full py-3 bg-bg-elevated border border-accent text-accent font-bold rounded-xl hover:bg-accent hover:text-bg-primary transition-all" data-i18n="modal_join_waitlist">
               Unirse a Waitlist
             </button>
           </div>
         </div>
 
-        <p class="text-text-tertiary text-xs text-center mt-6">
+        <p class="text-text-tertiary text-xs text-center mt-6" data-i18n="modal_coming_soon">
           Proximamente disponible. Unete a la waitlist para ser el primero en probarlo.
         </p>
       </div>
@@ -563,8 +639,8 @@ const categories = [
         </button>
 
         <div class="text-center mb-8">
-          <h3 class="text-2xl font-black mb-2">Elige como apoyar</h3>
-          <p class="text-text-secondary">Tu apoyo se convierte en tiempo Premium gratis</p>
+          <h3 class="text-2xl font-black mb-2" data-i18n="modal_support_title">Elige como apoyar</h3>
+          <p class="text-text-secondary" data-i18n="modal_support_desc">Tu apoyo se convierte en tiempo Premium gratis</p>
         </div>
 
         <div class="grid md:grid-cols-2 gap-6">
@@ -572,30 +648,30 @@ const categories = [
           <div class="bg-bg-secondary border border-border rounded-2xl p-6 hover:border-accent/50 transition-all">
             <div class="flex items-baseline gap-2 mb-2">
               <span class="text-4xl font-black text-accent">$2</span>
-              <span class="text-text-secondary">/mes</span>
+              <span class="text-text-secondary" data-i18n="modal_month">/mes</span>
             </div>
-            <h4 class="text-xl font-bold mb-3">Suscripcion mensual</h4>
+            <h4 class="text-xl font-bold mb-3" data-i18n="modal_subscription">Suscripcion mensual</h4>
             <ul class="space-y-2 mb-6 text-sm">
               <li class="flex items-center gap-2 text-text-secondary">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
-                Apoyo recurrente mensual
+                <span data-i18n="modal_sub_1">Apoyo recurrente mensual</span>
               </li>
               <li class="flex items-center gap-2 text-text-secondary">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
-                Badge de Supporter
+                <span data-i18n="modal_sub_2">Badge de Supporter</span>
               </li>
               <li class="flex items-center gap-2 text-text-secondary">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
-                Cancela cuando quieras
+                <span data-i18n="modal_sub_3">Cancela cuando quieras</span>
               </li>
             </ul>
-            <a href="#" class="block w-full py-3 bg-accent text-bg-primary font-bold rounded-xl text-center hover:bg-accent-secondary transition-all">
+            <a href="#" class="block w-full py-3 bg-accent text-bg-primary font-bold rounded-xl text-center hover:bg-accent-secondary transition-all" data-i18n="modal_subscribe">
               Suscribirme
             </a>
           </div>
@@ -612,34 +688,34 @@ const categories = [
                 class="w-20 text-4xl font-black bg-transparent border-b-2 border-accent text-accent focus:outline-none placeholder:text-accent/50"
               />
             </div>
-            <h4 class="text-xl font-bold mb-3">Donacion unica</h4>
+            <h4 class="text-xl font-bold mb-3" data-i18n="modal_donation">Donacion unica</h4>
             <ul class="space-y-2 mb-6 text-sm">
               <li class="flex items-center gap-2 text-text-secondary">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
-                Tu decides la cantidad
+                <span data-i18n="modal_don_1">Tu decides la cantidad</span>
               </li>
               <li class="flex items-center gap-2 text-text-secondary">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
-                Pago unico, sin compromiso
+                <span data-i18n="modal_don_2">Pago unico, sin compromiso</span>
               </li>
               <li class="flex items-center gap-2 text-text-secondary">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
-                Badge de Supporter
+                <span data-i18n="modal_don_3">Badge de Supporter</span>
               </li>
             </ul>
-            <a href="#" id="donate-btn" class="block w-full py-3 bg-bg-elevated border border-accent text-accent font-bold rounded-xl text-center hover:bg-accent hover:text-bg-primary transition-all">
+            <a href="#" id="donate-btn" class="block w-full py-3 bg-bg-elevated border border-accent text-accent font-bold rounded-xl text-center hover:bg-accent hover:text-bg-primary transition-all" data-i18n="modal_donate">
               Donar
             </a>
           </div>
         </div>
 
-        <p class="text-text-tertiary text-xs text-center mt-6">
+        <p class="text-text-tertiary text-xs text-center mt-6" data-i18n="modal_exchange">
           Cada $1 = 1 mes de Premium gratis cuando lancemos
         </p>
       </div>
@@ -667,8 +743,8 @@ const categories = [
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
               </svg>
             </div>
-            <h3 class="text-2xl font-black mb-2">Unete a la lista de espera</h3>
-            <p class="text-text-secondary">Se el primero en explorar cuando lancemos para <span id="platform-name" class="text-accent font-semibold">iOS</span></p>
+            <h3 class="text-2xl font-black mb-2" data-i18n="modal_waitlist_title">Unete a la lista de espera</h3>
+            <p class="text-text-secondary"><span data-i18n="modal_waitlist_desc">Se el primero en explorar cuando lancemos para</span> <span id="platform-name" class="text-accent font-semibold">iOS</span></p>
           </div>
 
           <form id="waitlist-form" class="space-y-4">
@@ -678,36 +754,39 @@ const categories = [
             <input type="hidden" id="platform-input" name="platform" value="iOS" />
 
             <div>
-              <label for="name" class="block text-sm font-medium mb-2">Nombre</label>
+              <label for="name" class="block text-sm font-medium mb-2" data-i18n="modal_name">Nombre</label>
               <input
                 type="text"
                 id="name"
                 name="name"
                 required
                 placeholder="Tu nombre"
+                data-i18n-placeholder="modal_name_ph"
                 class="w-full px-4 py-3 bg-bg-secondary border border-border rounded-xl focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors placeholder:text-text-tertiary"
               />
             </div>
 
             <div>
-              <label for="email" class="block text-sm font-medium mb-2">Email</label>
+              <label for="email" class="block text-sm font-medium mb-2" data-i18n="modal_email">Email</label>
               <input
                 type="email"
                 id="email"
                 name="email"
                 required
                 placeholder="tu@email.com"
+                data-i18n-placeholder="modal_email_ph"
                 class="w-full px-4 py-3 bg-bg-secondary border border-border rounded-xl focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors placeholder:text-text-tertiary"
               />
             </div>
 
             <div>
-              <label for="city" class="block text-sm font-medium mb-2">Ciudad</label>
+              <label for="city" class="block text-sm font-medium mb-2" data-i18n="modal_city">Ciudad</label>
               <input
                 type="text"
                 id="city"
                 name="city"
                 placeholder="Tu ciudad (opcional)"
+                data-i18n-placeholder="modal_city_ph"
                 class="w-full px-4 py-3 bg-bg-secondary border border-border rounded-xl focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors placeholder:text-text-tertiary"
               />
             </div>
@@ -717,7 +796,7 @@ const categories = [
               id="submit-btn"
               class="w-full py-4 bg-accent text-bg-primary font-bold rounded-xl hover:bg-accent-secondary transition-all glow flex items-center justify-center gap-2"
             >
-              <span id="btn-text">Unirme a la waitlist</span>
+              <span id="btn-text" data-i18n="modal_join">Unirme a la waitlist</span>
               <svg id="btn-spinner" class="hidden w-5 h-5 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
@@ -733,9 +812,9 @@ const categories = [
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h3 class="text-2xl font-black mb-2">Estas en la lista!</h3>
-          <p class="text-text-secondary mb-6">Te avisaremos cuando BrukMap este disponible. Prepararate para explorar lo alternativo.</p>
-          <button id="close-success" class="px-8 py-3 bg-bg-secondary border border-border rounded-xl hover:border-accent transition-colors font-semibold">
+          <h3 class="text-2xl font-black mb-2" data-i18n="modal_success_title">Estas en la lista!</h3>
+          <p class="text-text-secondary mb-6" data-i18n="modal_success_desc">Te avisaremos cuando BrukMap este disponible. Prepararate para explorar lo alternativo.</p>
+          <button id="close-success" class="px-8 py-3 bg-bg-secondary border border-border rounded-xl hover:border-accent transition-colors font-semibold" data-i18n="modal_close">
             Cerrar
           </button>
         </div>
@@ -747,9 +826,9 @@ const categories = [
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </div>
-          <h3 class="text-2xl font-black mb-2">Algo salio mal</h3>
-          <p class="text-text-secondary mb-6">No pudimos registrarte. Por favor intenta de nuevo.</p>
-          <button id="retry-btn" class="px-8 py-3 bg-accent text-bg-primary rounded-xl hover:bg-accent-secondary transition-colors font-semibold">
+          <h3 class="text-2xl font-black mb-2" data-i18n="modal_error_title">Algo salio mal</h3>
+          <p class="text-text-secondary mb-6" data-i18n="modal_error_desc">No pudimos registrarte. Por favor intenta de nuevo.</p>
+          <button id="retry-btn" class="px-8 py-3 bg-accent text-bg-primary rounded-xl hover:bg-accent-secondary transition-colors font-semibold" data-i18n="modal_retry">
             Intentar de nuevo
           </button>
         </div>
@@ -773,8 +852,8 @@ const categories = [
                 <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
               </svg>
             </div>
-            <h3 class="text-2xl font-black mb-2">Contacta con soporte</h3>
-            <p class="text-text-secondary">En que te podemos ayudar?</p>
+            <h3 class="text-2xl font-black mb-2" data-i18n="modal_contact_title">Contacta con soporte</h3>
+            <p class="text-text-secondary" data-i18n="modal_contact_desc">En que te podemos ayudar?</p>
           </div>
 
           <form id="contact-form" class="space-y-4">
@@ -783,37 +862,40 @@ const categories = [
             <input type="hidden" name="from_name" value="BrukMap Soporte" />
 
             <div>
-              <label for="contact-name" class="block text-sm font-medium mb-2">Nombre</label>
+              <label for="contact-name" class="block text-sm font-medium mb-2" data-i18n="modal_name">Nombre</label>
               <input
                 type="text"
                 id="contact-name"
                 name="name"
                 required
                 placeholder="Tu nombre"
+                data-i18n-placeholder="modal_name_ph"
                 class="w-full px-4 py-3 bg-bg-secondary border border-border rounded-xl focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors placeholder:text-text-tertiary"
               />
             </div>
 
             <div>
-              <label for="contact-email" class="block text-sm font-medium mb-2">Email</label>
+              <label for="contact-email" class="block text-sm font-medium mb-2" data-i18n="modal_email">Email</label>
               <input
                 type="email"
                 id="contact-email"
                 name="email"
                 required
                 placeholder="tu@email.com"
+                data-i18n-placeholder="modal_email_ph"
                 class="w-full px-4 py-3 bg-bg-secondary border border-border rounded-xl focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors placeholder:text-text-tertiary"
               />
             </div>
 
             <div>
-              <label for="contact-message" class="block text-sm font-medium mb-2">Mensaje</label>
+              <label for="contact-message" class="block text-sm font-medium mb-2" data-i18n="modal_message">Mensaje</label>
               <textarea
                 id="contact-message"
                 name="message"
                 required
                 rows="4"
                 placeholder="Cuentanos en que te podemos ayudar..."
+                data-i18n-placeholder="modal_message_ph"
                 class="w-full px-4 py-3 bg-bg-secondary border border-border rounded-xl focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors placeholder:text-text-tertiary resize-none"
               ></textarea>
             </div>
@@ -823,7 +905,7 @@ const categories = [
               id="contact-submit-btn"
               class="w-full py-4 bg-accent text-bg-primary font-bold rounded-xl hover:bg-accent-secondary transition-all glow flex items-center justify-center gap-2"
             >
-              <span id="contact-btn-text">Enviar mensaje</span>
+              <span id="contact-btn-text" data-i18n="modal_send">Enviar mensaje</span>
               <svg id="contact-btn-spinner" class="hidden w-5 h-5 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
@@ -838,9 +920,9 @@ const categories = [
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h3 class="text-2xl font-black mb-2">Mensaje enviado!</h3>
-          <p class="text-text-secondary mb-6">Te responderemos lo antes posible a tu correo.</p>
-          <button id="close-contact-success" class="px-8 py-3 bg-bg-secondary border border-border rounded-xl hover:border-accent transition-colors font-semibold">
+          <h3 class="text-2xl font-black mb-2" data-i18n="modal_contact_success">Mensaje enviado!</h3>
+          <p class="text-text-secondary mb-6" data-i18n="modal_contact_success_desc">Te responderemos lo antes posible a tu correo.</p>
+          <button id="close-contact-success" class="px-8 py-3 bg-bg-secondary border border-border rounded-xl hover:border-accent transition-colors font-semibold" data-i18n="modal_close">
             Cerrar
           </button>
         </div>
@@ -851,14 +933,242 @@ const categories = [
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </div>
-          <h3 class="text-2xl font-black mb-2">Algo salio mal</h3>
-          <p class="text-text-secondary mb-6">No pudimos enviar tu mensaje. Por favor intenta de nuevo.</p>
-          <button id="contact-retry-btn" class="px-8 py-3 bg-accent text-bg-primary rounded-xl hover:bg-accent-secondary transition-colors font-semibold">
+          <h3 class="text-2xl font-black mb-2" data-i18n="modal_error_title">Algo salio mal</h3>
+          <p class="text-text-secondary mb-6" data-i18n="modal_contact_error_desc">No pudimos enviar tu mensaje. Por favor intenta de nuevo.</p>
+          <button id="contact-retry-btn" class="px-8 py-3 bg-accent text-bg-primary rounded-xl hover:bg-accent-secondary transition-colors font-semibold" data-i18n="modal_retry">
             Intentar de nuevo
           </button>
         </div>
       </div>
     </div>
+
+    <script>
+      // i18n System
+      const translations = {
+        es: {
+          nav_features: 'Features',
+          nav_categories: 'Categorias',
+          nav_support: 'Apoya',
+          nav_download: 'Descargar',
+          nav_soon: 'Pronto',
+          hero_title_1: 'Explora lo',
+          hero_title_2: 'alternativo',
+          hero_description: 'Descubre lugares unicos que solo los locales conocen. Cafeterias escondidas, galerias underground, tiendas vintage y mucho mas.',
+          video_title_1: 'Descubre la',
+          video_title_2: 'experiencia',
+          video_description: 'Mira como BrukMap te ayuda a explorar el lado alternativo de tu ciudad.',
+          features_title_1: 'Todo lo que',
+          features_title_2: 'necesitas',
+          features_description: 'Herramientas pensadas para exploradores que buscan experiencias autenticas.',
+          feature_1_title: 'Mapa de Spots',
+          feature_1_desc: 'Explora lugares alternativos cerca de ti con filtros por categoria y busqueda avanzada.',
+          feature_2_title: 'Contribuciones',
+          feature_2_desc: 'Anade tus propios descubrimientos y ayuda a la comunidad a encontrar lugares unicos.',
+          feature_3_title: 'Sanctuary',
+          feature_3_desc: 'Guarda spots privados solo para ti y compartelos con amigos en burbujas exclusivas.',
+          feature_4_title: 'Modo Offline',
+          feature_4_desc: 'Descarga datos de ciudades y explora sin conexion a internet.',
+          feature_5_title: 'Eventos',
+          feature_5_desc: 'Descubre eventos alternativos cerca de ti con calendario y filtros.',
+          feature_6_title: 'Burbujas',
+          feature_6_desc: 'Crea grupos privados con amigos para compartir spots secretos.',
+          categories_title_1: 'Explora por',
+          categories_title_2: 'categoria',
+          categories_description: 'Desde cafeterias con encanto hasta spots 420 friendly. Encuentra lo que buscas.',
+          cat_coffee: 'Cafeteria', cat_art: 'Arte', cat_vintage: 'Vintage', cat_rooftop: 'Rooftop',
+          cat_vinyl: 'Vinilos', cat_graffiti: 'Graffiti', cat_yoga: 'Yoga', cat_skatepark: 'Skatepark',
+          cat_vegan: 'Vegano', cat_420: '420', cat_books: 'Libros', cat_coworking: 'Coworking',
+          impact_badge: 'Impacto social',
+          impact_title_1: 'Visibilidad para quienes la',
+          impact_title_2: 'merecen',
+          impact_desc_1: 'Muchos negocios locales, artistas callejeros y espacios culturales no aparecen en los mapas tradicionales. BrukMap les da el escenario que merecen.',
+          impact_desc_2: 'Cada spot que descubres y compartes es un voto de apoyo para esos lugares que hacen unica a tu ciudad.',
+          impact_local: 'Negocios locales', impact_local_desc: 'Tiendas de barrio y emprendimientos',
+          impact_art: 'Arte urbano', impact_art_desc: 'Murales, galerias y espacios creativos',
+          impact_community: 'Comunidades', impact_community_desc: 'Colectivos y espacios de encuentro',
+          impact_culture: 'Cultura alternativa', impact_culture_desc: 'Lo que hace diferente a cada ciudad',
+          showcase_title_1: 'Disenado para',
+          showcase_title_2: 'exploradores',
+          showcase_description: 'Interfaz intuitiva y minimalista que te permite descubrir sin distracciones.',
+          screen_map: 'Mapa', screen_details: 'Detalles', screen_profile: 'Perfil',
+          support_badge: 'Apoya el proyecto',
+          support_title_1: 'Crees en',
+          support_title_2: 'BrukMap',
+          support_description: 'Si crees en este proyecto y quieres verlo crecer, puedes apoyarnos. Cada dolar que aportes se convertira en tiempo gratis de suscripcion Premium cuando lancemos.',
+          support_tagline: 'Tu apoyo de hoy es tu Premium de manana.',
+          support_button: 'Apoyar BrukMap',
+          cta_title_1: 'Empieza a',
+          cta_title_2: 'explorar',
+          cta_description: 'Descarga BrukMap gratis y descubre el lado alternativo de tu ciudad.',
+          cta_download_on: 'Descargar en',
+          cta_available_on: 'Disponible en',
+          footer_description: 'Tu guia para explorar el lado alternativo de las ciudades. Descubre lugares unicos que solo los locales conocen.',
+          footer_legal: 'Legal', footer_terms: 'Terminos de uso', footer_privacy: 'Privacidad',
+          footer_contact: 'Contacto', footer_support: 'Soporte', footer_rights: 'Todos los derechos reservados.',
+          modal_download_title: 'Descarga BrukMap', modal_download_desc: 'Escanea el QR o haz click en el boton',
+          modal_ios_desc: 'Para iPhone y iPad', modal_android_desc: 'Para Android',
+          modal_join_waitlist: 'Unirse a Waitlist',
+          modal_coming_soon: 'Proximamente disponible. Unete a la waitlist para ser el primero en probarlo.',
+          modal_support_title: 'Elige como apoyar', modal_support_desc: 'Tu apoyo se convierte en tiempo Premium gratis',
+          modal_subscription: 'Suscripcion mensual', modal_month: '/mes',
+          modal_sub_1: 'Apoyo recurrente mensual', modal_sub_2: 'Badge de Supporter', modal_sub_3: 'Cancela cuando quieras',
+          modal_subscribe: 'Suscribirme',
+          modal_donation: 'Donacion unica',
+          modal_don_1: 'Tu decides la cantidad', modal_don_2: 'Pago unico, sin compromiso', modal_don_3: 'Badge de Supporter',
+          modal_donate: 'Donar', modal_exchange: 'Cada $1 = 1 mes de Premium gratis cuando lancemos',
+          modal_waitlist_title: 'Unete a la lista de espera',
+          modal_waitlist_desc: 'Se el primero en explorar cuando lancemos para',
+          modal_name: 'Nombre', modal_name_ph: 'Tu nombre',
+          modal_email: 'Email', modal_email_ph: 'tu@email.com',
+          modal_city: 'Ciudad', modal_city_ph: 'Tu ciudad (opcional)',
+          modal_join: 'Unirme a la waitlist', modal_sending: 'Enviando...',
+          modal_success_title: 'Estas en la lista!',
+          modal_success_desc: 'Te avisaremos cuando BrukMap este disponible. Prepararate para explorar lo alternativo.',
+          modal_error_title: 'Algo salio mal', modal_error_desc: 'No pudimos registrarte. Por favor intenta de nuevo.',
+          modal_retry: 'Intentar de nuevo', modal_close: 'Cerrar',
+          modal_contact_title: 'Contacta con soporte', modal_contact_desc: 'En que te podemos ayudar?',
+          modal_message: 'Mensaje', modal_message_ph: 'Cuentanos en que te podemos ayudar...',
+          modal_send: 'Enviar mensaje',
+          modal_contact_success: 'Mensaje enviado!', modal_contact_success_desc: 'Te responderemos lo antes posible a tu correo.',
+          modal_contact_error_desc: 'No pudimos enviar tu mensaje. Por favor intenta de nuevo.'
+        },
+        en: {
+          nav_features: 'Features',
+          nav_categories: 'Categories',
+          nav_support: 'Support',
+          nav_download: 'Download',
+          nav_soon: 'Soon',
+          hero_title_1: 'Explore the',
+          hero_title_2: 'alternative',
+          hero_description: 'Discover unique places only locals know. Hidden cafes, underground galleries, vintage shops and much more.',
+          video_title_1: 'Discover the',
+          video_title_2: 'experience',
+          video_description: 'See how BrukMap helps you explore the alternative side of your city.',
+          features_title_1: 'Everything you',
+          features_title_2: 'need',
+          features_description: 'Tools designed for explorers seeking authentic experiences.',
+          feature_1_title: 'Spots Map',
+          feature_1_desc: 'Explore alternative places near you with category filters and advanced search.',
+          feature_2_title: 'Contributions',
+          feature_2_desc: 'Add your own discoveries and help the community find unique places.',
+          feature_3_title: 'Sanctuary',
+          feature_3_desc: 'Save private spots just for you and share them with friends in exclusive bubbles.',
+          feature_4_title: 'Offline Mode',
+          feature_4_desc: 'Download city data and explore without internet connection.',
+          feature_5_title: 'Events',
+          feature_5_desc: 'Discover alternative events near you with calendar and filters.',
+          feature_6_title: 'Bubbles',
+          feature_6_desc: 'Create private groups with friends to share secret spots.',
+          categories_title_1: 'Explore by',
+          categories_title_2: 'category',
+          categories_description: 'From charming cafes to 420 friendly spots. Find what you\'re looking for.',
+          cat_coffee: 'Coffee', cat_art: 'Art', cat_vintage: 'Vintage', cat_rooftop: 'Rooftop',
+          cat_vinyl: 'Vinyl', cat_graffiti: 'Graffiti', cat_yoga: 'Yoga', cat_skatepark: 'Skatepark',
+          cat_vegan: 'Vegan', cat_420: '420', cat_books: 'Books', cat_coworking: 'Coworking',
+          impact_badge: 'Social impact',
+          impact_title_1: 'Visibility for those who',
+          impact_title_2: 'deserve it',
+          impact_desc_1: 'Many local businesses, street artists and cultural spaces don\'t appear on traditional maps. BrukMap gives them the stage they deserve.',
+          impact_desc_2: 'Every spot you discover and share is a vote of support for those places that make your city unique.',
+          impact_local: 'Local businesses', impact_local_desc: 'Neighborhood shops and ventures',
+          impact_art: 'Urban art', impact_art_desc: 'Murals, galleries and creative spaces',
+          impact_community: 'Communities', impact_community_desc: 'Collectives and meeting spaces',
+          impact_culture: 'Alternative culture', impact_culture_desc: 'What makes each city different',
+          showcase_title_1: 'Designed for',
+          showcase_title_2: 'explorers',
+          showcase_description: 'Intuitive and minimalist interface that lets you discover without distractions.',
+          screen_map: 'Map', screen_details: 'Details', screen_profile: 'Profile',
+          support_badge: 'Support the project',
+          support_title_1: 'Believe in',
+          support_title_2: 'BrukMap',
+          support_description: 'If you believe in this project and want to see it grow, you can support us. Every dollar you contribute will become free Premium subscription time when we launch.',
+          support_tagline: 'Your support today is your Premium tomorrow.',
+          support_button: 'Support BrukMap',
+          cta_title_1: 'Start',
+          cta_title_2: 'exploring',
+          cta_description: 'Download BrukMap for free and discover the alternative side of your city.',
+          cta_download_on: 'Download on',
+          cta_available_on: 'Available on',
+          footer_description: 'Your guide to explore the alternative side of cities. Discover unique places only locals know.',
+          footer_legal: 'Legal', footer_terms: 'Terms of use', footer_privacy: 'Privacy',
+          footer_contact: 'Contact', footer_support: 'Support', footer_rights: 'All rights reserved.',
+          modal_download_title: 'Download BrukMap', modal_download_desc: 'Scan the QR or click the button',
+          modal_ios_desc: 'For iPhone and iPad', modal_android_desc: 'For Android',
+          modal_join_waitlist: 'Join Waitlist',
+          modal_coming_soon: 'Coming soon. Join the waitlist to be the first to try it.',
+          modal_support_title: 'Choose how to support', modal_support_desc: 'Your support becomes free Premium time',
+          modal_subscription: 'Monthly subscription', modal_month: '/month',
+          modal_sub_1: 'Recurring monthly support', modal_sub_2: 'Supporter badge', modal_sub_3: 'Cancel anytime',
+          modal_subscribe: 'Subscribe',
+          modal_donation: 'One-time donation',
+          modal_don_1: 'You decide the amount', modal_don_2: 'One-time payment, no commitment', modal_don_3: 'Supporter badge',
+          modal_donate: 'Donate', modal_exchange: 'Every $1 = 1 month of free Premium when we launch',
+          modal_waitlist_title: 'Join the waitlist',
+          modal_waitlist_desc: 'Be the first to explore when we launch for',
+          modal_name: 'Name', modal_name_ph: 'Your name',
+          modal_email: 'Email', modal_email_ph: 'you@email.com',
+          modal_city: 'City', modal_city_ph: 'Your city (optional)',
+          modal_join: 'Join the waitlist', modal_sending: 'Sending...',
+          modal_success_title: 'You\'re on the list!',
+          modal_success_desc: 'We\'ll notify you when BrukMap is available. Get ready to explore the alternative.',
+          modal_error_title: 'Something went wrong', modal_error_desc: 'We couldn\'t register you. Please try again.',
+          modal_retry: 'Try again', modal_close: 'Close',
+          modal_contact_title: 'Contact support', modal_contact_desc: 'How can we help you?',
+          modal_message: 'Message', modal_message_ph: 'Tell us how we can help you...',
+          modal_send: 'Send message',
+          modal_contact_success: 'Message sent!', modal_contact_success_desc: 'We\'ll respond to your email as soon as possible.',
+          modal_contact_error_desc: 'We couldn\'t send your message. Please try again.'
+        }
+      };
+
+      let currentLang = 'es';
+
+      function detectLanguage() {
+        const saved = localStorage.getItem('brukmap-lang');
+        if (saved && (saved === 'es' || saved === 'en')) return saved;
+        const browserLang = navigator.language || navigator.userLanguage;
+        return browserLang.startsWith('es') ? 'es' : 'en';
+      }
+
+      function applyTranslations(lang) {
+        currentLang = lang;
+        document.documentElement.lang = lang;
+        localStorage.setItem('brukmap-lang', lang);
+
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (translations[lang][key]) {
+            el.textContent = translations[lang][key];
+          }
+        });
+
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+          const key = el.getAttribute('data-i18n-placeholder');
+          if (translations[lang][key]) {
+            el.placeholder = translations[lang][key];
+          }
+        });
+
+        // Update toggle buttons
+        const toggleText = lang === 'es' ? 'EN' : 'ES';
+        document.getElementById('lang-toggle').textContent = toggleText;
+        document.getElementById('lang-toggle-mobile').textContent = toggleText;
+      }
+
+      function toggleLanguage() {
+        const newLang = currentLang === 'es' ? 'en' : 'es';
+        applyTranslations(newLang);
+      }
+
+      // Initialize
+      document.addEventListener('DOMContentLoaded', () => {
+        const detectedLang = detectLanguage();
+        applyTranslations(detectedLang);
+
+        document.getElementById('lang-toggle').addEventListener('click', toggleLanguage);
+        document.getElementById('lang-toggle-mobile').addEventListener('click', toggleLanguage);
+      });
+    </script>
 
     <script>
       const modal = document.getElementById('waitlist-modal');
