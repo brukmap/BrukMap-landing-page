@@ -71,18 +71,16 @@ const categories = [
     <nav class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-4xl">
       <div class="bg-bg-elevated/90 backdrop-blur-lg border border-border rounded-2xl px-4 sm:px-6 py-3 shadow-lg shadow-black/20">
         <div class="flex items-center justify-between">
-          <a href="/" class="flex items-center gap-2 py-1">
-            <div class="flex items-center gap-2">
-              <img src={`${base}logo-icon.svg`} alt="" class="h-8 w-auto object-contain" />
-              <span class="font-black text-white leading-none">Bruk<span class="font-black leading-none" style="color: #1ceb23">Map</span></span>
-            </div>
+          <a href="/" class="flex items-center gap-2">
+            <img src={`${base}logo-icon.svg`} alt="" class="h-5 w-5 object-contain flex-shrink-0" />
+            <span class="font-black text-white leading-none">Bruk<span class="font-black leading-none" style="color: #1ceb23">Map</span></span>
           </a>
           <div class="hidden md:flex items-center gap-6">
             <a href="#features" class="text-text-secondary hover:text-accent transition-colors text-sm nav-link-animated" data-i18n="nav_features">Features</a>
             <a href="#categories" class="text-text-secondary hover:text-accent transition-colors text-sm nav-link-animated" data-i18n="nav_categories">Categorias</a>
             <a href="#apoya" class="text-text-secondary hover:text-accent transition-colors text-sm nav-link-animated" data-i18n="nav_support">Apoya</a>
-            <button id="open-download-modal" class="px-4 py-2 bg-accent text-bg-primary font-semibold rounded-xl hover:bg-accent-secondary transition-colors cursor-pointer text-sm" data-i18n="nav_download">
-              Descargar
+            <button data-open-modal data-platform="General" class="px-4 py-2 bg-accent text-bg-primary font-semibold rounded-xl hover:bg-accent-secondary transition-colors cursor-pointer text-sm" data-i18n="nav_join">
+              Unirse
             </button>
             <a href={`${base}pronto`} class="text-text-secondary hover:text-accent transition-colors text-sm flex items-center gap-1">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -120,8 +118,8 @@ const categories = [
               </svg>
               <span data-i18n="nav_soon">Pronto</span>
             </a>
-            <button id="open-download-modal-mobile" class="w-full px-4 py-3 bg-accent text-bg-primary font-semibold rounded-xl hover:bg-accent-secondary transition-colors cursor-pointer text-sm mt-2" data-i18n="nav_download">
-              Descargar
+            <button data-open-modal data-platform="General" class="w-full px-4 py-3 bg-accent text-bg-primary font-semibold rounded-xl hover:bg-accent-secondary transition-colors cursor-pointer text-sm mt-2" data-i18n="nav_join">
+              Unirse
             </button>
           </div>
         </div>
@@ -578,12 +576,18 @@ const categories = [
           <p class="text-accent font-medium text-sm sm:text-base" data-i18n="support_tagline">Tu apoyo de hoy es tu Premium de manana.</p>
         </div>
 
-        <div class="flex justify-center scroll-animate scroll-scale stagger-2 px-4 sm:px-0">
-          <button id="open-support-modal" class="inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-3.5 sm:py-4 bg-accent text-bg-primary font-bold rounded-xl hover:bg-accent-secondary transition-all glow cursor-pointer btn-fill hover-glow-intense text-sm sm:text-base">
+        <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 scroll-animate scroll-scale stagger-2 px-4 sm:px-0">
+          <button data-open-modal data-platform="General" class="inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-3.5 sm:py-4 bg-accent text-bg-primary font-bold rounded-xl hover:bg-accent-secondary transition-all glow cursor-pointer btn-fill hover-glow-intense text-sm sm:text-base">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 sm:w-6 sm:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
+            </svg>
+            <span data-i18n="support_button">Unirse a la Waitlist</span>
+          </button>
+          <button id="open-donation-modal" class="inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-3.5 sm:py-4 bg-bg-elevated border border-accent text-accent font-bold rounded-xl hover:bg-accent hover:text-bg-primary transition-all cursor-pointer hover-lift card-glow-border text-sm sm:text-base">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 sm:w-6 sm:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
             </svg>
-            <span data-i18n="support_button">Apoyar BrukMap</span>
+            <span data-i18n="support_donate_btn">Contactar para donar</span>
           </button>
         </div>
       </div>
@@ -1115,6 +1119,113 @@ const categories = [
       </div>
     </div>
 
+    <!-- Donation Contact Modal -->
+    <div id="donation-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
+      <div id="donation-backdrop" class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+      <div class="relative w-full max-w-md bg-bg-elevated border border-border rounded-2xl p-8 animate-slide-up">
+        <button id="close-donation-modal" class="absolute top-4 right-4 text-text-tertiary hover:text-text-primary transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        <div id="donation-form-container">
+          <div class="text-center mb-6">
+            <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-accent/20 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-black mb-2" data-i18n="modal_donation_title">Quieres apoyar?</h3>
+            <p class="text-text-secondary" data-i18n="modal_donation_desc">Cuentanos como te gustaria contribuir al proyecto.</p>
+          </div>
+
+          <form id="donation-form" class="space-y-4">
+            <input type="hidden" name="access_key" value="d30b438e-554c-429f-a263-6039e35959d1" />
+            <input type="hidden" name="subject" value="Donacion - BrukMap" />
+            <input type="hidden" name="from_name" value="BrukMap Donaciones" />
+
+            <div>
+              <label for="donation-name" class="block text-sm font-medium mb-2" data-i18n="modal_name">Nombre</label>
+              <input
+                type="text"
+                id="donation-name"
+                name="name"
+                required
+                placeholder="Tu nombre"
+                data-i18n-placeholder="modal_name_ph"
+                class="w-full px-4 py-3 bg-bg-secondary border border-border rounded-xl focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors placeholder:text-text-tertiary"
+              />
+            </div>
+
+            <div>
+              <label for="donation-email" class="block text-sm font-medium mb-2" data-i18n="modal_email">Email</label>
+              <input
+                type="email"
+                id="donation-email"
+                name="email"
+                required
+                placeholder="tu@email.com"
+                data-i18n-placeholder="modal_email_ph"
+                class="w-full px-4 py-3 bg-bg-secondary border border-border rounded-xl focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors placeholder:text-text-tertiary"
+              />
+            </div>
+
+            <div>
+              <label for="donation-message" class="block text-sm font-medium mb-2" data-i18n="modal_message">Mensaje</label>
+              <textarea
+                id="donation-message"
+                name="message"
+                required
+                rows="4"
+                placeholder="Cuentanos como te gustaria apoyar..."
+                data-i18n-placeholder="modal_donation_msg_ph"
+                class="w-full px-4 py-3 bg-bg-secondary border border-border rounded-xl focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors placeholder:text-text-tertiary resize-none"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              id="donation-submit-btn"
+              class="w-full py-4 bg-accent text-bg-primary font-bold rounded-xl hover:bg-accent-secondary transition-all glow flex items-center justify-center gap-2"
+            >
+              <span id="donation-btn-text" data-i18n="modal_send">Enviar mensaje</span>
+              <svg id="donation-btn-spinner" class="hidden w-5 h-5 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+            </button>
+          </form>
+        </div>
+
+        <div id="donation-success-message" class="hidden text-center">
+          <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-success/20 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-black mb-2" data-i18n="modal_donation_success">Gracias por tu interes!</h3>
+          <p class="text-text-secondary mb-6" data-i18n="modal_donation_success_desc">Te contactaremos pronto para coordinar tu apoyo.</p>
+          <button id="close-donation-success" class="px-8 py-3 bg-bg-secondary border border-border rounded-xl hover:border-accent transition-colors font-semibold" data-i18n="modal_close">
+            Cerrar
+          </button>
+        </div>
+
+        <div id="donation-error-message" class="hidden text-center">
+          <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-error/20 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-error" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-black mb-2" data-i18n="modal_error_title">Algo salio mal</h3>
+          <p class="text-text-secondary mb-6" data-i18n="modal_donation_error_desc">No pudimos enviar tu mensaje. Por favor intenta de nuevo.</p>
+          <button id="donation-retry-btn" class="px-8 py-3 bg-accent text-bg-primary rounded-xl hover:bg-accent-secondary transition-colors font-semibold" data-i18n="modal_retry">
+            Intentar de nuevo
+          </button>
+        </div>
+      </div>
+    </div>
+
     <script>
       // i18n System
       const translations = {
@@ -1122,7 +1233,7 @@ const categories = [
           nav_features: 'Features',
           nav_categories: 'Categorias',
           nav_support: 'Apoya',
-          nav_download: 'Descargar',
+          nav_join: 'Unirse',
           nav_soon: 'Pronto',
           hero_title_1: 'Explora lo',
           hero_title_2: 'alternativo',
@@ -1181,7 +1292,14 @@ const categories = [
           support_title_2: 'BrukMap',
           support_description: 'Si crees en este proyecto y quieres verlo crecer, puedes apoyarnos. Cada dolar que aportes se convertira en tiempo gratis de suscripcion Premium cuando lancemos.',
           support_tagline: 'Tu apoyo de hoy es tu Premium de manana.',
-          support_button: 'Apoyar BrukMap',
+          support_donate_btn: 'Contactar para donar',
+          modal_donation_title: 'Quieres apoyar?',
+          modal_donation_desc: 'Cuentanos como te gustaria contribuir al proyecto.',
+          modal_donation_msg_ph: 'Cuentanos como te gustaria apoyar...',
+          modal_donation_success: 'Gracias por tu interes!',
+          modal_donation_success_desc: 'Te contactaremos pronto para coordinar tu apoyo.',
+          modal_donation_error_desc: 'No pudimos enviar tu mensaje. Por favor intenta de nuevo.',
+          support_button: 'Unirse a la Waitlist',
           cta_title_1: 'Empieza a',
           cta_title_2: 'explorar',
           cta_description: 'Descarga BrukMap gratis y descubre el lado alternativo de tu ciudad.',
@@ -1221,7 +1339,7 @@ const categories = [
           nav_features: 'Features',
           nav_categories: 'Categories',
           nav_support: 'Support',
-          nav_download: 'Download',
+          nav_join: 'Join',
           nav_soon: 'Soon',
           hero_title_1: 'Explore the',
           hero_title_2: 'alternative',
@@ -1280,7 +1398,14 @@ const categories = [
           support_title_2: 'BrukMap',
           support_description: 'If you believe in this project and want to see it grow, you can support us. Every dollar you contribute will become free Premium subscription time when we launch.',
           support_tagline: 'Your support today is your Premium tomorrow.',
-          support_button: 'Support BrukMap',
+          support_donate_btn: 'Contact to donate',
+          modal_donation_title: 'Want to support?',
+          modal_donation_desc: 'Tell us how you would like to contribute to the project.',
+          modal_donation_msg_ph: 'Tell us how you would like to support...',
+          modal_donation_success: 'Thanks for your interest!',
+          modal_donation_success_desc: 'We will contact you soon to coordinate your support.',
+          modal_donation_error_desc: 'We could not send your message. Please try again.',
+          support_button: 'Join the Waitlist',
           cta_title_1: 'Start',
           cta_title_2: 'exploring',
           cta_description: 'Download BrukMap for free and discover the alternative side of your city.',
@@ -1465,27 +1590,19 @@ const categories = [
       // Support Modal
       const supportModal = document.getElementById('support-modal');
       const supportBackdrop = document.getElementById('support-backdrop');
-      const openSupportBtn = document.getElementById('open-support-modal');
       const closeSupportBtn = document.getElementById('close-support-modal');
 
-      function openSupportModal() {
-        supportModal.classList.remove('hidden');
-        supportModal.classList.add('flex');
-        document.body.style.overflow = 'hidden';
-      }
-
       function closeSupportModal() {
-        supportModal.classList.add('hidden');
-        supportModal.classList.remove('flex');
+        supportModal?.classList.add('hidden');
+        supportModal?.classList.remove('flex');
         document.body.style.overflow = '';
       }
 
-      openSupportBtn.addEventListener('click', openSupportModal);
-      closeSupportBtn.addEventListener('click', closeSupportModal);
-      supportBackdrop.addEventListener('click', closeSupportModal);
+      closeSupportBtn?.addEventListener('click', closeSupportModal);
+      supportBackdrop?.addEventListener('click', closeSupportModal);
 
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !supportModal.classList.contains('hidden')) {
+        if (e.key === 'Escape' && supportModal && !supportModal.classList.contains('hidden')) {
           closeSupportModal();
         }
       });
@@ -1503,27 +1620,19 @@ const categories = [
       // Download Modal
       const downloadModal = document.getElementById('download-modal');
       const downloadBackdrop = document.getElementById('download-backdrop');
-      const openDownloadBtn = document.getElementById('open-download-modal');
       const closeDownloadBtn = document.getElementById('close-download-modal');
 
-      function openDownloadModal() {
-        downloadModal.classList.remove('hidden');
-        downloadModal.classList.add('flex');
-        document.body.style.overflow = 'hidden';
-      }
-
       function closeDownloadModal() {
-        downloadModal.classList.add('hidden');
-        downloadModal.classList.remove('flex');
+        downloadModal?.classList.add('hidden');
+        downloadModal?.classList.remove('flex');
         document.body.style.overflow = '';
       }
 
-      openDownloadBtn.addEventListener('click', openDownloadModal);
-      closeDownloadBtn.addEventListener('click', closeDownloadModal);
-      downloadBackdrop.addEventListener('click', closeDownloadModal);
+      closeDownloadBtn?.addEventListener('click', closeDownloadModal);
+      downloadBackdrop?.addEventListener('click', closeDownloadModal);
 
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !downloadModal.classList.contains('hidden')) {
+        if (e.key === 'Escape' && downloadModal && !downloadModal.classList.contains('hidden')) {
           closeDownloadModal();
         }
       });
@@ -1610,6 +1719,88 @@ const categories = [
         }
       });
 
+      // Donation Modal
+      const donationModal = document.getElementById('donation-modal');
+      const donationBackdrop = document.getElementById('donation-backdrop');
+      const openDonationBtn = document.getElementById('open-donation-modal');
+      const closeDonationBtn = document.getElementById('close-donation-modal');
+      const closeDonationSuccess = document.getElementById('close-donation-success');
+      const donationRetryBtn = document.getElementById('donation-retry-btn');
+      const donationForm = document.getElementById('donation-form');
+      const donationFormContainer = document.getElementById('donation-form-container');
+      const donationSuccessMessage = document.getElementById('donation-success-message');
+      const donationErrorMessage = document.getElementById('donation-error-message');
+      const donationSubmitBtn = document.getElementById('donation-submit-btn');
+      const donationBtnText = document.getElementById('donation-btn-text');
+      const donationBtnSpinner = document.getElementById('donation-btn-spinner');
+
+      function openDonationModal() {
+        donationModal.classList.remove('hidden');
+        donationModal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeDonationModal() {
+        donationModal.classList.add('hidden');
+        donationModal.classList.remove('flex');
+        document.body.style.overflow = '';
+        setTimeout(() => {
+          donationFormContainer.classList.remove('hidden');
+          donationSuccessMessage.classList.add('hidden');
+          donationErrorMessage.classList.add('hidden');
+          donationForm.reset();
+        }, 300);
+      }
+
+      openDonationBtn?.addEventListener('click', openDonationModal);
+      closeDonationBtn?.addEventListener('click', closeDonationModal);
+      donationBackdrop?.addEventListener('click', closeDonationModal);
+      closeDonationSuccess?.addEventListener('click', closeDonationModal);
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && donationModal && !donationModal.classList.contains('hidden')) {
+          closeDonationModal();
+        }
+      });
+
+      donationRetryBtn?.addEventListener('click', () => {
+        donationErrorMessage.classList.add('hidden');
+        donationFormContainer.classList.remove('hidden');
+      });
+
+      donationForm?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        donationBtnText.textContent = 'Enviando...';
+        donationBtnSpinner.classList.remove('hidden');
+        donationSubmitBtn.disabled = true;
+
+        const formData = new FormData(donationForm);
+
+        try {
+          const response = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: formData
+          });
+
+          const data = await response.json();
+
+          if (data.success) {
+            donationFormContainer.classList.add('hidden');
+            donationSuccessMessage.classList.remove('hidden');
+          } else {
+            throw new Error('Form submission failed');
+          }
+        } catch (error) {
+          donationFormContainer.classList.add('hidden');
+          donationErrorMessage.classList.remove('hidden');
+        } finally {
+          donationBtnText.textContent = 'Enviar mensaje';
+          donationBtnSpinner.classList.add('hidden');
+          donationSubmitBtn.disabled = false;
+        }
+      });
+
       // Dynamic year for copyright
       document.getElementById('current-year').textContent = new Date().getFullYear();
 
@@ -1664,13 +1855,13 @@ const categories = [
         });
       });
 
-      // Mobile download button
-      document.getElementById('open-download-modal-mobile')?.addEventListener('click', () => {
-        document.getElementById('download-modal')?.classList.remove('hidden');
-        document.getElementById('download-modal')?.classList.add('flex');
-        mobileMenu.classList.add('hidden');
-        menuIconOpen.classList.remove('hidden');
-        menuIconClose.classList.add('hidden');
+      // Close mobile menu when waitlist modal opens from mobile button
+      document.querySelectorAll('#mobile-menu [data-open-modal]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          menuIconOpen.classList.remove('hidden');
+          menuIconClose.classList.add('hidden');
+        });
       });
     </script>
   </body>
