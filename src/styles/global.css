@@ -359,4 +359,26 @@
   .carousel-container:hover .carousel-track {
     animation-play-state: paused;
   }
+
+  /* Pin shape for floating elements */
+  .pin-shape {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 4px 12px rgba(28, 235, 35, 0.3));
+  }
+
+  .pin-shape svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .pin-shape .pin-content {
+    position: relative;
+    z-index: 1;
+    margin-top: -15%;
+  }
 }
