@@ -312,4 +312,51 @@
     0%, 100% { background-position: 0% center; }
     50% { background-position: 100% center; }
   }
+
+  /* Infinite Carousel for Mobile */
+  .carousel-container {
+    overflow: hidden;
+    width: 100%;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+
+  .carousel-track {
+    display: flex;
+    gap: 1rem;
+    animation: carousel-scroll 25s linear infinite;
+    width: max-content;
+  }
+
+  .carousel-item {
+    flex-shrink: 0;
+    width: 180px;
+    height: 380px;
+    background: var(--color-bg-elevated);
+    border-radius: 2rem;
+    border: 2px solid var(--color-border);
+    padding: 0.5rem;
+    overflow: hidden;
+  }
+
+  .carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1.5rem;
+  }
+
+  @keyframes carousel-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Pause carousel on hover */
+  .carousel-container:hover .carousel-track {
+    animation-play-state: paused;
+  }
 }
