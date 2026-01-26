@@ -22,7 +22,10 @@ const base = import.meta.env.BASE_URL;
       <div class="bg-bg-elevated/90 backdrop-blur-lg border border-border rounded-2xl px-4 sm:px-6 py-3 shadow-lg shadow-black/20">
         <div class="flex items-center justify-between">
           <a href={base} class="flex items-center gap-2">
-            <img src={`${base}logo.svg`} alt="BrukMap" class="h-7" />
+            <div class="flex items-center gap-2">
+              <img src={`${base}logo-icon.svg`} alt="" class="h-7 w-auto object-contain" />
+              <span class="font-black text-white leading-none">Bruk<span class="font-black leading-none" style="color: #1ceb23">Map</span></span>
+            </div>
           </a>
           <div class="flex items-center gap-4">
             <a href={base} class="text-text-secondary hover:text-accent transition-colors text-sm" data-i18n="back_home">

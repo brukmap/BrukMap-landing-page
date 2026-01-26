@@ -41,11 +41,11 @@ Con BrukMap puedes:
 --bg-tertiary: #1A1A1A;
 --bg-elevated: #1E1E1E;
 
-/* Accent - Verde Neón */
---accent-primary: #CCFF00;
---accent-secondary: #B8E600;
---accent-muted: rgba(204, 255, 0, 0.15);
---accent-glow: rgba(204, 255, 0, 0.3);
+/* Accent - Verde */
+--accent-primary: #1ceb23;
+--accent-secondary: #18a01c;
+--accent-muted: rgba(28, 235, 35, 0.15);
+--accent-glow: rgba(28, 235, 35, 0.3);
 
 /* Text */
 --text-primary: #FFFFFF;
@@ -53,7 +53,7 @@ Con BrukMap puedes:
 --text-tertiary: #808080;
 
 /* Semantic */
---success: #00FF88;
+--success: #4ed152;
 --warning: #FFB800;
 --error: #FF4444;
 --info: #00B8FF;

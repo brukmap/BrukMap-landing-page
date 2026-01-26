@@ -72,7 +72,10 @@ const categories = [
       <div class="bg-bg-elevated/90 backdrop-blur-lg border border-border rounded-2xl px-4 sm:px-6 py-3 shadow-lg shadow-black/20">
         <div class="flex items-center justify-between">
           <a href="/" class="flex items-center gap-2 py-1">
-            <img src={`${base}logo.svg`} alt="BrukMap" class="h-8 object-contain" />
+            <div class="flex items-center gap-2">
+              <img src={`${base}logo-icon.svg`} alt="" class="h-8 w-auto object-contain" />
+              <span class="font-black text-white leading-none">Bruk<span class="font-black leading-none" style="color: #1ceb23">Map</span></span>
+            </div>
           </a>
           <div class="hidden md:flex items-center gap-6">
             <a href="#features" class="text-text-secondary hover:text-accent transition-colors text-sm nav-link-animated" data-i18n="nav_features">Features</a>
@@ -129,7 +132,7 @@ const categories = [
     <section class="relative min-h-screen flex items-center justify-center pt-20 sm:pt-16 overflow-hidden">
       <!-- Background Grid -->
       <div class="absolute inset-0 opacity-20">
-        <div class="absolute inset-0" style="background-image: linear-gradient(rgba(204, 255, 0, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(204, 255, 0, 0.1) 1px, transparent 1px); background-size: 50px 50px;"></div>
+        <div class="absolute inset-0" style="background-image: linear-gradient(rgba(28, 235, 35, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(28, 235, 35, 0.1) 1px, transparent 1px); background-size: 50px 50px;"></div>
       </div>
       <!-- Glow Effect -->
       <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] bg-accent/10 rounded-full blur-[100px] sm:blur-[150px]"></div>
@@ -433,18 +436,20 @@ const categories = [
     </section>
 
     <!-- App Showcase Section -->
-    <section class="py-24 bg-bg-secondary overflow-hidden">
+    <section class="py-16 sm:py-24 bg-bg-secondary overflow-hidden">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl sm:text-5xl font-black mb-4">
+        <div class="text-center mb-10 sm:mb-16 scroll-animate scroll-fade-up">
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-black mb-3 sm:mb-4">
             <span data-i18n="showcase_title_1">Disenado para</span> <span class="text-accent" data-i18n="showcase_title_2">exploradores</span>
           </h2>
-          <p class="text-text-secondary text-lg max-w-2xl mx-auto" data-i18n="showcase_description">
+          <p class="text-text-secondary text-base sm:text-lg max-w-2xl mx-auto px-2 sm:px-0" data-i18n="showcase_description">
             Interfaz intuitiva y minimalista que te permite descubrir sin distracciones.
           </p>
         </div>
-        <div class="flex justify-center gap-6 overflow-x-auto pb-8">
-          <div class="flex-shrink-0 w-[200px] h-[420px] bg-bg-elevated rounded-[2rem] border-2 border-border p-2">
+
+        <!-- Desktop: Grid estático -->
+        <div class="hidden md:flex justify-center gap-6">
+          <div class="flex-shrink-0 w-[200px] h-[420px] bg-bg-elevated rounded-[2rem] border-2 border-border p-2 hover-lift card-glow-border transition-all">
             <div class="w-full h-full bg-bg-secondary rounded-[1.5rem] flex items-center justify-center">
               <div class="text-center">
                 <div class="text-accent font-bold" data-i18n="screen_map">Mapa</div>
@@ -452,7 +457,7 @@ const categories = [
               </div>
             </div>
           </div>
-          <div class="flex-shrink-0 w-[200px] h-[420px] bg-bg-elevated rounded-[2rem] border-2 border-border p-2">
+          <div class="flex-shrink-0 w-[200px] h-[420px] bg-bg-elevated rounded-[2rem] border-2 border-border p-2 hover-lift card-glow-border transition-all">
             <div class="w-full h-full bg-bg-secondary rounded-[1.5rem] flex items-center justify-center">
               <div class="text-center">
                 <div class="text-accent font-bold" data-i18n="screen_details">Detalles</div>
@@ -460,7 +465,7 @@ const categories = [
               </div>
             </div>
           </div>
-          <div class="flex-shrink-0 w-[200px] h-[420px] bg-bg-elevated rounded-[2rem] border-2 border-border p-2">
+          <div class="flex-shrink-0 w-[200px] h-[420px] bg-bg-elevated rounded-[2rem] border-2 border-border p-2 hover-lift card-glow-border transition-all">
             <div class="w-full h-full bg-bg-secondary rounded-[1.5rem] flex items-center justify-center">
               <div class="text-center">
                 <div class="text-accent font-bold">Sanctuary</div>
@@ -468,11 +473,85 @@ const categories = [
               </div>
             </div>
           </div>
-          <div class="flex-shrink-0 w-[200px] h-[420px] bg-bg-elevated rounded-[2rem] border-2 border-border p-2">
+          <div class="flex-shrink-0 w-[200px] h-[420px] bg-bg-elevated rounded-[2rem] border-2 border-border p-2 hover-lift card-glow-border transition-all">
             <div class="w-full h-full bg-bg-secondary rounded-[1.5rem] flex items-center justify-center">
               <div class="text-center">
                 <div class="text-accent font-bold" data-i18n="screen_profile">Perfil</div>
                 <div class="text-text-tertiary text-xs mt-1">Screenshot</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile: Carousel infinito -->
+        <div class="md:hidden relative">
+          <div class="carousel-container">
+            <div class="carousel-track">
+              <!-- Original items -->
+              <div class="carousel-item">
+                <div class="w-full h-full bg-bg-secondary rounded-[1.5rem] flex items-center justify-center">
+                  <div class="text-center">
+                    <div class="text-accent font-bold" data-i18n="screen_map">Mapa</div>
+                    <div class="text-text-tertiary text-xs mt-1">Screenshot</div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="w-full h-full bg-bg-secondary rounded-[1.5rem] flex items-center justify-center">
+                  <div class="text-center">
+                    <div class="text-accent font-bold" data-i18n="screen_details">Detalles</div>
+                    <div class="text-text-tertiary text-xs mt-1">Screenshot</div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="w-full h-full bg-bg-secondary rounded-[1.5rem] flex items-center justify-center">
+                  <div class="text-center">
+                    <div class="text-accent font-bold">Sanctuary</div>
+                    <div class="text-text-tertiary text-xs mt-1">Screenshot</div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="w-full h-full bg-bg-secondary rounded-[1.5rem] flex items-center justify-center">
+                  <div class="text-center">
+                    <div class="text-accent font-bold" data-i18n="screen_profile">Perfil</div>
+                    <div class="text-text-tertiary text-xs mt-1">Screenshot</div>
+                  </div>
+                </div>
+              </div>
+              <!-- Duplicated items for seamless loop -->
+              <div class="carousel-item">
+                <div class="w-full h-full bg-bg-secondary rounded-[1.5rem] flex items-center justify-center">
+                  <div class="text-center">
+                    <div class="text-accent font-bold">Mapa</div>
+                    <div class="text-text-tertiary text-xs mt-1">Screenshot</div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="w-full h-full bg-bg-secondary rounded-[1.5rem] flex items-center justify-center">
+                  <div class="text-center">
+                    <div class="text-accent font-bold">Detalles</div>
+                    <div class="text-text-tertiary text-xs mt-1">Screenshot</div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="w-full h-full bg-bg-secondary rounded-[1.5rem] flex items-center justify-center">
+                  <div class="text-center">
+                    <div class="text-accent font-bold">Sanctuary</div>
+                    <div class="text-text-tertiary text-xs mt-1">Screenshot</div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="w-full h-full bg-bg-secondary rounded-[1.5rem] flex items-center justify-center">
+                  <div class="text-center">
+                    <div class="text-accent font-bold">Perfil</div>
+                    <div class="text-text-tertiary text-xs mt-1">Screenshot</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -547,7 +626,12 @@ const categories = [
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-8">
           <div class="col-span-2">
-            <img src={`${base}logo.svg`} alt="BrukMap" class="h-8 sm:h-9 object-contain mb-3 sm:mb-4" />
+            <div class="flex items-center gap-2 mb-3 sm:mb-4">
+              <img src={`${base}logo-icon.svg`} alt="" class="h-8 sm:h-9 w-auto object-contain" />
+              <div class="flex items-baseline">
+                <span class="font-black text-white leading-none" style="font-size: clamp(1.25rem, 4vw, 1.5rem);">Bruk<span class="font-black leading-none" style="color: #1ceb23; font-size: clamp(1.25rem, 4vw, 1.5rem);">Map</span></span>
+              </div>
+            </div>
             <p class="text-text-secondary text-sm sm:text-base max-w-md" data-i18n="footer_description">
               Tu guia para explorar el lado alternativo de las ciudades. Descubre lugares unicos que solo los locales conocen.
             </p>
