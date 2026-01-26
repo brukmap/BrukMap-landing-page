@@ -64,20 +64,20 @@ const categories = [
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet" />
-    <title>BrukMap - Explora lo alternativo</title>
+        <title>BrukMap - Explora lo alternativo</title>
   </head>
   <body class="min-h-screen bg-bg-primary text-text-primary overflow-x-hidden">
     <!-- Navigation -->
     <nav class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-4xl">
       <div class="bg-bg-elevated/90 backdrop-blur-lg border border-border rounded-2xl px-4 sm:px-6 py-3 shadow-lg shadow-black/20">
         <div class="flex items-center justify-between">
-          <a href="/" class="flex items-center gap-2">
-            <img src={`${base}logo.svg`} alt="BrukMap" class="h-7" />
+          <a href="/" class="flex items-center gap-2 py-1">
+            <img src={`${base}logo.svg`} alt="BrukMap" class="h-8 object-contain" />
           </a>
           <div class="hidden md:flex items-center gap-6">
-            <a href="#features" class="text-text-secondary hover:text-accent transition-colors text-sm" data-i18n="nav_features">Features</a>
-            <a href="#categories" class="text-text-secondary hover:text-accent transition-colors text-sm" data-i18n="nav_categories">Categorias</a>
-            <a href="#apoya" class="text-text-secondary hover:text-accent transition-colors text-sm" data-i18n="nav_support">Apoya</a>
+            <a href="#features" class="text-text-secondary hover:text-accent transition-colors text-sm nav-link-animated" data-i18n="nav_features">Features</a>
+            <a href="#categories" class="text-text-secondary hover:text-accent transition-colors text-sm nav-link-animated" data-i18n="nav_categories">Categorias</a>
+            <a href="#apoya" class="text-text-secondary hover:text-accent transition-colors text-sm nav-link-animated" data-i18n="nav_support">Apoya</a>
             <button id="open-download-modal" class="px-4 py-2 bg-accent text-bg-primary font-semibold rounded-xl hover:bg-accent-secondary transition-colors cursor-pointer text-sm" data-i18n="nav_download">
               Descargar
             </button>
@@ -95,75 +95,96 @@ const categories = [
             <button id="lang-toggle-mobile" class="text-text-secondary hover:text-accent transition-colors text-sm font-medium px-2 py-1 rounded-lg hover:bg-accent/10">
               ES
             </button>
-            <button class="text-text-primary" aria-label="Menu">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
-          </button>
+            <button id="mobile-menu-btn" class="text-text-primary p-1" aria-label="Menu">
+              <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+              <svg id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 hidden">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4 pt-4 border-t border-border">
+          <div class="flex flex-col gap-3">
+            <a href="#features" class="text-text-secondary hover:text-accent transition-colors py-2 text-center" data-i18n="nav_features">Features</a>
+            <a href="#categories" class="text-text-secondary hover:text-accent transition-colors py-2 text-center" data-i18n="nav_categories">Categorias</a>
+            <a href="#apoya" class="text-text-secondary hover:text-accent transition-colors py-2 text-center" data-i18n="nav_support">Apoya</a>
+            <a href={`${base}pronto`} class="text-text-secondary hover:text-accent transition-colors py-2 text-center flex items-center justify-center gap-1">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+              <span data-i18n="nav_soon">Pronto</span>
+            </a>
+            <button id="open-download-modal-mobile" class="w-full px-4 py-3 bg-accent text-bg-primary font-semibold rounded-xl hover:bg-accent-secondary transition-colors cursor-pointer text-sm mt-2" data-i18n="nav_download">
+              Descargar
+            </button>
+          </div>
         </div>
       </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
+    <section class="relative min-h-screen flex items-center justify-center pt-20 sm:pt-16 overflow-hidden">
       <!-- Background Grid -->
       <div class="absolute inset-0 opacity-20">
         <div class="absolute inset-0" style="background-image: linear-gradient(rgba(204, 255, 0, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(204, 255, 0, 0.1) 1px, transparent 1px); background-size: 50px 50px;"></div>
       </div>
       <!-- Glow Effect -->
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[150px]"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] bg-accent/10 rounded-full blur-[100px] sm:blur-[150px]"></div>
 
-      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
-          <div class="text-center lg:text-left">
-            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black mb-6 leading-tight">
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-20">
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div class="text-center lg:text-left order-2 lg:order-1">
+            <h1 class="text-4xl xs:text-5xl sm:text-6xl lg:text-7xl font-black mb-4 sm:mb-6 leading-tight">
               <span data-i18n="hero_title_1">Explora lo</span><br />
-              <span class="text-accent glow-text" data-i18n="hero_title_2">alternativo</span>
+              <span class="text-accent glow-text gradient-text-animated" data-i18n="hero_title_2">alternativo</span>
             </h1>
-            <p class="text-xl text-text-secondary mb-8 max-w-xl mx-auto lg:mx-0" data-i18n="hero_description">
+            <p class="text-base sm:text-xl text-text-secondary mb-6 sm:mb-8 max-w-xl mx-auto lg:mx-0 px-2 sm:px-0" data-i18n="hero_description">
               Descubre lugares unicos que solo los locales conocen. Cafeterias escondidas, galerias underground, tiendas vintage y mucho mas.
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <button data-open-modal data-platform="iOS" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent text-bg-primary font-bold rounded-xl hover:bg-accent-secondary transition-all glow cursor-pointer">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start px-4 sm:px-0">
+              <button data-open-modal data-platform="iOS" class="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 bg-accent text-bg-primary font-bold rounded-xl hover:bg-accent-secondary transition-all glow cursor-pointer btn-fill hover-glow-intense text-sm sm:text-base">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
                 </svg>
                 App Store
               </button>
-              <button data-open-modal data-platform="Android" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-bg-elevated border border-border text-text-primary font-bold rounded-xl hover:border-accent transition-all cursor-pointer">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+              <button data-open-modal data-platform="Android" class="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 bg-bg-elevated border border-border text-text-primary font-bold rounded-xl hover:border-accent transition-all cursor-pointer hover-lift card-glow-border text-sm sm:text-base">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/>
                 </svg>
                 Play Store
               </button>
             </div>
           </div>
-          <div class="relative flex justify-center">
+          <div class="relative flex justify-center order-1 lg:order-2 mb-6 lg:mb-0">
             <!-- Phone Mockup -->
-            <div class="relative w-[280px] h-[580px] bg-bg-elevated rounded-[3rem] border-4 border-border p-3 animate-float">
-              <div class="absolute top-6 left-1/2 -translate-x-1/2 w-24 h-6 bg-bg-primary rounded-full"></div>
-              <div class="w-full h-full bg-bg-secondary rounded-[2.5rem] overflow-hidden flex items-center justify-center">
-                <div class="text-center p-6">
-                  <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-accent/20 flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <div class="relative w-[220px] sm:w-[280px] h-[460px] sm:h-[580px] bg-bg-elevated rounded-[2.5rem] sm:rounded-[3rem] border-4 border-border p-2 sm:p-3 animate-float">
+              <div class="absolute top-4 sm:top-6 left-1/2 -translate-x-1/2 w-20 sm:w-24 h-5 sm:h-6 bg-bg-primary rounded-full"></div>
+              <div class="w-full h-full bg-bg-secondary rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden flex items-center justify-center">
+                <div class="text-center p-4 sm:p-6">
+                  <div class="w-16 sm:w-20 h-16 sm:h-20 mx-auto mb-3 sm:mb-4 rounded-2xl bg-accent/20 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 sm:w-10 h-8 sm:h-10 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                   </div>
-                  <p class="text-accent font-bold text-lg">BrukMap</p>
-                  <p class="text-text-tertiary text-sm mt-1">Preview</p>
+                  <p class="text-accent font-bold text-base sm:text-lg">BrukMap</p>
+                  <p class="text-text-tertiary text-xs sm:text-sm mt-1">Preview</p>
                 </div>
               </div>
             </div>
             <!-- Floating Elements -->
-            <div class="absolute -top-4 -right-4 w-16 h-16 bg-accent/20 rounded-xl flex items-center justify-center animate-float" style="animation-delay: 0.5s;">
-              <span class="text-2xl">☕</span>
+            <div class="absolute -top-2 sm:-top-4 right-0 sm:-right-4 w-12 sm:w-16 h-12 sm:h-16 bg-accent/20 rounded-xl flex items-center justify-center animate-float" style="animation-delay: 0.5s;">
+              <span class="text-xl sm:text-2xl">☕</span>
             </div>
-            <div class="absolute top-1/4 -left-8 w-14 h-14 bg-accent/20 rounded-xl flex items-center justify-center animate-float" style="animation-delay: 1s;">
-              <span class="text-xl">🎨</span>
+            <div class="absolute top-1/4 left-0 sm:-left-8 w-10 sm:w-14 h-10 sm:h-14 bg-accent/20 rounded-xl flex items-center justify-center animate-float" style="animation-delay: 1s;">
+              <span class="text-base sm:text-xl">🎨</span>
             </div>
-            <div class="absolute bottom-1/4 -right-6 w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center animate-float" style="animation-delay: 1.5s;">
-              <span class="text-lg">🎵</span>
+            <div class="absolute bottom-1/4 right-0 sm:-right-6 w-10 sm:w-12 h-10 sm:h-12 bg-accent/20 rounded-xl flex items-center justify-center animate-float" style="animation-delay: 1.5s;">
+              <span class="text-sm sm:text-lg">🎵</span>
             </div>
           </div>
         </div>
@@ -171,17 +192,17 @@ const categories = [
     </section>
 
     <!-- Video Section -->
-    <section class="py-24 bg-bg-secondary">
+    <section class="py-16 sm:py-24 bg-bg-secondary">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-          <h2 class="text-4xl sm:text-5xl font-black mb-4">
+        <div class="text-center mb-8 sm:mb-12 scroll-animate scroll-fade-up">
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-black mb-3 sm:mb-4">
             <span data-i18n="video_title_1">Descubre la</span> <span class="text-accent" data-i18n="video_title_2">experiencia</span>
           </h2>
-          <p class="text-text-secondary text-lg max-w-2xl mx-auto" data-i18n="video_description">
+          <p class="text-text-secondary text-base sm:text-lg max-w-2xl mx-auto px-2 sm:px-0" data-i18n="video_description">
             Mira como BrukMap te ayuda a explorar el lado alternativo de tu ciudad.
           </p>
         </div>
-        <div class="relative aspect-video rounded-2xl overflow-hidden border border-border shadow-2xl shadow-black/50">
+        <div class="relative aspect-video rounded-xl sm:rounded-2xl overflow-hidden border border-border shadow-2xl shadow-black/50 scroll-animate scroll-scale stagger-2">
           <iframe
             class="absolute inset-0 w-full h-full"
             src="https://www.youtube.com/embed/wrJV0qh10ME"
@@ -195,54 +216,54 @@ const categories = [
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="py-24 bg-bg-secondary">
+    <section id="features" class="py-16 sm:py-24 bg-bg-secondary">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl sm:text-5xl font-black mb-4">
+        <div class="text-center mb-10 sm:mb-16 scroll-animate scroll-fade-up">
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-black mb-3 sm:mb-4">
             <span data-i18n="features_title_1">Todo lo que</span> <span class="text-accent" data-i18n="features_title_2">necesitas</span>
           </h2>
-          <p class="text-text-secondary text-lg max-w-2xl mx-auto" data-i18n="features_description">
+          <p class="text-text-secondary text-base sm:text-lg max-w-2xl mx-auto px-2 sm:px-0" data-i18n="features_description">
             Herramientas pensadas para exploradores que buscan experiencias autenticas.
           </p>
         </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="p-6 bg-bg-elevated rounded-2xl border border-border hover:border-accent/50 transition-all group">
-            <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center text-accent mb-4 group-hover:bg-accent group-hover:text-bg-primary transition-all">
+          <div class="p-6 bg-bg-elevated rounded-2xl border border-border hover:border-accent/50 transition-all group scroll-animate scroll-fade-up stagger-1 hover-lift card-glow-border">
+            <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center text-accent mb-4 group-hover:bg-accent group-hover:text-bg-primary transition-all icon-hover-rotate">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>
             </div>
             <h3 class="text-xl font-bold mb-2" data-i18n="feature_1_title">Mapa de Spots</h3>
             <p class="text-text-secondary" data-i18n="feature_1_desc">Explora lugares alternativos cerca de ti con filtros por categoria y busqueda avanzada.</p>
           </div>
-          <div class="p-6 bg-bg-elevated rounded-2xl border border-border hover:border-accent/50 transition-all group">
-            <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center text-accent mb-4 group-hover:bg-accent group-hover:text-bg-primary transition-all">
+          <div class="p-6 bg-bg-elevated rounded-2xl border border-border hover:border-accent/50 transition-all group scroll-animate scroll-fade-up stagger-2 hover-lift card-glow-border">
+            <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center text-accent mb-4 group-hover:bg-accent group-hover:text-bg-primary transition-all icon-hover-rotate">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
             </div>
             <h3 class="text-xl font-bold mb-2" data-i18n="feature_2_title">Contribuciones</h3>
             <p class="text-text-secondary" data-i18n="feature_2_desc">Anade tus propios descubrimientos y ayuda a la comunidad a encontrar lugares unicos.</p>
           </div>
-          <div class="p-6 bg-bg-elevated rounded-2xl border border-border hover:border-accent/50 transition-all group">
-            <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center text-accent mb-4 group-hover:bg-accent group-hover:text-bg-primary transition-all">
+          <div class="p-6 bg-bg-elevated rounded-2xl border border-border hover:border-accent/50 transition-all group scroll-animate scroll-fade-up stagger-3 hover-lift card-glow-border">
+            <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center text-accent mb-4 group-hover:bg-accent group-hover:text-bg-primary transition-all icon-hover-rotate">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>
             </div>
             <h3 class="text-xl font-bold mb-2" data-i18n="feature_3_title">Sanctuary</h3>
             <p class="text-text-secondary" data-i18n="feature_3_desc">Guarda spots privados solo para ti y compartelos con amigos en burbujas exclusivas.</p>
           </div>
-          <div class="p-6 bg-bg-elevated rounded-2xl border border-border hover:border-accent/50 transition-all group">
-            <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center text-accent mb-4 group-hover:bg-accent group-hover:text-bg-primary transition-all">
+          <div class="p-6 bg-bg-elevated rounded-2xl border border-border hover:border-accent/50 transition-all group scroll-animate scroll-fade-up stagger-4 hover-lift card-glow-border">
+            <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center text-accent mb-4 group-hover:bg-accent group-hover:text-bg-primary transition-all icon-hover-rotate">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
             </div>
             <h3 class="text-xl font-bold mb-2" data-i18n="feature_4_title">Modo Offline</h3>
             <p class="text-text-secondary" data-i18n="feature_4_desc">Descarga datos de ciudades y explora sin conexion a internet.</p>
           </div>
-          <div class="p-6 bg-bg-elevated rounded-2xl border border-border hover:border-accent/50 transition-all group">
-            <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center text-accent mb-4 group-hover:bg-accent group-hover:text-bg-primary transition-all">
+          <div class="p-6 bg-bg-elevated rounded-2xl border border-border hover:border-accent/50 transition-all group scroll-animate scroll-fade-up stagger-5 hover-lift card-glow-border">
+            <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center text-accent mb-4 group-hover:bg-accent group-hover:text-bg-primary transition-all icon-hover-rotate">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" /></svg>
             </div>
             <h3 class="text-xl font-bold mb-2" data-i18n="feature_5_title">Eventos</h3>
             <p class="text-text-secondary" data-i18n="feature_5_desc">Descubre eventos alternativos cerca de ti con calendario y filtros.</p>
           </div>
-          <div class="p-6 bg-bg-elevated rounded-2xl border border-border hover:border-accent/50 transition-all group">
-            <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center text-accent mb-4 group-hover:bg-accent group-hover:text-bg-primary transition-all">
+          <div class="p-6 bg-bg-elevated rounded-2xl border border-border hover:border-accent/50 transition-all group scroll-animate scroll-fade-up stagger-6 hover-lift card-glow-border">
+            <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center text-accent mb-4 group-hover:bg-accent group-hover:text-bg-primary transition-all icon-hover-rotate">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" /></svg>
             </div>
             <h3 class="text-xl font-bold mb-2" data-i18n="feature_6_title">Burbujas</h3>
@@ -253,92 +274,160 @@ const categories = [
     </section>
 
     <!-- Categories Section -->
-    <section id="categories" class="py-24 bg-bg-secondary">
+    <section id="categories" class="py-16 sm:py-24 bg-bg-secondary">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl sm:text-5xl font-black mb-4">
+        <div class="text-center mb-10 sm:mb-16 scroll-animate scroll-fade-up">
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-black mb-3 sm:mb-4">
             <span data-i18n="categories_title_1">Explora por</span> <span class="text-accent" data-i18n="categories_title_2">categoria</span>
           </h2>
-          <p class="text-text-secondary text-lg max-w-2xl mx-auto" data-i18n="categories_description">
+          <p class="text-text-secondary text-base sm:text-lg max-w-2xl mx-auto px-2 sm:px-0" data-i18n="categories_description">
             Desde cafeterias con encanto hasta spots 420 friendly. Encuentra lo que buscas.
           </p>
         </div>
-        <div class="flex flex-wrap justify-center gap-4">
-          <div class="px-6 py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-2"><span class="text-xl">☕</span><span class="font-medium" data-i18n="cat_coffee">Cafeteria</span></div>
-          <div class="px-6 py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-2"><span class="text-xl">🎨</span><span class="font-medium" data-i18n="cat_art">Arte</span></div>
-          <div class="px-6 py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-2"><span class="text-xl">👗</span><span class="font-medium" data-i18n="cat_vintage">Vintage</span></div>
-          <div class="px-6 py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-2"><span class="text-xl">🏙️</span><span class="font-medium" data-i18n="cat_rooftop">Rooftop</span></div>
-          <div class="px-6 py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-2"><span class="text-xl">🎵</span><span class="font-medium" data-i18n="cat_vinyl">Vinilos</span></div>
-          <div class="px-6 py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-2"><span class="text-xl">🎭</span><span class="font-medium" data-i18n="cat_graffiti">Graffiti</span></div>
-          <div class="px-6 py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-2"><span class="text-xl">🧘</span><span class="font-medium" data-i18n="cat_yoga">Yoga</span></div>
-          <div class="px-6 py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-2"><span class="text-xl">🛹</span><span class="font-medium" data-i18n="cat_skatepark">Skatepark</span></div>
-          <div class="px-6 py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-2"><span class="text-xl">🥬</span><span class="font-medium" data-i18n="cat_vegan">Vegano</span></div>
-          <div class="px-6 py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-2"><span class="text-xl">🌿</span><span class="font-medium" data-i18n="cat_420">420</span></div>
-          <div class="px-6 py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-2"><span class="text-xl">📚</span><span class="font-medium" data-i18n="cat_books">Libros</span></div>
-          <div class="px-6 py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-2"><span class="text-xl">💻</span><span class="font-medium" data-i18n="cat_coworking">Coworking</span></div>
+        <div class="flex flex-wrap justify-center gap-2 sm:gap-4">
+          <div class="px-4 sm:px-6 py-2 sm:py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 scroll-animate scroll-fade-up stagger-1 pill-bounce"><span class="text-lg sm:text-xl pill-emoji">☕</span><span class="font-medium text-sm sm:text-base" data-i18n="cat_coffee">Cafeteria</span></div>
+          <div class="px-4 sm:px-6 py-2 sm:py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 scroll-animate scroll-fade-up stagger-1 pill-bounce"><span class="text-lg sm:text-xl pill-emoji">🎨</span><span class="font-medium text-sm sm:text-base" data-i18n="cat_art">Arte</span></div>
+          <div class="px-4 sm:px-6 py-2 sm:py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 scroll-animate scroll-fade-up stagger-2 pill-bounce"><span class="text-lg sm:text-xl pill-emoji">👗</span><span class="font-medium text-sm sm:text-base" data-i18n="cat_vintage">Vintage</span></div>
+          <div class="px-4 sm:px-6 py-2 sm:py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 scroll-animate scroll-fade-up stagger-2 pill-bounce"><span class="text-lg sm:text-xl pill-emoji">🏙️</span><span class="font-medium text-sm sm:text-base" data-i18n="cat_rooftop">Rooftop</span></div>
+          <div class="px-4 sm:px-6 py-2 sm:py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 scroll-animate scroll-fade-up stagger-3 pill-bounce"><span class="text-lg sm:text-xl pill-emoji">🎵</span><span class="font-medium text-sm sm:text-base" data-i18n="cat_vinyl">Vinilos</span></div>
+          <div class="px-4 sm:px-6 py-2 sm:py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 scroll-animate scroll-fade-up stagger-3 pill-bounce"><span class="text-lg sm:text-xl pill-emoji">🎭</span><span class="font-medium text-sm sm:text-base" data-i18n="cat_graffiti">Graffiti</span></div>
+          <div class="px-4 sm:px-6 py-2 sm:py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 scroll-animate scroll-fade-up stagger-4 pill-bounce"><span class="text-lg sm:text-xl pill-emoji">🧘</span><span class="font-medium text-sm sm:text-base" data-i18n="cat_yoga">Yoga</span></div>
+          <div class="px-4 sm:px-6 py-2 sm:py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 scroll-animate scroll-fade-up stagger-4 pill-bounce"><span class="text-lg sm:text-xl pill-emoji">🛹</span><span class="font-medium text-sm sm:text-base" data-i18n="cat_skatepark">Skatepark</span></div>
+          <div class="px-4 sm:px-6 py-2 sm:py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 scroll-animate scroll-fade-up stagger-5 pill-bounce"><span class="text-lg sm:text-xl pill-emoji">🥬</span><span class="font-medium text-sm sm:text-base" data-i18n="cat_vegan">Vegano</span></div>
+          <div class="px-4 sm:px-6 py-2 sm:py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 scroll-animate scroll-fade-up stagger-5 pill-bounce"><span class="text-lg sm:text-xl pill-emoji">🌿</span><span class="font-medium text-sm sm:text-base" data-i18n="cat_420">420</span></div>
+          <div class="px-4 sm:px-6 py-2 sm:py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 scroll-animate scroll-fade-up stagger-6 pill-bounce"><span class="text-lg sm:text-xl pill-emoji">📚</span><span class="font-medium text-sm sm:text-base" data-i18n="cat_books">Libros</span></div>
+          <div class="px-4 sm:px-6 py-2 sm:py-3 bg-bg-elevated rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 scroll-animate scroll-fade-up stagger-6 pill-bounce"><span class="text-lg sm:text-xl pill-emoji">💻</span><span class="font-medium text-sm sm:text-base" data-i18n="cat_coworking">Coworking</span></div>
         </div>
       </div>
     </section>
 
     <!-- Social Impact Section -->
-    <section class="py-24 bg-bg-secondary">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <div class="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 border border-accent/20 rounded-full mb-6">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span class="text-accent font-medium text-sm" data-i18n="impact_badge">Impacto social</span>
-            </div>
-            <h2 class="text-4xl sm:text-5xl font-black mb-6">
-              <span data-i18n="impact_title_1">Visibilidad para quienes la</span> <span class="text-accent" data-i18n="impact_title_2">merecen</span>
-            </h2>
-            <p class="text-text-secondary text-lg mb-6" data-i18n="impact_desc_1">
-              Muchos negocios locales, artistas callejeros y espacios culturales no aparecen en los mapas tradicionales. BrukMap les da el escenario que merecen.
-            </p>
-            <p class="text-text-secondary text-lg" data-i18n="impact_desc_2">
-              Cada spot que descubres y compartes es un voto de apoyo para esos lugares que hacen unica a tu ciudad.
-            </p>
+    <section class="py-16 sm:py-24 bg-bg-secondary">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Header -->
+        <div class="text-center mb-10 sm:mb-16 scroll-animate scroll-fade-up">
+          <div class="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-accent/10 border border-accent/20 rounded-full mb-4 sm:mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 sm:w-5 sm:h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span class="text-accent font-medium text-xs sm:text-sm" data-i18n="impact_badge">Impacto social</span>
           </div>
-          <div class="grid grid-cols-2 gap-4">
-            <div class="bg-bg-elevated border border-border rounded-2xl p-6 text-center">
-              <div class="w-12 h-12 mx-auto mb-4 bg-accent/20 rounded-xl flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-black mb-4 sm:mb-6 px-2 sm:px-0">
+            <span data-i18n="impact_title_1">Visibilidad para quienes la</span> <span class="text-accent" data-i18n="impact_title_2">merecen</span>
+          </h2>
+          <p class="text-text-secondary text-base sm:text-lg max-w-3xl mx-auto px-2 sm:px-0" data-i18n="impact_desc_1">
+            Muchos negocios locales, artistas callejeros y espacios culturales no aparecen en los mapas tradicionales. BrukMap les da el escenario que merecen.
+          </p>
+        </div>
+
+        <!-- Statistics -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 mb-10 sm:mb-16">
+          <div class="text-center p-3 sm:p-6 scroll-animate scroll-fade-up stagger-1">
+            <div class="text-3xl sm:text-4xl md:text-5xl font-black text-accent mb-1 sm:mb-2 gradient-text-animated" data-i18n="stat_spots">50K+</div>
+            <div class="text-text-secondary text-xs sm:text-sm" data-i18n="stat_spots_label">Spots por descubrir</div>
+          </div>
+          <div class="text-center p-3 sm:p-6 scroll-animate scroll-fade-up stagger-2">
+            <div class="text-3xl sm:text-4xl md:text-5xl font-black text-accent mb-1 sm:mb-2 gradient-text-animated" data-i18n="stat_cities">100+</div>
+            <div class="text-text-secondary text-xs sm:text-sm" data-i18n="stat_cities_label">Ciudades en el mundo</div>
+          </div>
+          <div class="text-center p-3 sm:p-6 scroll-animate scroll-fade-up stagger-3">
+            <div class="text-3xl sm:text-4xl md:text-5xl font-black text-accent mb-1 sm:mb-2 gradient-text-animated" data-i18n="stat_businesses">10K+</div>
+            <div class="text-text-secondary text-xs sm:text-sm" data-i18n="stat_businesses_label">Negocios locales</div>
+          </div>
+          <div class="text-center p-3 sm:p-6 scroll-animate scroll-fade-up stagger-4">
+            <div class="text-3xl sm:text-4xl md:text-5xl font-black text-accent mb-1 sm:mb-2 gradient-text-animated" data-i18n="stat_explorers">1M+</div>
+            <div class="text-text-secondary text-xs sm:text-sm" data-i18n="stat_explorers_label">Exploradores</div>
+          </div>
+        </div>
+
+        <!-- Impact Cards - Expanded -->
+        <div class="grid md:grid-cols-2 gap-4 sm:gap-6">
+          <!-- Card 1: Negocios locales -->
+          <div class="bg-bg-elevated border border-border rounded-xl sm:rounded-2xl p-5 sm:p-8 hover:border-accent/50 transition-all group scroll-animate scroll-fade-left stagger-1 hover-lift card-glow-border">
+            <div class="flex items-start gap-3 sm:gap-5">
+              <div class="w-12 h-12 sm:w-16 sm:h-16 bg-accent/20 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-accent group-hover:text-bg-primary transition-all icon-hover-rotate">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 sm:w-8 sm:h-8 text-accent group-hover:text-bg-primary transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                 </svg>
               </div>
-              <div class="font-bold mb-1" data-i18n="impact_local">Negocios locales</div>
-              <p class="text-text-tertiary text-sm" data-i18n="impact_local_desc">Tiendas de barrio y emprendimientos</p>
+              <div>
+                <h3 class="text-xl font-bold mb-2" data-i18n="impact_local">Negocios locales</h3>
+                <p class="text-text-secondary mb-3" data-i18n="impact_local_desc_long">Tiendas de barrio, emprendimientos familiares y comercios independientes que luchan contra las grandes cadenas. Les damos la visibilidad que merecen.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-3 py-1 bg-bg-secondary rounded-full text-xs text-text-tertiary" data-i18n="impact_local_tag1">Tiendas de barrio</span>
+                  <span class="px-3 py-1 bg-bg-secondary rounded-full text-xs text-text-tertiary" data-i18n="impact_local_tag2">Emprendimientos</span>
+                  <span class="px-3 py-1 bg-bg-secondary rounded-full text-xs text-text-tertiary" data-i18n="impact_local_tag3">Comercio justo</span>
+                </div>
+              </div>
             </div>
-            <div class="bg-bg-elevated border border-border rounded-2xl p-6 text-center">
-              <div class="w-12 h-12 mx-auto mb-4 bg-accent/20 rounded-xl flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M7 4V2M17 4V2M3 8h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z" />
+          </div>
+
+          <!-- Card 2: Arte urbano -->
+          <div class="bg-bg-elevated border border-border rounded-xl sm:rounded-2xl p-5 sm:p-8 hover:border-accent/50 transition-all group scroll-animate scroll-fade-right stagger-1 hover-lift card-glow-border">
+            <div class="flex items-start gap-3 sm:gap-5">
+              <div class="w-12 h-12 sm:w-16 sm:h-16 bg-accent/20 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-accent group-hover:text-bg-primary transition-all icon-hover-rotate">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 sm:w-8 sm:h-8 text-accent group-hover:text-bg-primary transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                 </svg>
               </div>
-              <div class="font-bold mb-1" data-i18n="impact_art">Arte urbano</div>
-              <p class="text-text-tertiary text-sm" data-i18n="impact_art_desc">Murales, galerias y espacios creativos</p>
+              <div>
+                <h3 class="text-xl font-bold mb-2" data-i18n="impact_art">Arte urbano</h3>
+                <p class="text-text-secondary mb-3" data-i18n="impact_art_desc_long">Murales, galerias independientes, estudios de artistas y espacios creativos que transforman las ciudades. El arte callejero merece ser encontrado.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-3 py-1 bg-bg-secondary rounded-full text-xs text-text-tertiary" data-i18n="impact_art_tag1">Murales</span>
+                  <span class="px-3 py-1 bg-bg-secondary rounded-full text-xs text-text-tertiary" data-i18n="impact_art_tag2">Galerias</span>
+                  <span class="px-3 py-1 bg-bg-secondary rounded-full text-xs text-text-tertiary" data-i18n="impact_art_tag3">Street art</span>
+                </div>
+              </div>
             </div>
-            <div class="bg-bg-elevated border border-border rounded-2xl p-6 text-center">
-              <div class="w-12 h-12 mx-auto mb-4 bg-accent/20 rounded-xl flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          </div>
+
+          <!-- Card 3: Comunidades -->
+          <div class="bg-bg-elevated border border-border rounded-xl sm:rounded-2xl p-5 sm:p-8 hover:border-accent/50 transition-all group scroll-animate scroll-fade-left stagger-2 hover-lift card-glow-border">
+            <div class="flex items-start gap-3 sm:gap-5">
+              <div class="w-12 h-12 sm:w-16 sm:h-16 bg-accent/20 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-accent group-hover:text-bg-primary transition-all icon-hover-rotate">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 sm:w-8 sm:h-8 text-accent group-hover:text-bg-primary transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
-              <div class="font-bold mb-1" data-i18n="impact_community">Comunidades</div>
-              <p class="text-text-tertiary text-sm" data-i18n="impact_community_desc">Colectivos y espacios de encuentro</p>
+              <div>
+                <h3 class="text-xl font-bold mb-2" data-i18n="impact_community">Comunidades</h3>
+                <p class="text-text-secondary mb-3" data-i18n="impact_community_desc_long">Colectivos, espacios de coworking alternativos, centros culturales y puntos de encuentro para personas con intereses compartidos.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-3 py-1 bg-bg-secondary rounded-full text-xs text-text-tertiary" data-i18n="impact_community_tag1">Colectivos</span>
+                  <span class="px-3 py-1 bg-bg-secondary rounded-full text-xs text-text-tertiary" data-i18n="impact_community_tag2">Coworking</span>
+                  <span class="px-3 py-1 bg-bg-secondary rounded-full text-xs text-text-tertiary" data-i18n="impact_community_tag3">Centros culturales</span>
+                </div>
+              </div>
             </div>
-            <div class="bg-bg-elevated border border-border rounded-2xl p-6 text-center">
-              <div class="w-12 h-12 mx-auto mb-4 bg-accent/20 rounded-xl flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          </div>
+
+          <!-- Card 4: Cultura alternativa -->
+          <div class="bg-bg-elevated border border-border rounded-xl sm:rounded-2xl p-5 sm:p-8 hover:border-accent/50 transition-all group scroll-animate scroll-fade-right stagger-2 hover-lift card-glow-border">
+            <div class="flex items-start gap-3 sm:gap-5">
+              <div class="w-12 h-12 sm:w-16 sm:h-16 bg-accent/20 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-accent group-hover:text-bg-primary transition-all icon-hover-rotate">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 sm:w-8 sm:h-8 text-accent group-hover:text-bg-primary transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                 </svg>
               </div>
-              <div class="font-bold mb-1" data-i18n="impact_culture">Cultura alternativa</div>
-              <p class="text-text-tertiary text-sm" data-i18n="impact_culture_desc">Lo que hace diferente a cada ciudad</p>
+              <div>
+                <h3 class="text-xl font-bold mb-2" data-i18n="impact_culture">Cultura alternativa</h3>
+                <p class="text-text-secondary mb-3" data-i18n="impact_culture_desc_long">Todo lo que hace unica a cada ciudad y que no encontraras en las guias turisticas tradicionales. Lo autentico, lo underground, lo diferente.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-3 py-1 bg-bg-secondary rounded-full text-xs text-text-tertiary" data-i18n="impact_culture_tag1">Underground</span>
+                  <span class="px-3 py-1 bg-bg-secondary rounded-full text-xs text-text-tertiary" data-i18n="impact_culture_tag2">Autentico</span>
+                  <span class="px-3 py-1 bg-bg-secondary rounded-full text-xs text-text-tertiary" data-i18n="impact_culture_tag3">Local</span>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
+
+        <!-- Bottom message -->
+        <div class="text-center mt-12">
+          <p class="text-text-secondary text-lg" data-i18n="impact_desc_2">
+            Cada spot que descubres y compartes es un voto de apoyo para esos lugares que hacen unica a tu ciudad.
+          </p>
         </div>
       </div>
     </section>
@@ -392,27 +481,27 @@ const categories = [
     </section>
 
     <!-- Support Section -->
-    <section id="apoya" class="py-24 bg-bg-secondary">
+    <section id="apoya" class="py-16 sm:py-24 bg-bg-secondary">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-          <div class="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 border border-accent/20 rounded-full mb-6">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <div class="text-center mb-8 sm:mb-12 scroll-animate scroll-fade-up">
+          <div class="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-accent/10 border border-accent/20 rounded-full mb-4 sm:mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 sm:w-5 sm:h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
             </svg>
-            <span class="text-accent font-medium text-sm" data-i18n="support_badge">Apoya el proyecto</span>
+            <span class="text-accent font-medium text-xs sm:text-sm" data-i18n="support_badge">Apoya el proyecto</span>
           </div>
-          <h2 class="text-4xl sm:text-5xl font-black mb-4">
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-black mb-3 sm:mb-4">
             <span data-i18n="support_title_1">Crees en</span> <span class="text-accent" data-i18n="support_title_2">BrukMap</span>?
           </h2>
-          <p class="text-text-secondary text-lg max-w-2xl mx-auto mb-4" data-i18n="support_description">
+          <p class="text-text-secondary text-base sm:text-lg max-w-2xl mx-auto mb-3 sm:mb-4 px-2 sm:px-0" data-i18n="support_description">
             Si crees en este proyecto y quieres verlo crecer, puedes apoyarnos. Cada dolar que aportes se convertira en tiempo gratis de suscripcion Premium cuando lancemos.
           </p>
-          <p class="text-accent font-medium" data-i18n="support_tagline">Tu apoyo de hoy es tu Premium de manana.</p>
+          <p class="text-accent font-medium text-sm sm:text-base" data-i18n="support_tagline">Tu apoyo de hoy es tu Premium de manana.</p>
         </div>
 
-        <div class="flex justify-center">
-          <button id="open-support-modal" class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-accent text-bg-primary font-bold rounded-xl hover:bg-accent-secondary transition-all glow cursor-pointer">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <div class="flex justify-center scroll-animate scroll-scale stagger-2 px-4 sm:px-0">
+          <button id="open-support-modal" class="inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-3.5 sm:py-4 bg-accent text-bg-primary font-bold rounded-xl hover:bg-accent-secondary transition-all glow cursor-pointer btn-fill hover-glow-intense text-sm sm:text-base">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 sm:w-6 sm:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
             </svg>
             <span data-i18n="support_button">Apoyar BrukMap</span>
@@ -422,31 +511,31 @@ const categories = [
     </section>
 
     <!-- CTA Section -->
-    <section id="download" class="py-24 bg-bg-secondary">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-6">
-          <span data-i18n="cta_title_1">Empieza a</span> <span class="text-accent glow-text" data-i18n="cta_title_2">explorar</span>
+    <section id="download" class="py-16 sm:py-24 bg-bg-secondary">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center scroll-animate scroll-fade-up">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 sm:mb-6">
+          <span data-i18n="cta_title_1">Empieza a</span> <span class="text-accent glow-text gradient-text-animated" data-i18n="cta_title_2">explorar</span>
         </h2>
-        <p class="text-text-secondary text-xl mb-10 max-w-2xl mx-auto" data-i18n="cta_description">
+        <p class="text-text-secondary text-base sm:text-xl mb-8 sm:mb-10 max-w-2xl mx-auto px-2 sm:px-0" data-i18n="cta_description">
           Descarga BrukMap gratis y descubre el lado alternativo de tu ciudad.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <button data-open-modal data-platform="iOS" class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-accent text-bg-primary font-bold rounded-xl hover:bg-accent-secondary transition-all glow cursor-pointer">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4 sm:px-0">
+          <button data-open-modal data-platform="iOS" class="inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-3.5 sm:py-4 bg-accent text-bg-primary font-bold rounded-xl hover:bg-accent-secondary transition-all glow cursor-pointer btn-fill hover-glow-intense">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 sm:w-8 sm:h-8" viewBox="0 0 24 24" fill="currentColor">
               <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
             </svg>
             <div class="text-left">
-              <div class="text-xs opacity-80" data-i18n="cta_download_on">Descargar en</div>
-              <div class="text-lg font-bold -mt-1">App Store</div>
+              <div class="text-[10px] sm:text-xs opacity-80" data-i18n="cta_download_on">Descargar en</div>
+              <div class="text-base sm:text-lg font-bold -mt-0.5 sm:-mt-1">App Store</div>
             </div>
           </button>
-          <button data-open-modal data-platform="Android" class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-bg-elevated border border-border text-text-primary font-bold rounded-xl hover:border-accent transition-all cursor-pointer">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+          <button data-open-modal data-platform="Android" class="inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-3.5 sm:py-4 bg-bg-elevated border border-border text-text-primary font-bold rounded-xl hover:border-accent transition-all cursor-pointer hover-lift card-glow-border">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 sm:w-8 sm:h-8" viewBox="0 0 24 24" fill="currentColor">
               <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/>
             </svg>
             <div class="text-left">
-              <div class="text-xs text-text-secondary" data-i18n="cta_available_on">Disponible en</div>
-              <div class="text-lg font-bold -mt-1">Google Play</div>
+              <div class="text-[10px] sm:text-xs text-text-secondary" data-i18n="cta_available_on">Disponible en</div>
+              <div class="text-base sm:text-lg font-bold -mt-0.5 sm:-mt-1">Google Play</div>
             </div>
           </button>
         </div>
@@ -454,29 +543,29 @@ const categories = [
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 bg-bg-secondary">
+    <footer class="py-10 sm:py-12 bg-bg-secondary">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid md:grid-cols-4 gap-8 mb-8">
-          <div class="md:col-span-2">
-            <img src={`${base}logo.svg`} alt="BrukMap" class="h-8 mb-4" />
-            <p class="text-text-secondary max-w-md" data-i18n="footer_description">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-8">
+          <div class="col-span-2">
+            <img src={`${base}logo.svg`} alt="BrukMap" class="h-8 sm:h-9 object-contain mb-3 sm:mb-4" />
+            <p class="text-text-secondary text-sm sm:text-base max-w-md" data-i18n="footer_description">
               Tu guia para explorar el lado alternativo de las ciudades. Descubre lugares unicos que solo los locales conocen.
             </p>
           </div>
           <div>
-            <h4 class="font-bold mb-4" data-i18n="footer_legal">Legal</h4>
-            <ul class="space-y-2 text-text-secondary">
+            <h4 class="font-bold mb-3 sm:mb-4 text-sm sm:text-base" data-i18n="footer_legal">Legal</h4>
+            <ul class="space-y-2 text-text-secondary text-sm sm:text-base">
               <li><a href={`${base}terminos`} class="hover:text-accent transition-colors" data-i18n="footer_terms">Terminos de uso</a></li>
               <li><a href={`${base}privacidad`} class="hover:text-accent transition-colors" data-i18n="footer_privacy">Privacidad</a></li>
             </ul>
           </div>
           <div>
-            <h4 class="font-bold mb-4" data-i18n="footer_contact">Contacto</h4>
-            <ul class="space-y-2 text-text-secondary">
-              <li><a href="mailto:brukmap@gmail.com" class="hover:text-accent transition-colors">brukmap@gmail.com</a></li>
+            <h4 class="font-bold mb-3 sm:mb-4 text-sm sm:text-base" data-i18n="footer_contact">Contacto</h4>
+            <ul class="space-y-2 text-text-secondary text-sm sm:text-base">
+              <li><a href="mailto:brukmap@gmail.com" class="hover:text-accent transition-colors break-all sm:break-normal">brukmap@gmail.com</a></li>
               <li><button id="open-contact-modal" class="hover:text-accent transition-colors cursor-pointer" data-i18n="footer_support">Soporte</button></li>
             </ul>
-            <div class="flex gap-4 mt-4">
+            <div class="flex gap-3 sm:gap-4 mt-3 sm:mt-4">
               <a href="https://www.instagram.com/brukmap?igsh=enI1eWluM3plaGo1" target="_blank" rel="noopener noreferrer" class="text-text-secondary hover:text-accent transition-colors" aria-label="Instagram">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
@@ -671,7 +760,7 @@ const categories = [
                 <span data-i18n="modal_sub_3">Cancela cuando quieras</span>
               </li>
             </ul>
-            <a href="#" class="block w-full py-3 bg-accent text-bg-primary font-bold rounded-xl text-center hover:bg-accent-secondary transition-all" data-i18n="modal_subscribe">
+            <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TU_BUTTON_ID_SUSCRIPCION" target="_blank" rel="noopener noreferrer" class="block w-full py-3 bg-accent text-bg-primary font-bold rounded-xl text-center hover:bg-accent-secondary transition-all" data-i18n="modal_subscribe">
               Suscribirme
             </a>
           </div>
@@ -709,7 +798,7 @@ const categories = [
                 <span data-i18n="modal_don_3">Badge de Supporter</span>
               </li>
             </ul>
-            <a href="#" id="donate-btn" class="block w-full py-3 bg-bg-elevated border border-accent text-accent font-bold rounded-xl text-center hover:bg-accent hover:text-bg-primary transition-all" data-i18n="modal_donate">
+            <a href="https://paypal.me/TU_USUARIO_PAYPAL/10" id="donate-btn" target="_blank" rel="noopener noreferrer" class="block w-full py-3 bg-bg-elevated border border-accent text-accent font-bold rounded-xl text-center hover:bg-accent hover:text-bg-primary transition-all" data-i18n="modal_donate">
               Donar
             </a>
           </div>
@@ -984,9 +1073,21 @@ const categories = [
           impact_desc_1: 'Muchos negocios locales, artistas callejeros y espacios culturales no aparecen en los mapas tradicionales. BrukMap les da el escenario que merecen.',
           impact_desc_2: 'Cada spot que descubres y compartes es un voto de apoyo para esos lugares que hacen unica a tu ciudad.',
           impact_local: 'Negocios locales', impact_local_desc: 'Tiendas de barrio y emprendimientos',
+          impact_local_desc_long: 'Tiendas de barrio, emprendimientos familiares y comercios independientes que luchan contra las grandes cadenas. Les damos la visibilidad que merecen.',
+          impact_local_tag1: 'Tiendas de barrio', impact_local_tag2: 'Emprendimientos', impact_local_tag3: 'Comercio justo',
           impact_art: 'Arte urbano', impact_art_desc: 'Murales, galerias y espacios creativos',
+          impact_art_desc_long: 'Murales escondidos, galerias independientes, estudios de artistas y espacios donde la creatividad florece lejos del mainstream.',
+          impact_art_tag1: 'Murales', impact_art_tag2: 'Galerias', impact_art_tag3: 'Espacios creativos',
           impact_community: 'Comunidades', impact_community_desc: 'Colectivos y espacios de encuentro',
+          impact_community_desc_long: 'Colectivos vecinales, espacios de coworking alternativos, huertos urbanos y lugares donde las comunidades se reunen y crecen juntas.',
+          impact_community_tag1: 'Colectivos', impact_community_tag2: 'Coworking', impact_community_tag3: 'Huertos urbanos',
           impact_culture: 'Cultura alternativa', impact_culture_desc: 'Lo que hace diferente a cada ciudad',
+          impact_culture_desc_long: 'Festivales underground, venues de musica en vivo, tiendas de vinilos, teatros independientes y todo lo que hace unica a cada ciudad.',
+          impact_culture_tag1: 'Festivales', impact_culture_tag2: 'Musica en vivo', impact_culture_tag3: 'Vinilos',
+          stat_spots: '50K+', stat_spots_label: 'Spots por descubrir',
+          stat_cities: '100+', stat_cities_label: 'Ciudades en el mundo',
+          stat_businesses: '10K+', stat_businesses_label: 'Negocios locales',
+          stat_explorers: '1M+', stat_explorers_label: 'Exploradores',
           showcase_title_1: 'Disenado para',
           showcase_title_2: 'exploradores',
           showcase_description: 'Interfaz intuitiva y minimalista que te permite descubrir sin distracciones.',
@@ -1071,9 +1172,21 @@ const categories = [
           impact_desc_1: 'Many local businesses, street artists and cultural spaces don\'t appear on traditional maps. BrukMap gives them the stage they deserve.',
           impact_desc_2: 'Every spot you discover and share is a vote of support for those places that make your city unique.',
           impact_local: 'Local businesses', impact_local_desc: 'Neighborhood shops and ventures',
+          impact_local_desc_long: 'Neighborhood shops, family ventures and independent businesses fighting against big chains. We give them the visibility they deserve.',
+          impact_local_tag1: 'Local shops', impact_local_tag2: 'Ventures', impact_local_tag3: 'Fair trade',
           impact_art: 'Urban art', impact_art_desc: 'Murals, galleries and creative spaces',
+          impact_art_desc_long: 'Hidden murals, independent galleries, artist studios and spaces where creativity flourishes away from the mainstream.',
+          impact_art_tag1: 'Murals', impact_art_tag2: 'Galleries', impact_art_tag3: 'Creative spaces',
           impact_community: 'Communities', impact_community_desc: 'Collectives and meeting spaces',
+          impact_community_desc_long: 'Neighborhood collectives, alternative coworking spaces, urban gardens and places where communities gather and grow together.',
+          impact_community_tag1: 'Collectives', impact_community_tag2: 'Coworking', impact_community_tag3: 'Urban gardens',
           impact_culture: 'Alternative culture', impact_culture_desc: 'What makes each city different',
+          impact_culture_desc_long: 'Underground festivals, live music venues, vinyl shops, independent theaters and everything that makes each city unique.',
+          impact_culture_tag1: 'Festivals', impact_culture_tag2: 'Live music', impact_culture_tag3: 'Vinyl',
+          stat_spots: '50K+', stat_spots_label: 'Spots to discover',
+          stat_cities: '100+', stat_cities_label: 'Cities worldwide',
+          stat_businesses: '10K+', stat_businesses_label: 'Local businesses',
+          stat_explorers: '1M+', stat_explorers_label: 'Explorers',
           showcase_title_1: 'Designed for',
           showcase_title_2: 'explorers',
           showcase_description: 'Intuitive and minimalist interface that lets you discover without distractions.',
@@ -1293,6 +1406,16 @@ const categories = [
         }
       });
 
+      // PayPal - Actualizar URL de donacion con monto personalizado
+      const customAmountInput = document.getElementById('custom-amount');
+      const donateBtn = document.getElementById('donate-btn');
+      const paypalUsername = 'TU_USUARIO_PAYPAL'; // Reemplaza con tu usuario de PayPal.me
+
+      customAmountInput.addEventListener('input', () => {
+        const amount = parseInt(customAmountInput.value) || 10;
+        donateBtn.href = `https://paypal.me/${paypalUsername}/${amount}USD`;
+      });
+
       // Download Modal
       const downloadModal = document.getElementById('download-modal');
       const downloadBackdrop = document.getElementById('download-backdrop');
@@ -1405,6 +1528,66 @@ const categories = [
 
       // Dynamic year for copyright
       document.getElementById('current-year').textContent = new Date().getFullYear();
+
+      // Scroll Animations with Intersection Observer
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -50px 0px',
+        threshold: 0.1
+      };
+
+      const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+            // Once animated, stop observing
+            scrollObserver.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      // Observe all elements with scroll-animate class
+      document.querySelectorAll('.scroll-animate').forEach(el => {
+        scrollObserver.observe(el);
+      });
+
+      // Mobile Menu Toggle
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuIconOpen = document.getElementById('menu-icon-open');
+      const menuIconClose = document.getElementById('menu-icon-close');
+
+      mobileMenuBtn?.addEventListener('click', () => {
+        const isOpen = !mobileMenu.classList.contains('hidden');
+
+        if (isOpen) {
+          mobileMenu.classList.add('hidden');
+          menuIconOpen.classList.remove('hidden');
+          menuIconClose.classList.add('hidden');
+        } else {
+          mobileMenu.classList.remove('hidden');
+          menuIconOpen.classList.add('hidden');
+          menuIconClose.classList.remove('hidden');
+        }
+      });
+
+      // Close mobile menu when clicking a link
+      mobileMenu?.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          menuIconOpen.classList.remove('hidden');
+          menuIconClose.classList.add('hidden');
+        });
+      });
+
+      // Mobile download button
+      document.getElementById('open-download-modal-mobile')?.addEventListener('click', () => {
+        document.getElementById('download-modal')?.classList.remove('hidden');
+        document.getElementById('download-modal')?.classList.add('flex');
+        mobileMenu.classList.add('hidden');
+        menuIconOpen.classList.remove('hidden');
+        menuIconClose.classList.add('hidden');
+      });
     </script>
   </body>
 </html>
