@@ -73,8 +73,8 @@ const categories = [
         <!-- Main Navbar -->
         <nav class="flex-1 bg-bg-elevated/90 backdrop-blur-lg border border-border rounded-2xl px-4 sm:px-6 py-3 shadow-lg shadow-black/20">
           <div class="flex items-center justify-between">
-            <a href="/" class="flex items-center gap-2">
-              <img src={`${base}logo-icon.svg`} alt="" class="h-5 w-5 object-contain flex-shrink-0" />
+            <a href="/" class="flex items-center gap-2 overflow-visible">
+              <img src={`${base}logo-icon.svg`} alt="" class="h-5 w-5 object-contain flex-shrink-0 -mt-px" />
               <span class="font-black text-white leading-none">Bruk<span class="font-black leading-none" style="color: #1ceb23">Map</span></span>
             </a>
             <div class="hidden md:flex items-center gap-6">
@@ -167,7 +167,7 @@ const categories = [
             </div>
           </div>
           <div class="relative flex justify-center order-1 lg:order-2 mb-6 lg:mb-0">
-            <canvas id="phone-3d" class="w-[220px] sm:w-[280px] h-[460px] sm:h-[580px]" data-base={base}></canvas>
+            <canvas id="phone-3d" class="w-[330px] sm:w-[418px] h-[616px] sm:h-[770px]" data-base={base}></canvas>
           </div>
         </div>
       </div>
@@ -611,8 +611,8 @@ const categories = [
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-8">
           <div class="col-span-2">
-            <div class="flex items-center gap-2 mb-3 sm:mb-4">
-              <img src={`${base}logo-icon.svg`} alt="" class="h-8 sm:h-9 w-auto object-contain" />
+            <div class="flex items-center gap-2 mb-3 sm:mb-4 overflow-visible">
+              <img src={`${base}logo-icon.svg`} alt="" class="h-8 sm:h-9 w-auto object-contain -mt-px" />
               <div class="flex items-baseline">
                 <span class="font-black text-white leading-none" style="font-size: clamp(1.25rem, 4vw, 1.5rem);">Bruk<span class="font-black leading-none" style="color: #1ceb23; font-size: clamp(1.25rem, 4vw, 1.5rem);">Map</span></span>
               </div>
@@ -1258,6 +1258,14 @@ const categories = [
         // Load model
         let phoneModel: THREE.Group | null = null;
         const loader = new GLTFLoader();
+        const textureLoader = new THREE.TextureLoader();
+        
+        // Load screen texture
+        const screenTexture = textureLoader.load(`${canvas.dataset.base || '/'}𝑉𝐼𝐶𝐾.jpeg`, (texture) => {
+          texture.flipY = true;
+          texture.needsUpdate = true;
+        });
+        
         // Environment map for PBR materials
         const pmremGenerator = new THREE.PMREMGenerator(renderer);
         const envScene = new THREE.Scene();
@@ -1281,6 +1289,22 @@ const categories = [
               const materials = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
               materials.forEach((mat: any, i: number) => {
                 console.log(`  Material ${i}:`, mat.type, 'color:', mat.color, 'opacity:', mat.opacity, 'transparent:', mat.transparent, 'side:', mat.side);
+                
+                // Check if this is the screen mesh (by name or material properties)
+                const isScreen = child.name.toLowerCase().includes('screen') || 
+                                child.name.toLowerCase().includes('display') ||
+                                child.name.toLowerCase().includes('glass') ||
+                                (mat.emissive && mat.emissive.r > 0.1);
+                
+                if (isScreen) {
+                  // Apply screen texture
+                  mat.map = screenTexture;
+                  mat.emissiveMap = screenTexture;
+                  mat.emissive = new THREE.Color(0xffffff);
+                  mat.emissiveIntensity = 1.0;
+                  console.log('Applied screen texture to:', child.name);
+                }
+                
                 mat.side = THREE.DoubleSide;
                 mat.transparent = false;
                 mat.opacity = 1;
@@ -1305,7 +1329,7 @@ const categories = [
           phoneModel.position.sub(center);
           phoneModel.rotation.y = Math.PI; // Flip to show screen
           const maxDim = Math.max(size.x, size.y, size.z);
-          const desiredHeight = 4.0;
+          const desiredHeight = 4;
           const scale = desiredHeight / maxDim;
           phoneModel.scale.setScalar(scale);
           scene.add(phoneModel);
