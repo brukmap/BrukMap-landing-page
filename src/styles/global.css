@@ -66,6 +66,14 @@
     background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-secondary) 100%);
   }
 
+  .pin-shape {
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+  }
+  .pin-shape > span {
+    transform: rotate(45deg);
+  }
+
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
@@ -87,6 +95,7 @@
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
 }
+
 
 @keyframes pulse-glow {
   0%, 100% { box-shadow: 0 0 20px var(--color-accent-glow); }
