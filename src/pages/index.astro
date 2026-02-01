@@ -1271,7 +1271,7 @@ const categories = [
         document.addEventListener('mousemove', (e) => {
           const nx = (e.clientX / window.innerWidth) * 2 - 1;
           const ny = (e.clientY / window.innerHeight) * 2 - 1;
-          tx = -ny * maxAngle;
+          tx = ny * maxAngle;
           ty = nx * maxAngle;
         });
 
@@ -2017,8 +2017,8 @@ const categories = [
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('animate-in');
-            // Once animated, stop observing
-            scrollObserver.unobserve(entry.target);
+          } else {
+            entry.target.classList.remove('animate-in');
           }
         });
       }, observerOptions);
