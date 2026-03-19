@@ -390,4 +390,124 @@
     z-index: 1;
     margin-top: -15%;
   }
+
+  /* Hero responsive spacing */
+  .hero-section {
+    min-height: 100svh;
+    padding-top: clamp(5.2rem, 10vh, 7rem);
+    padding-bottom: clamp(1rem, 4vh, 2.5rem);
+  }
+
+  .hero-wrapper {
+    padding-top: clamp(0.25rem, 2vh, 1rem);
+    padding-bottom: clamp(0.25rem, 2vh, 1rem);
+  }
+
+  .hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(1.5rem, 4vw, 3rem);
+  }
+
+  .hero-copy {
+    max-width: 40rem;
+    margin-inline: auto;
+  }
+
+  .hero-visual {
+    width: 100%;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-phone {
+    display: block;
+    margin-inline: auto;
+    width: min(88vw, 22.5rem);
+    aspect-ratio: 418 / 770;
+    height: auto;
+    max-height: min(62svh, 45rem);
+  }
+
+  @media (min-width: 640px) {
+    .hero-phone {
+      width: min(72vw, 27rem);
+      max-height: min(66svh, 48rem);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-section {
+      min-height: 100dvh;
+      padding-top: 5.25rem;
+      padding-bottom: 1.5rem;
+    }
+
+    .hero-wrapper {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    .hero-grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: clamp(2rem, 4vw, 4rem);
+    }
+
+    .hero-copy {
+      margin-inline: 0;
+      padding-left: clamp(1rem, 5vw, 5rem);
+    }
+
+    .hero-phone {
+      width: min(42vw, 31rem);
+      max-height: min(74dvh, 50rem);
+    }
+  }
+
+  @media (orientation: landscape) and (max-height: 760px) {
+    .hero-section {
+      min-height: 100svh;
+      padding-top: 4.5rem;
+      padding-bottom: 0.75rem;
+    }
+
+    .hero-grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: clamp(1rem, 3vw, 2rem);
+    }
+
+    .hero-copy {
+      order: 1;
+      max-width: none;
+      margin-inline: 0;
+      padding-left: 0;
+      text-align: left;
+    }
+
+    .hero-visual {
+      order: 2;
+      margin-bottom: 0;
+    }
+
+    .hero-actions {
+      justify-content: flex-start;
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding-inline: 0;
+    }
+
+    .hero-phone {
+      width: min(34vw, 20rem);
+      max-height: 58svh;
+    }
+  }
+
+  @media (orientation: landscape) and (max-height: 560px) {
+    .hero-title {
+      margin-bottom: 0.75rem;
+      line-height: 1.05;
+    }
+
+    .hero-description {
+      margin-bottom: 1rem;
+    }
+  }
 }

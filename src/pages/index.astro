@@ -131,27 +131,24 @@ const categories = [
     </div>
 
     <!-- Hero Section -->
-    <section class="relative min-h-screen lg:h-screen lg:max-h-screen flex items-center justify-center pt-20 sm:pt-16 overflow-hidden">
+    <section class="hero-section relative flex items-center justify-center overflow-hidden">
       <!-- Background Grid -->
       <div class="absolute inset-0 opacity-20">
         <div class="absolute inset-0" style="background-image: linear-gradient(rgba(28, 235, 35, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(28, 235, 35, 0.1) 1px, transparent 1px); background-size: 50px 50px;"></div>
       </div>
       <!-- Glow Effect -->
       <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[600px] lg:w-[400px] xl:w-[500px] h-[300px] sm:h-[600px] lg:h-[400px] xl:h-[500px] bg-accent/10 rounded-full blur-[100px] sm:blur-[150px] lg:blur-[120px]"></div>
-      <!-- Floating Emoji Pins Background -->
-      <div id="hero-emoji-bg" class="absolute inset-0 z-[1] overflow-hidden pointer-events-none"></div>
-
-      <div class="relative z-10 w-full max-w-7xl lg:max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 xl:px-8 py-10 sm:py-20 lg:py-0">
-        <div class="grid lg:grid-cols-2 gap-8 lg:gap-8 xl:gap-12 items-center">
-          <div class="text-center lg:text-left lg:pl-[30%] xl:pl-[32%] order-2 lg:order-1">
-            <h1 class="text-4xl xs:text-5xl sm:text-6xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-black mb-4 sm:mb-6 leading-tight">
+      <div class="hero-wrapper relative z-10 w-full max-w-7xl lg:max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-12">
+        <div class="hero-grid grid items-center">
+          <div class="hero-copy text-center lg:text-left order-2 lg:order-1">
+            <h1 class="hero-title text-4xl xs:text-5xl sm:text-6xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-black mb-4 sm:mb-6 leading-tight">
               <span data-i18n="hero_title_1">Explora lo</span><br />
               <span class="text-accent glow-text gradient-text-animated" data-i18n="hero_title_2">alternativo</span>
             </h1>
-            <p class="text-base sm:text-xl lg:text-base xl:text-lg 2xl:text-xl text-text-secondary mb-6 sm:mb-8 max-w-xl mx-auto lg:mx-0 px-2 sm:px-0" data-i18n="hero_description">
+            <p class="hero-description text-base sm:text-xl lg:text-base xl:text-lg 2xl:text-xl text-text-secondary mb-6 sm:mb-8 max-w-xl mx-auto lg:mx-0 px-2 sm:px-0" data-i18n="hero_description">
               Descubre lugares unicos que solo los locales conocen. Cafeterias escondidas, galerias underground, tiendas vintage y mucho mas.
             </p>
-            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start px-4 sm:px-0">
+            <div class="hero-actions flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start px-4 sm:px-0">
               <button data-open-modal data-platform="iOS" class="inline-flex items-center justify-center gap-2 px-6 sm:px-8 lg:px-6 xl:px-8 py-3.5 sm:py-4 lg:py-3 xl:py-4 bg-accent text-bg-primary font-bold rounded-xl hover:bg-accent-secondary transition-all glow cursor-pointer btn-fill hover-glow-intense text-sm sm:text-base lg:text-sm xl:text-base">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 sm:w-6 sm:h-6 lg:w-5 lg:h-5" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
@@ -166,8 +163,15 @@ const categories = [
               </button>
             </div>
           </div>
-          <div class="relative flex justify-center items-center order-1 lg:order-2 mb-6 lg:mb-0">
-            <canvas id="phone-3d" class="w-[330px] sm:w-[418px] lg:w-auto lg:aspect-[418/770] lg:h-[70vh] lg:max-h-[600px] xl:max-h-[700px] 2xl:max-h-[770px] h-[616px] sm:h-[770px]" data-base={base}></canvas>
+          <div class="hero-visual relative flex justify-center items-center order-1 lg:order-2 mb-6 lg:mb-0">
+            <div class="w-[220px] h-[460px] sm:w-[240px] sm:h-[500px] lg:w-[260px] lg:h-[540px] bg-bg-elevated rounded-[2rem] border-2 border-border p-2 hover-lift card-glow-border transition-all">
+              <div class="w-full h-full bg-bg-secondary rounded-[1.5rem] p-4 flex items-center justify-center">
+                <div class="flex items-center gap-2">
+                  <img src={`${base}logo-icon.svg`} alt="" class="h-6 w-6 object-contain flex-shrink-0 -mt-px" />
+                  <span class="font-black text-white leading-none text-xl">Bruk<span class="font-black leading-none" style="color: #1ceb23">Map</span></span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -189,6 +193,7 @@ const categories = [
             class="absolute inset-0 w-full h-full"
             src="https://www.youtube.com/embed/wrJV0qh10ME"
             title="BrukMap Video"
+            loading="lazy"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen
@@ -197,22 +202,22 @@ const categories = [
       </div>
       <!-- Pinterest-style Image Grid -->
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16">
-        <div class="columns-2 sm:columns-3 lg:columns-5 gap-3 sm:gap-4">
-          <img src={`${base}expamples/descarga1.jpeg`} alt="" class="w-full mb-3 sm:mb-4 rounded-xl border border-border object-cover scroll-animate scroll-fade-up" loading="lazy" />
-          <img src={`${base}expamples/a.jpeg`} alt="" class="w-full mb-3 sm:mb-4 rounded-xl border border-border object-cover scroll-animate scroll-fade-up" loading="lazy" />
-          <img src={`${base}expamples/descarga2.jpeg`} alt="" class="w-full mb-3 sm:mb-4 rounded-xl border border-border object-cover scroll-animate scroll-fade-up" loading="lazy" />
-          <img src={`${base}expamples/skatepark aesthetic.jpeg`} alt="" class="w-full mb-3 sm:mb-4 rounded-xl border border-border object-cover scroll-animate scroll-fade-up" loading="lazy" />
-          <img src={`${base}expamples/descarga3.jpeg`} alt="" class="w-full mb-3 sm:mb-4 rounded-xl border border-border object-cover scroll-animate scroll-fade-up" loading="lazy" />
-          <img src={`${base}expamples/descarga6.jpeg`} alt="" class="w-full mb-3 sm:mb-4 rounded-xl border border-border object-cover scroll-animate scroll-fade-up" loading="lazy" />
-          <img src={`${base}expamples/descarga4.jpeg`} alt="" class="w-full mb-3 sm:mb-4 rounded-xl border border-border object-cover scroll-animate scroll-fade-up" loading="lazy" />
-          <img src={`${base}expamples/b.jpeg`} alt="" class="w-full mb-3 sm:mb-4 rounded-xl border border-border object-cover scroll-animate scroll-fade-up" loading="lazy" />
-          <img src={`${base}expamples/descarga5.jpeg`} alt="" class="w-full mb-3 sm:mb-4 rounded-xl border border-border object-cover scroll-animate scroll-fade-up" loading="lazy" />
-          <img src={`${base}expamples/descarga7.jpeg`} alt="" class="w-full mb-3 sm:mb-4 rounded-xl border border-border object-cover scroll-animate scroll-fade-up" loading="lazy" />
-          <img src={`${base}expamples/photograph _ Jake Inez.jpeg`} alt="" class="w-full mb-3 sm:mb-4 rounded-xl border border-border object-cover scroll-animate scroll-fade-up" loading="lazy" />
-          <img src={`${base}expamples/descarga8.jpeg`} alt="" class="w-full mb-3 sm:mb-4 rounded-xl border border-border object-cover scroll-animate scroll-fade-up" loading="lazy" />
-          <img src={`${base}expamples/descarga9.jpeg`} alt="" class="w-full mb-3 sm:mb-4 rounded-xl border border-border object-cover scroll-animate scroll-fade-up" loading="lazy" />
-          <img src={`${base}expamples/descarga10.jpeg`} alt="" class="w-full mb-3 sm:mb-4 rounded-xl border border-border object-cover scroll-animate scroll-fade-up" loading="lazy" />
-          <img src={`${base}expamples/descarga11.jpeg`} alt="" class="w-full mb-3 sm:mb-4 rounded-xl border border-border object-cover scroll-animate scroll-fade-up" loading="lazy" />
+        <div class="columns-3 sm:columns-3 lg:columns-5 gap-2 sm:gap-4">
+          <img src={`${base}expamples/descarga1.jpeg`} alt="" class="w-full mb-2 sm:mb-4 rounded-lg sm:rounded-xl border border-border object-cover scroll-animate scroll-fade-up aspect-[4/5] sm:aspect-auto" loading="lazy" decoding="async" fetchpriority="low" />
+          <img src={`${base}expamples/a.jpeg`} alt="" class="w-full mb-2 sm:mb-4 rounded-lg sm:rounded-xl border border-border object-cover scroll-animate scroll-fade-up aspect-[4/5] sm:aspect-auto" loading="lazy" decoding="async" fetchpriority="low" />
+          <img src={`${base}expamples/descarga2.jpeg`} alt="" class="w-full mb-2 sm:mb-4 rounded-lg sm:rounded-xl border border-border object-cover scroll-animate scroll-fade-up aspect-[4/5] sm:aspect-auto" loading="lazy" decoding="async" fetchpriority="low" />
+          <img src={`${base}expamples/skatepark aesthetic.jpeg`} alt="" class="w-full mb-2 sm:mb-4 rounded-lg sm:rounded-xl border border-border object-cover scroll-animate scroll-fade-up aspect-[4/5] sm:aspect-auto" loading="lazy" decoding="async" fetchpriority="low" />
+          <img src={`${base}expamples/descarga3.jpeg`} alt="" class="w-full mb-2 sm:mb-4 rounded-lg sm:rounded-xl border border-border object-cover scroll-animate scroll-fade-up aspect-[4/5] sm:aspect-auto" loading="lazy" decoding="async" fetchpriority="low" />
+          <img src={`${base}expamples/descarga6.jpeg`} alt="" class="w-full mb-2 sm:mb-4 rounded-lg sm:rounded-xl border border-border object-cover scroll-animate scroll-fade-up aspect-[4/5] sm:aspect-auto" loading="lazy" decoding="async" fetchpriority="low" />
+          <img src={`${base}expamples/descarga4.jpeg`} alt="" class="w-full mb-2 sm:mb-4 rounded-lg sm:rounded-xl border border-border object-cover scroll-animate scroll-fade-up aspect-[4/5] sm:aspect-auto" loading="lazy" decoding="async" fetchpriority="low" />
+          <img src={`${base}expamples/b.jpeg`} alt="" class="w-full mb-2 sm:mb-4 rounded-lg sm:rounded-xl border border-border object-cover scroll-animate scroll-fade-up aspect-[4/5] sm:aspect-auto" loading="lazy" decoding="async" fetchpriority="low" />
+          <img src={`${base}expamples/descarga5.jpeg`} alt="" class="w-full mb-2 sm:mb-4 rounded-lg sm:rounded-xl border border-border object-cover scroll-animate scroll-fade-up aspect-[4/5] sm:aspect-auto" loading="lazy" decoding="async" fetchpriority="low" />
+          <img src={`${base}expamples/descarga7.jpeg`} alt="" class="hidden sm:block w-full mb-2 sm:mb-4 rounded-lg sm:rounded-xl border border-border object-cover scroll-animate scroll-fade-up aspect-[4/5] sm:aspect-auto" loading="lazy" decoding="async" fetchpriority="low" />
+          <img src={`${base}expamples/photograph _ Jake Inez.jpeg`} alt="" class="hidden sm:block w-full mb-2 sm:mb-4 rounded-lg sm:rounded-xl border border-border object-cover scroll-animate scroll-fade-up aspect-[4/5] sm:aspect-auto" loading="lazy" decoding="async" fetchpriority="low" />
+          <img src={`${base}expamples/descarga8.jpeg`} alt="" class="hidden sm:block w-full mb-2 sm:mb-4 rounded-lg sm:rounded-xl border border-border object-cover scroll-animate scroll-fade-up aspect-[4/5] sm:aspect-auto" loading="lazy" decoding="async" fetchpriority="low" />
+          <img src={`${base}expamples/descarga9.jpeg`} alt="" class="hidden sm:block w-full mb-2 sm:mb-4 rounded-lg sm:rounded-xl border border-border object-cover scroll-animate scroll-fade-up aspect-[4/5] sm:aspect-auto" loading="lazy" decoding="async" fetchpriority="low" />
+          <img src={`${base}expamples/descarga10.jpeg`} alt="" class="hidden sm:block w-full mb-2 sm:mb-4 rounded-lg sm:rounded-xl border border-border object-cover scroll-animate scroll-fade-up aspect-[4/5] sm:aspect-auto" loading="lazy" decoding="async" fetchpriority="low" />
+          <img src={`${base}expamples/descarga11.jpeg`} alt="" class="hidden sm:block w-full mb-2 sm:mb-4 rounded-lg sm:rounded-xl border border-border object-cover scroll-animate scroll-fade-up aspect-[4/5] sm:aspect-auto" loading="lazy" decoding="async" fetchpriority="low" />
         </div>
       </div>
     </section>
@@ -228,48 +233,48 @@ const categories = [
             Herramientas pensadas para exploradores que buscan experiencias autenticas.
           </p>
         </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="p-6 lg:p-5 xl:p-6 bg-bg-elevated rounded-2xl border border-border hover:border-accent/50 transition-all group scroll-animate scroll-fade-up stagger-1 hover-lift card-glow-border">
-            <div class="w-14 h-14 lg:w-12 lg:h-12 xl:w-14 xl:h-14 bg-accent/10 rounded-xl flex items-center justify-center text-accent mb-4 lg:mb-3 xl:mb-4 group-hover:bg-accent group-hover:text-bg-primary transition-all icon-hover-rotate">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>
+        <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5 lg:gap-6">
+          <div class="p-4 sm:p-5 lg:p-5 xl:p-6 bg-bg-elevated rounded-xl sm:rounded-2xl border border-border hover:border-accent/50 transition-all group scroll-animate scroll-fade-up stagger-1 hover-lift card-glow-border">
+            <div class="w-10 h-10 sm:w-12 sm:h-12 lg:w-12 lg:h-12 xl:w-14 xl:h-14 bg-accent/10 rounded-lg sm:rounded-xl flex items-center justify-center text-accent mb-3 sm:mb-4 lg:mb-3 xl:mb-4 group-hover:bg-accent group-hover:text-bg-primary transition-all icon-hover-rotate">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 sm:w-7 sm:h-7 xl:w-8 xl:h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>
             </div>
-            <h3 class="text-xl font-bold mb-2" data-i18n="feature_1_title">Mapa de Spots</h3>
-            <p class="text-text-secondary" data-i18n="feature_1_desc">Explora lugares alternativos cerca de ti con filtros por categoria y busqueda avanzada.</p>
+            <h3 class="text-base sm:text-lg lg:text-xl font-bold mb-1.5 sm:mb-2 leading-tight" data-i18n="feature_1_title">Mapa de Spots</h3>
+            <p class="text-text-secondary text-xs sm:text-sm lg:text-base leading-snug" data-i18n="feature_1_desc">Explora lugares alternativos cerca de ti con filtros por categoria y busqueda avanzada.</p>
           </div>
-          <div class="p-6 lg:p-5 xl:p-6 bg-bg-elevated rounded-2xl border border-border hover:border-accent/50 transition-all group scroll-animate scroll-fade-up stagger-2 hover-lift card-glow-border">
-            <div class="w-14 h-14 lg:w-12 lg:h-12 xl:w-14 xl:h-14 bg-accent/10 rounded-xl flex items-center justify-center text-accent mb-4 lg:mb-3 xl:mb-4 group-hover:bg-accent group-hover:text-bg-primary transition-all icon-hover-rotate">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+          <div class="p-4 sm:p-5 lg:p-5 xl:p-6 bg-bg-elevated rounded-xl sm:rounded-2xl border border-border hover:border-accent/50 transition-all group scroll-animate scroll-fade-up stagger-2 hover-lift card-glow-border">
+            <div class="w-10 h-10 sm:w-12 sm:h-12 lg:w-12 lg:h-12 xl:w-14 xl:h-14 bg-accent/10 rounded-lg sm:rounded-xl flex items-center justify-center text-accent mb-3 sm:mb-4 lg:mb-3 xl:mb-4 group-hover:bg-accent group-hover:text-bg-primary transition-all icon-hover-rotate">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 sm:w-7 sm:h-7 xl:w-8 xl:h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
             </div>
-            <h3 class="text-xl font-bold mb-2" data-i18n="feature_2_title">Contribuciones</h3>
-            <p class="text-text-secondary" data-i18n="feature_2_desc">Anade tus propios descubrimientos y ayuda a la comunidad a encontrar lugares unicos.</p>
+            <h3 class="text-base sm:text-lg lg:text-xl font-bold mb-1.5 sm:mb-2 leading-tight" data-i18n="feature_2_title">Contribuciones</h3>
+            <p class="text-text-secondary text-xs sm:text-sm lg:text-base leading-snug" data-i18n="feature_2_desc">Anade tus propios descubrimientos y ayuda a la comunidad a encontrar lugares unicos.</p>
           </div>
-          <div class="p-6 lg:p-5 xl:p-6 bg-bg-elevated rounded-2xl border border-border hover:border-accent/50 transition-all group scroll-animate scroll-fade-up stagger-3 hover-lift card-glow-border">
-            <div class="w-14 h-14 lg:w-12 lg:h-12 xl:w-14 xl:h-14 bg-accent/10 rounded-xl flex items-center justify-center text-accent mb-4 lg:mb-3 xl:mb-4 group-hover:bg-accent group-hover:text-bg-primary transition-all icon-hover-rotate">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>
+          <div class="p-4 sm:p-5 lg:p-5 xl:p-6 bg-bg-elevated rounded-xl sm:rounded-2xl border border-border hover:border-accent/50 transition-all group scroll-animate scroll-fade-up stagger-3 hover-lift card-glow-border">
+            <div class="w-10 h-10 sm:w-12 sm:h-12 lg:w-12 lg:h-12 xl:w-14 xl:h-14 bg-accent/10 rounded-lg sm:rounded-xl flex items-center justify-center text-accent mb-3 sm:mb-4 lg:mb-3 xl:mb-4 group-hover:bg-accent group-hover:text-bg-primary transition-all icon-hover-rotate">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 sm:w-7 sm:h-7 xl:w-8 xl:h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>
             </div>
-            <h3 class="text-xl font-bold mb-2" data-i18n="feature_3_title">Sanctuary</h3>
-            <p class="text-text-secondary" data-i18n="feature_3_desc">Guarda spots privados solo para ti y compartelos con amigos en burbujas exclusivas.</p>
+            <h3 class="text-base sm:text-lg lg:text-xl font-bold mb-1.5 sm:mb-2 leading-tight" data-i18n="feature_3_title">Sanctuary</h3>
+            <p class="text-text-secondary text-xs sm:text-sm lg:text-base leading-snug" data-i18n="feature_3_desc">Guarda spots privados solo para ti y compartelos con amigos en burbujas exclusivas.</p>
           </div>
-          <div class="p-6 lg:p-5 xl:p-6 bg-bg-elevated rounded-2xl border border-border hover:border-accent/50 transition-all group scroll-animate scroll-fade-up stagger-4 hover-lift card-glow-border">
-            <div class="w-14 h-14 lg:w-12 lg:h-12 xl:w-14 xl:h-14 bg-accent/10 rounded-xl flex items-center justify-center text-accent mb-4 lg:mb-3 xl:mb-4 group-hover:bg-accent group-hover:text-bg-primary transition-all icon-hover-rotate">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
+          <div class="p-4 sm:p-5 lg:p-5 xl:p-6 bg-bg-elevated rounded-xl sm:rounded-2xl border border-border hover:border-accent/50 transition-all group scroll-animate scroll-fade-up stagger-4 hover-lift card-glow-border">
+            <div class="w-10 h-10 sm:w-12 sm:h-12 lg:w-12 lg:h-12 xl:w-14 xl:h-14 bg-accent/10 rounded-lg sm:rounded-xl flex items-center justify-center text-accent mb-3 sm:mb-4 lg:mb-3 xl:mb-4 group-hover:bg-accent group-hover:text-bg-primary transition-all icon-hover-rotate">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 sm:w-7 sm:h-7 xl:w-8 xl:h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
             </div>
-            <h3 class="text-xl font-bold mb-2" data-i18n="feature_4_title">Modo Offline</h3>
-            <p class="text-text-secondary" data-i18n="feature_4_desc">Descarga datos de ciudades y explora sin conexion a internet.</p>
+            <h3 class="text-base sm:text-lg lg:text-xl font-bold mb-1.5 sm:mb-2 leading-tight" data-i18n="feature_4_title">Modo Offline</h3>
+            <p class="text-text-secondary text-xs sm:text-sm lg:text-base leading-snug" data-i18n="feature_4_desc">Descarga datos de ciudades y explora sin conexion a internet.</p>
           </div>
-          <div class="p-6 lg:p-5 xl:p-6 bg-bg-elevated rounded-2xl border border-border hover:border-accent/50 transition-all group scroll-animate scroll-fade-up stagger-5 hover-lift card-glow-border">
-            <div class="w-14 h-14 lg:w-12 lg:h-12 xl:w-14 xl:h-14 bg-accent/10 rounded-xl flex items-center justify-center text-accent mb-4 lg:mb-3 xl:mb-4 group-hover:bg-accent group-hover:text-bg-primary transition-all icon-hover-rotate">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" /></svg>
+          <div class="p-4 sm:p-5 lg:p-5 xl:p-6 bg-bg-elevated rounded-xl sm:rounded-2xl border border-border hover:border-accent/50 transition-all group scroll-animate scroll-fade-up stagger-5 hover-lift card-glow-border">
+            <div class="w-10 h-10 sm:w-12 sm:h-12 lg:w-12 lg:h-12 xl:w-14 xl:h-14 bg-accent/10 rounded-lg sm:rounded-xl flex items-center justify-center text-accent mb-3 sm:mb-4 lg:mb-3 xl:mb-4 group-hover:bg-accent group-hover:text-bg-primary transition-all icon-hover-rotate">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 sm:w-7 sm:h-7 xl:w-8 xl:h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" /></svg>
             </div>
-            <h3 class="text-xl font-bold mb-2" data-i18n="feature_5_title">Eventos</h3>
-            <p class="text-text-secondary" data-i18n="feature_5_desc">Descubre eventos alternativos cerca de ti con calendario y filtros.</p>
+            <h3 class="text-base sm:text-lg lg:text-xl font-bold mb-1.5 sm:mb-2 leading-tight" data-i18n="feature_5_title">Eventos</h3>
+            <p class="text-text-secondary text-xs sm:text-sm lg:text-base leading-snug" data-i18n="feature_5_desc">Descubre eventos alternativos cerca de ti con calendario y filtros.</p>
           </div>
-          <div class="p-6 lg:p-5 xl:p-6 bg-bg-elevated rounded-2xl border border-border hover:border-accent/50 transition-all group scroll-animate scroll-fade-up stagger-6 hover-lift card-glow-border">
-            <div class="w-14 h-14 lg:w-12 lg:h-12 xl:w-14 xl:h-14 bg-accent/10 rounded-xl flex items-center justify-center text-accent mb-4 lg:mb-3 xl:mb-4 group-hover:bg-accent group-hover:text-bg-primary transition-all icon-hover-rotate">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" /></svg>
+          <div class="p-4 sm:p-5 lg:p-5 xl:p-6 bg-bg-elevated rounded-xl sm:rounded-2xl border border-border hover:border-accent/50 transition-all group scroll-animate scroll-fade-up stagger-6 hover-lift card-glow-border">
+            <div class="w-10 h-10 sm:w-12 sm:h-12 lg:w-12 lg:h-12 xl:w-14 xl:h-14 bg-accent/10 rounded-lg sm:rounded-xl flex items-center justify-center text-accent mb-3 sm:mb-4 lg:mb-3 xl:mb-4 group-hover:bg-accent group-hover:text-bg-primary transition-all icon-hover-rotate">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 sm:w-7 sm:h-7 xl:w-8 xl:h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" /></svg>
             </div>
-            <h3 class="text-xl font-bold mb-2" data-i18n="feature_6_title">Burbujas</h3>
-            <p class="text-text-secondary" data-i18n="feature_6_desc">Crea grupos privados con amigos para compartir spots secretos.</p>
+            <h3 class="text-base sm:text-lg lg:text-xl font-bold mb-1.5 sm:mb-2 leading-tight" data-i18n="feature_6_title">Burbujas</h3>
+            <p class="text-text-secondary text-xs sm:text-sm lg:text-base leading-snug" data-i18n="feature_6_desc">Crea grupos privados con amigos para compartir spots secretos.</p>
           </div>
         </div>
       </div>
@@ -343,19 +348,19 @@ const categories = [
         </div>
 
         <!-- Impact Cards - Expanded -->
-        <div class="grid md:grid-cols-2 gap-4 sm:gap-6">
+        <div class="grid grid-cols-2 gap-3 sm:gap-5">
           <!-- Card 1: Negocios locales -->
-          <div class="bg-bg-elevated border border-border rounded-xl sm:rounded-2xl p-5 sm:p-8 lg:p-5 xl:p-6 hover:border-accent/50 transition-all group scroll-animate scroll-fade-left stagger-1 hover-lift card-glow-border">
-            <div class="flex items-start gap-3 sm:gap-5">
-              <div class="w-12 h-12 sm:w-16 sm:h-16 lg:w-12 lg:h-12 xl:w-14 xl:h-14 bg-accent/20 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-accent group-hover:text-bg-primary transition-all icon-hover-rotate">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 sm:w-8 sm:h-8 text-accent group-hover:text-bg-primary transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <div class="bg-bg-elevated border border-border rounded-xl sm:rounded-2xl p-3 sm:p-6 lg:p-5 xl:p-6 hover:border-accent/50 transition-all group scroll-animate scroll-fade-left stagger-1 hover-lift card-glow-border">
+            <div class="flex flex-col sm:flex-row items-start gap-2 sm:gap-4">
+              <div class="w-9 h-9 sm:w-14 sm:h-14 lg:w-12 lg:h-12 xl:w-14 xl:h-14 bg-accent/20 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-accent group-hover:text-bg-primary transition-all icon-hover-rotate">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 sm:w-7 sm:h-7 xl:w-8 xl:h-8 text-accent group-hover:text-bg-primary transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                 </svg>
               </div>
               <div>
-                <h3 class="text-xl font-bold mb-2" data-i18n="impact_local">Negocios locales</h3>
-                <p class="text-text-secondary mb-3" data-i18n="impact_local_desc_long">Tiendas de barrio, emprendimientos familiares y comercios independientes que luchan contra las grandes cadenas. Les damos la visibilidad que merecen.</p>
-                <div class="flex flex-wrap gap-2">
+                <h3 class="text-sm sm:text-lg lg:text-xl font-bold mb-1 sm:mb-2 leading-tight" data-i18n="impact_local">Negocios locales</h3>
+                <p class="text-text-secondary text-xs sm:text-sm lg:text-base mb-2 sm:mb-3 leading-snug" data-i18n="impact_local_desc_long">Tiendas de barrio, emprendimientos familiares y comercios independientes que luchan contra las grandes cadenas. Les damos la visibilidad que merecen.</p>
+                <div class="hidden sm:flex flex-wrap gap-2">
                   <span class="px-3 py-1 bg-bg-secondary rounded-full text-xs text-text-tertiary" data-i18n="impact_local_tag1">Tiendas de barrio</span>
                   <span class="px-3 py-1 bg-bg-secondary rounded-full text-xs text-text-tertiary" data-i18n="impact_local_tag2">Emprendimientos</span>
                   <span class="px-3 py-1 bg-bg-secondary rounded-full text-xs text-text-tertiary" data-i18n="impact_local_tag3">Comercio justo</span>
@@ -365,17 +370,17 @@ const categories = [
           </div>
 
           <!-- Card 2: Arte urbano -->
-          <div class="bg-bg-elevated border border-border rounded-xl sm:rounded-2xl p-5 sm:p-8 lg:p-5 xl:p-6 hover:border-accent/50 transition-all group scroll-animate scroll-fade-right stagger-1 hover-lift card-glow-border">
-            <div class="flex items-start gap-3 sm:gap-5">
-              <div class="w-12 h-12 sm:w-16 sm:h-16 lg:w-12 lg:h-12 xl:w-14 xl:h-14 bg-accent/20 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-accent group-hover:text-bg-primary transition-all icon-hover-rotate">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 sm:w-8 sm:h-8 text-accent group-hover:text-bg-primary transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <div class="bg-bg-elevated border border-border rounded-xl sm:rounded-2xl p-3 sm:p-6 lg:p-5 xl:p-6 hover:border-accent/50 transition-all group scroll-animate scroll-fade-right stagger-1 hover-lift card-glow-border">
+            <div class="flex flex-col sm:flex-row items-start gap-2 sm:gap-4">
+              <div class="w-9 h-9 sm:w-14 sm:h-14 lg:w-12 lg:h-12 xl:w-14 xl:h-14 bg-accent/20 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-accent group-hover:text-bg-primary transition-all icon-hover-rotate">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 sm:w-7 sm:h-7 xl:w-8 xl:h-8 text-accent group-hover:text-bg-primary transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                 </svg>
               </div>
               <div>
-                <h3 class="text-xl font-bold mb-2" data-i18n="impact_art">Arte urbano</h3>
-                <p class="text-text-secondary mb-3" data-i18n="impact_art_desc_long">Murales, galerias independientes, estudios de artistas y espacios creativos que transforman las ciudades. El arte callejero merece ser encontrado.</p>
-                <div class="flex flex-wrap gap-2">
+                <h3 class="text-sm sm:text-lg lg:text-xl font-bold mb-1 sm:mb-2 leading-tight" data-i18n="impact_art">Arte urbano</h3>
+                <p class="text-text-secondary text-xs sm:text-sm lg:text-base mb-2 sm:mb-3 leading-snug" data-i18n="impact_art_desc_long">Murales, galerias independientes, estudios de artistas y espacios creativos que transforman las ciudades. El arte callejero merece ser encontrado.</p>
+                <div class="hidden sm:flex flex-wrap gap-2">
                   <span class="px-3 py-1 bg-bg-secondary rounded-full text-xs text-text-tertiary" data-i18n="impact_art_tag1">Murales</span>
                   <span class="px-3 py-1 bg-bg-secondary rounded-full text-xs text-text-tertiary" data-i18n="impact_art_tag2">Galerias</span>
                   <span class="px-3 py-1 bg-bg-secondary rounded-full text-xs text-text-tertiary" data-i18n="impact_art_tag3">Street art</span>
@@ -385,17 +390,17 @@ const categories = [
           </div>
 
           <!-- Card 3: Comunidades -->
-          <div class="bg-bg-elevated border border-border rounded-xl sm:rounded-2xl p-5 sm:p-8 lg:p-5 xl:p-6 hover:border-accent/50 transition-all group scroll-animate scroll-fade-left stagger-2 hover-lift card-glow-border">
-            <div class="flex items-start gap-3 sm:gap-5">
-              <div class="w-12 h-12 sm:w-16 sm:h-16 lg:w-12 lg:h-12 xl:w-14 xl:h-14 bg-accent/20 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-accent group-hover:text-bg-primary transition-all icon-hover-rotate">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 sm:w-8 sm:h-8 text-accent group-hover:text-bg-primary transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <div class="bg-bg-elevated border border-border rounded-xl sm:rounded-2xl p-3 sm:p-6 lg:p-5 xl:p-6 hover:border-accent/50 transition-all group scroll-animate scroll-fade-left stagger-2 hover-lift card-glow-border">
+            <div class="flex flex-col sm:flex-row items-start gap-2 sm:gap-4">
+              <div class="w-9 h-9 sm:w-14 sm:h-14 lg:w-12 lg:h-12 xl:w-14 xl:h-14 bg-accent/20 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-accent group-hover:text-bg-primary transition-all icon-hover-rotate">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 sm:w-7 sm:h-7 xl:w-8 xl:h-8 text-accent group-hover:text-bg-primary transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
               <div>
-                <h3 class="text-xl font-bold mb-2" data-i18n="impact_community">Comunidades</h3>
-                <p class="text-text-secondary mb-3" data-i18n="impact_community_desc_long">Colectivos, espacios de coworking alternativos, centros culturales y puntos de encuentro para personas con intereses compartidos.</p>
-                <div class="flex flex-wrap gap-2">
+                <h3 class="text-sm sm:text-lg lg:text-xl font-bold mb-1 sm:mb-2 leading-tight" data-i18n="impact_community">Comunidades</h3>
+                <p class="text-text-secondary text-xs sm:text-sm lg:text-base mb-2 sm:mb-3 leading-snug" data-i18n="impact_community_desc_long">Colectivos, espacios de coworking alternativos, centros culturales y puntos de encuentro para personas con intereses compartidos.</p>
+                <div class="hidden sm:flex flex-wrap gap-2">
                   <span class="px-3 py-1 bg-bg-secondary rounded-full text-xs text-text-tertiary" data-i18n="impact_community_tag1">Colectivos</span>
                   <span class="px-3 py-1 bg-bg-secondary rounded-full text-xs text-text-tertiary" data-i18n="impact_community_tag2">Coworking</span>
                   <span class="px-3 py-1 bg-bg-secondary rounded-full text-xs text-text-tertiary" data-i18n="impact_community_tag3">Centros culturales</span>
@@ -405,17 +410,17 @@ const categories = [
           </div>
 
           <!-- Card 4: Cultura alternativa -->
-          <div class="bg-bg-elevated border border-border rounded-xl sm:rounded-2xl p-5 sm:p-8 lg:p-5 xl:p-6 hover:border-accent/50 transition-all group scroll-animate scroll-fade-right stagger-2 hover-lift card-glow-border">
-            <div class="flex items-start gap-3 sm:gap-5">
-              <div class="w-12 h-12 sm:w-16 sm:h-16 lg:w-12 lg:h-12 xl:w-14 xl:h-14 bg-accent/20 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-accent group-hover:text-bg-primary transition-all icon-hover-rotate">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 sm:w-8 sm:h-8 text-accent group-hover:text-bg-primary transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <div class="bg-bg-elevated border border-border rounded-xl sm:rounded-2xl p-3 sm:p-6 lg:p-5 xl:p-6 hover:border-accent/50 transition-all group scroll-animate scroll-fade-right stagger-2 hover-lift card-glow-border">
+            <div class="flex flex-col sm:flex-row items-start gap-2 sm:gap-4">
+              <div class="w-9 h-9 sm:w-14 sm:h-14 lg:w-12 lg:h-12 xl:w-14 xl:h-14 bg-accent/20 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-accent group-hover:text-bg-primary transition-all icon-hover-rotate">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 sm:w-7 sm:h-7 xl:w-8 xl:h-8 text-accent group-hover:text-bg-primary transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                 </svg>
               </div>
               <div>
-                <h3 class="text-xl font-bold mb-2" data-i18n="impact_culture">Cultura alternativa</h3>
-                <p class="text-text-secondary mb-3" data-i18n="impact_culture_desc_long">Todo lo que hace unica a cada ciudad y que no encontraras en las guias turisticas tradicionales. Lo autentico, lo underground, lo diferente.</p>
-                <div class="flex flex-wrap gap-2">
+                <h3 class="text-sm sm:text-lg lg:text-xl font-bold mb-1 sm:mb-2 leading-tight" data-i18n="impact_culture">Cultura alternativa</h3>
+                <p class="text-text-secondary text-xs sm:text-sm lg:text-base mb-2 sm:mb-3 leading-snug" data-i18n="impact_culture_desc_long">Todo lo que hace unica a cada ciudad y que no encontraras en las guias turisticas tradicionales. Lo autentico, lo underground, lo diferente.</p>
+                <div class="hidden sm:flex flex-wrap gap-2">
                   <span class="px-3 py-1 bg-bg-secondary rounded-full text-xs text-text-tertiary" data-i18n="impact_culture_tag1">Underground</span>
                   <span class="px-3 py-1 bg-bg-secondary rounded-full text-xs text-text-tertiary" data-i18n="impact_culture_tag2">Autentico</span>
                   <span class="px-3 py-1 bg-bg-secondary rounded-full text-xs text-text-tertiary" data-i18n="impact_culture_tag3">Local</span>
@@ -1228,207 +1233,6 @@ const categories = [
     </div>
 
     <script>
-      import * as THREE from 'three';
-      import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-
-      (function () {
-        const canvas = document.getElementById('phone-3d') as HTMLCanvasElement;
-        console.log('Canvas element:', canvas);
-        if (!canvas) return;
-
-        const width = canvas.clientWidth || 350;
-        const height = canvas.clientHeight || 580;
-        console.log('Canvas size:', width, height);
-
-        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-        renderer.setSize(width, height);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        renderer.toneMapping = THREE.ACESFilmicToneMapping;
-        renderer.toneMappingExposure = 1.2;
-
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(35, width / height, 0.001, 1000);
-        camera.position.set(0, 0, 5);
-
-        // Lighting
-        const ambient = new THREE.AmbientLight(0xffffff, 1.0);
-        scene.add(ambient);
-        const dirLight = new THREE.DirectionalLight(0xffffff, 1.5);
-        dirLight.position.set(2, 3, 4);
-        scene.add(dirLight);
-        const backLight = new THREE.DirectionalLight(0xffffff, 0.5);
-        backLight.position.set(-2, -1, -3);
-        scene.add(backLight);
-        const greenLight = new THREE.PointLight(0x1ceb23, 1.0, 10);
-        greenLight.position.set(-0.5, -0.5, 1);
-        scene.add(greenLight);
-
-        // Mouse tracking
-        const maxAngle = Math.PI / 12;
-        let tx = 0, ty = 0, rx = 0, ry = 0;
-        const start = performance.now();
-
-        document.addEventListener('mousemove', (e) => {
-          const nx = (e.clientX / window.innerWidth) * 2 - 1;
-          const ny = (e.clientY / window.innerHeight) * 2 - 1;
-          tx = ny * maxAngle;
-          ty = nx * maxAngle;
-        });
-
-        // Load model
-        let phoneModel: THREE.Group | null = null;
-        const loader = new GLTFLoader();
-        const textureLoader = new THREE.TextureLoader();
-        
-        // Load screen texture
-        const screenTexture = textureLoader.load(`${canvas.dataset.base || '/'}𝑉𝐼𝐶𝐾.jpeg`, (texture) => {
-          texture.flipY = true;
-          texture.needsUpdate = true;
-        });
-        
-        // Environment map for PBR materials
-        const pmremGenerator = new THREE.PMREMGenerator(renderer);
-        const envScene = new THREE.Scene();
-        envScene.background = new THREE.Color(0x222222);
-        const envMap = pmremGenerator.fromScene(envScene).texture;
-        scene.environment = envMap;
-        pmremGenerator.dispose();
-
-        const basePath = canvas.dataset.base || '/';
-        loader.load(`${basePath}samsung_galaxy_s21_ultra.glb`, (gltf) => {
-          phoneModel = gltf.scene;
-
-          // Debug: log all children
-          let meshCount = 0;
-          phoneModel.traverse((child) => {
-            console.log('Child:', child.type, child.name, child.visible);
-            if ((child as THREE.Mesh).isMesh) {
-              meshCount++;
-              const mesh = child as THREE.Mesh;
-              mesh.visible = true;
-              const materials = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
-              materials.forEach((mat: any, i: number) => {
-                console.log(`  Material ${i}:`, mat.type, 'color:', mat.color, 'opacity:', mat.opacity, 'transparent:', mat.transparent, 'side:', mat.side);
-                
-                // Check if this is the screen mesh (by name or material properties)
-                const isScreen = child.name.toLowerCase().includes('screen') || 
-                                child.name.toLowerCase().includes('display') ||
-                                child.name.toLowerCase().includes('glass') ||
-                                (mat.emissive && mat.emissive.r > 0.1);
-                
-                if (isScreen) {
-                  // Apply screen texture
-                  mat.map = screenTexture;
-                  mat.emissiveMap = screenTexture;
-                  mat.emissive = new THREE.Color(0xffffff);
-                  mat.emissiveIntensity = 1.0;
-                  console.log('Applied screen texture to:', child.name);
-                }
-                
-                mat.side = THREE.DoubleSide;
-                mat.transparent = false;
-                mat.opacity = 1;
-                mat.depthWrite = true;
-                mat.depthTest = true;
-                if (mat.envMap !== undefined) {
-                  mat.envMap = envMap;
-                  mat.envMapIntensity = 1.5;
-                }
-                mat.needsUpdate = true;
-              });
-            }
-          });
-          console.log('Total meshes:', meshCount);
-
-          // Center and scale to fit view
-          const box = new THREE.Box3().setFromObject(phoneModel);
-          const size = box.getSize(new THREE.Vector3());
-          const center = box.getCenter(new THREE.Vector3());
-          console.log('Bounding box size:', size, 'center:', center);
-
-          phoneModel.position.sub(center);
-          phoneModel.rotation.y = Math.PI; // Flip to show screen
-          const maxDim = Math.max(size.x, size.y, size.z);
-          const desiredHeight = 4;
-          const scale = desiredHeight / maxDim;
-          phoneModel.scale.setScalar(scale);
-          scene.add(phoneModel);
-          console.log('Applied scale:', scale);
-        }, undefined, (err) => {
-          console.error('GLB load error:', err);
-        });
-
-        function animate() {
-          requestAnimationFrame(animate);
-          if (phoneModel) {
-            rx += (tx - rx) * 0.08;
-            ry += (ty - ry) * 0.08;
-            const floatY = Math.sin((performance.now() - start) / 1000) * 0.05;
-            phoneModel.rotation.x = rx;
-            phoneModel.rotation.y = Math.PI + ry;
-            phoneModel.position.y = floatY;
-          }
-          renderer.render(scene, camera);
-        }
-        animate();
-
-        window.addEventListener('resize', () => {
-          const w = canvas.clientWidth;
-          const h = canvas.clientHeight;
-          renderer.setSize(w, h);
-          camera.aspect = w / h;
-          camera.updateProjectionMatrix();
-        });
-      })();
-    </script>
-
-    <script>
-      // Floating emoji pins background
-      (function () {
-        const container = document.getElementById('hero-emoji-bg');
-        if (!container) return;
-        const emojis = ['☕', '🎨', '🎵', '🍕', '📚', '🎭', '🛍️', '🌿', '🎸', '🧁', '🌮', '📷'];
-
-        function spawnPin() {
-          const emoji = emojis[Math.floor(Math.random() * emojis.length)];
-          const el = document.createElement('div');
-          el.className = 'pin-shape flex items-center justify-center';
-          el.style.cssText = `
-            position: absolute;
-            top: ${5 + Math.random() * 80}%;
-            left: ${5 + Math.random() * 85}%;
-            width: 48px;
-            height: 48px;
-            background: rgba(28, 235, 35, 0.2);
-            opacity: 0;
-            transition: opacity 0.5s ease;
-          `;
-          const span = document.createElement('span');
-          span.style.fontSize = '20px';
-          span.textContent = emoji;
-          el.appendChild(span);
-          container.appendChild(el);
-
-          requestAnimationFrame(() => { el.style.opacity = '1'; });
-
-          setTimeout(() => {
-            el.style.opacity = '0';
-            setTimeout(() => el.remove(), 500);
-          }, 2500);
-        }
-
-        function spawnBatch() {
-          for (let i = 0; i < 3; i++) {
-            setTimeout(spawnPin, i * 200);
-          }
-        }
-
-        spawnBatch();
-        setInterval(spawnBatch, 2500);
-      })();
-    </script>
-
-    <script>
       // i18n System
       const translations = {
         es: {
@@ -2068,3 +1872,4 @@ const categories = [
     </script>
   </body>
 </html>
+
